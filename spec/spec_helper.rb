@@ -1,5 +1,6 @@
 require 'factory_girl_rails'
 require 'simplecov'
+
 SimpleCov.start "rails" do
   add_filter '/spec/'
   add_filter '/config/'
