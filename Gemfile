@@ -47,5 +47,5 @@ group :development, :test do
 end
 
 gem "factory_girl_rails", "~> 4.0", :group => :test
-
+gem 'simplecov', :require => false, :group => :test
 
