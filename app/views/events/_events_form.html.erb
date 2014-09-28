@@ -1,0 +1,10 @@
+<%= simple_form_for @event, html: { role: 'form'} do |f| %>
+  <%= f.input :name, placeholder: 'Name' %>
+  <%= f.input :description, placeholder: 'Description'  %>
+  <%= f.input :event_type, placeholder: 'Type'  %>
+  <%= f.input :genre, placeholder: 'Genre'  %>
+  <%= f.input :start_time, placeholder: 'Start time'  %>
+  <%= f.input :runtime, placeholder: 'Runtime'  %>
+  <%= f.input :website, placeholder: 'website'  %>
+  <%= f.button :submit %>
+<% end %>
