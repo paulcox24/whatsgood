@@ -1,9 +1,10 @@
-<h1>Events#index</h1>
+<h1>All Events</h1>
 <%= link_to 'New Event', new_event_path %>
 
 <table>
   <thead>
     <tr>
+      <th>Rating</th>
       <th>Name</th>
       <th>Description</th>
       <th>Type</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
+        <td><%= event.rating %></td>
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.event_type %></td>

@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_path, notice; 'Event cancelled.'
+    redirect_to events_path, notice: 'Event cancelled.'
   end
 
   private
