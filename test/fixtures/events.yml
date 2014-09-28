@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  starttime: 2014-09-28 12:09:46
+  runtime: 1
+  venue_id: 
+  description: MyText
+  type: 
+  genre: MyString
+  name: MyString
+  rating: 1
+  website: MyString
+
+two:
+  starttime: 2014-09-28 12:09:46
+  runtime: 1
+  venue_id: 
+  description: MyText
+  type: 
+  genre: MyString
+  name: MyString
+  rating: 1
+  website: MyString
