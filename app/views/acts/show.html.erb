@@ -1,0 +1,8 @@
+<h1><%= @act.name %></h1>
+<p><%= @act.description %></p>
+<p><%= @act.website %></p>
+
+
+<%= link_to 'Acts', acts_path %>
+<%= link_to 'Edit', edit_act_path %>
+<%= link_to 'Delete', @act, method: :delete, data: {confirm: 'You sure?'} %>
