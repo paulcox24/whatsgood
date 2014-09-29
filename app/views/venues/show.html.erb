@@ -1,0 +1,13 @@
+<h1><%= @venue.name %></h1>
+<p><%= @venue.description %></p>
+<ul>
+  <li>Type: <%= @venue.venue_type %></li>
+  <li>Genre: <%= @venue.location %></li>
+  <li>Start Time: <%= @venue.phone %></li>
+  <li>Runtime: <%= @venue.email %></li>
+  <li>Website: <%= @venue.website %></li>
+</ul>
+
+<%= link_to 'Venues', venues_path %>
+<%= link_to 'Edit', edit_venue_path %>
+<%= link_to 'Delete', @venue, method: :delete, data: {confirm: 'You sure?'} %>
