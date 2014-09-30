@@ -14,9 +14,9 @@
   </head>
 
   <body>
+    <%= render 'layouts/navbar' %>
     <p><%= notice %></p>
     <p><%= alert %></p>
-    <%= render 'layouts/navbar' %>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
