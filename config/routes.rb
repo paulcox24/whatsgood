@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'interests/index'
+
+  get 'interests/edit'
+
+  get 'interests/new'
+
+  get 'interests/show'
+
   root 'static_pages#home'
 
   get 'static_pages/about'
