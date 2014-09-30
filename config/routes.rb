@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
+  get 'users/show'
+
+  get 'users/profile'
+
+  get 'users/user_events'
+
   root 'static_pages#home'
 
   get 'static_pages/about'
