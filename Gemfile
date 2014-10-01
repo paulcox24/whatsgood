@@ -34,6 +34,8 @@ gem 'devise'
 # gem 'unicorn'
 gem 'geocoder'
 
+gem 'bootstrap-sass'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -50,5 +52,4 @@ end
 
 gem "factory_girl_rails", "~> 4.0", :group => :test
 gem 'simplecov', :require => false, :group => :test
-gem 'foundation-rails'
 
