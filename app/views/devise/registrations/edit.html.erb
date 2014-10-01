@@ -8,8 +8,8 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :address %>
-    <%= f.input :latitude %>
-    <%= f.input :longitude %>
+    <%= f.input :latitude, :as => :hidden %>
+    <%= f.input :longitude, :as => :hidden %>
     <%= f.input :description %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
