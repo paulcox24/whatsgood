@@ -48,6 +48,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'dotenv-rails'
 end
 
 gem "factory_girl_rails", "~> 4.0", :group => :test
