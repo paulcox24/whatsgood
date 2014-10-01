@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'interests/index'
-
-  get 'interests/edit'
-
-  get 'interests/new'
-
-  get 'interests/show'
 
   root 'static_pages#home'
 
@@ -15,9 +8,16 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :users, :only => [:show, :index]
+  resources :users, :only => [:show, :index] do
+    resources :interests 
+  end
+    
   get '/profile', to: 'users#profile', as: :profile
   get '/user_events', to: 'users#user_events', as: :user_events
+
+  resources :events
+  resources :venues
+  resources :acts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -32,9 +32,6 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :events
-  resources :venues
-  resources :acts
 
   # Example resource route with options:
   #   resources :products do
