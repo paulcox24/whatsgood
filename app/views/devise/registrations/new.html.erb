@@ -11,8 +11,8 @@
     <%= f.input :last_name %>
     <%= f.input :address %>
     <%= f.input :description %>
-    <%= f.input :latitude %>
-    <%= f.input :longitude %>
+    <%= f.input :latitude, :as => :hidden %>
+    <%= f.input :longitude, :as => :hidden %>
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, required: true %>
   </div>
