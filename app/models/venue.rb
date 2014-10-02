@@ -4,7 +4,7 @@ class Venue < ActiveRecord::Base
   has_many :acts, through: :venue_acts
   # adding geocoder stuff ##
   geocoded_by :address   # can also be an IP address
-  after_validation :geocode, :if => :address_changed?         # auto-fetch coordinates
+  after_validation :geocode
 
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode  # auto-fetch address
