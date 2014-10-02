@@ -3,9 +3,18 @@ class VenuesController < ApplicationController
   
   def index
     @venues = Venue.all
+    # @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+    #  marker.lat venue.latitude
+    #  marker.lng venue.longitude
+    # end
   end
 
   def show
+    @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
+      marker.lat venue.latitude
+      marker.lng venue.longitude
+      marker.infowindow "<a href=http://#{venue.website}>Goto Website</a>"
+    end
   end
 
   def new

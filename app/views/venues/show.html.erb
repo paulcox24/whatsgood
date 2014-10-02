@@ -8,6 +8,7 @@
   <li>Start Time: <%= @venue.phone %></li>
   <li>Runtime: <%= @venue.email %></li>
   <li>Website: <%= @venue.website %></li>
+  <li>Address: <%= @venue.address %></li>
 </ul>
 <p>Test if lat lon are getting grabbed
 LAT: <%= @venue.latitude %>
@@ -17,6 +18,15 @@ LON: <%= @venue.longitude %>
 <div class='allmaps' style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
+
 
 <%= link_to 'Venues', venues_path %>
 <%= link_to 'Edit', edit_venue_path %>
