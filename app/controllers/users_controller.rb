@@ -12,5 +12,6 @@ class UsersController < ApplicationController
   end
 
   def user_events
+    @user = current_user
   end
 end

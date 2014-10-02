@@ -3,3 +3,6 @@
 
 <p>Lat: <%= @user.latitude %></p>
 <p>Long: <%= @user.longitude %></p>
+<p>Address: <%= @user.address %></p>
+
+<%= link_to 'Events', user_events_path, class: 'btn btn-default' %>
