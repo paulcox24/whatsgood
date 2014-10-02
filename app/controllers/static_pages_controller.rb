@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  include StaticPagesHelper
+  
   def home
     if current_user
     	get_eventful(current_user.latitude, current_user.longitude)

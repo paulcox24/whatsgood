@@ -13,6 +13,5 @@ class UsersController < ApplicationController
 
   def user_events
     @user = current_user
-    get_eventful(@user.latitude, @user.longitude)
   end
 end
