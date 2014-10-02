@@ -8,7 +8,7 @@
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <div id="location_button" class="btn btn-default">Use current location</div>
+    <div id="location_button" class="btn btn-default" data-loading-text="Loading...">Use current location</div>
     <%= f.input :address %>
     <%= f.input :description %>
     <%= f.input :latitude, :as => :hidden %>
