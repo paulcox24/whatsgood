@@ -1,0 +1,14 @@
+<% @events.each do |event| %>
+  <div>
+  <hr>
+    <% if event['image'] %>
+      <div class="event-image"><%= image_tag(event['image']['large']['url'], class: "img-responsive", :alt => 'Image missing') %></div>
+    <% end %>  
+    <h1><%= link_to (sanitize event['title']), event['url'] %></h1>
+    <p><%= sanitize event['description'] %></p>
+    <p><%= sanitize event['venue_name'] %></p>
+    <p><%= sanitize event['venue_address'] %></p>
+    <p><%= sanitize event['city_name'] %></p>
+    <%= link_to 'Link', event['url'] %>
+  </div>
+<% end %>
