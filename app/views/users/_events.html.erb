@@ -1,26 +1,29 @@
 <% @events.each do |event| %>
   <div class="panel panel-default">
-    <div class="panel-heading clearfix">
-      <h1 class="panel-title pull-left"><%= link_to (sanitize event['title']), event['url'] %></h1>
-        <a class="btn btn-default pull-right" href="#">
-          <i class="fa fa-check"></i>
-          Button
-        </a>
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left"><%= link_to (sanitize event['title']), event['url'] %></h3>
+      <a class="btn btn-primary pull-right" href="#">
+        <i class="fa fa-pencil"></i>
+        Edit
+      </a>
     </div>
-    <div class="panel-body">
-      <p><% if event['image'] %>
-        <div class="event-image"><%= image_tag(event['image']['large']['url'], class: "img-responsive", :alt => 'Image missing') %></div>
-      <% end %>  
-      <h3><%= event['start_time'].localtime("-00:00").strftime("%A, %b %d, %l:%M %p") %></h3>
-      <p><%= event['categories'] %></p>
-      <p><%= sanitize event['description'] %></p>
-      <p><%= sanitize event['venue_name'] %></p>
-      <p><%= sanitize event['venue_address'] %></p>
-      <p><%= sanitize event['city_name'] %></p>
-      <%= link_to 'Link', event['url'] %></p>
+    <div class="list-group">
+      <div class="list-group-item">
+        <p class="list-group-item-text">Address</p>
+        <h4 class="list-group-item-heading"><%= sanitize event['venue_address'] %></h4>
+      </div>
+      <div class="list-group-item">
+        <p class="list-group-item-text">Occupation</p>
+        <h4 class="list-group-item-heading">Web Developer</h4>
+      </div>
+      <div class="list-group-item">
+        <p class="list-group-item-text"><%= sanitize event['description'] %></p>
+      </div>
     </div>
-    <div class="panel-footer">
-      <small>Card footer...</small>
-    </div>
+  <div class="panel-footer">
+    <small>Built with Bootcards - Base Card</small>
   </div>
+</div>
 <% end %>
+
+
