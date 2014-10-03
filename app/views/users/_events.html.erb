@@ -5,6 +5,8 @@
       <div class="event-image"><%= image_tag(event['image']['large']['url'], class: "img-responsive", :alt => 'Image missing') %></div>
     <% end %>  
     <h1><%= link_to (sanitize event['title']), event['url'] %></h1>
+    <h3><%= event['start_time'].localtime("-00:00").strftime("%A, %b %d, %l:%M %p") %></h3>
+    <p><%= event['categories'] %></p>
     <p><%= sanitize event['description'] %></p>
     <p><%= sanitize event['venue_name'] %></p>
     <p><%= sanitize event['venue_address'] %></p>
