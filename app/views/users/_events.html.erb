@@ -9,8 +9,10 @@
     </div>
     <div class="list-group">
       <div class="list-group-item">
-        <p class="list-group-item-text">Address</p>
-        <h4 class="list-group-item-heading"><%= sanitize event['venue_address'] %></h4>
+        <h3><%= event['start_time'].localtime("-00:00").strftime("%A, %b %d, %l:%M %p") %></h3>
+        <p><%= sanitize event['venue_name'] %></p>
+        <p><%= sanitize event['venue_address'] %></p>
+        <p><%= sanitize event['city_name'] %></p>
       </div>
       <div class="list-group-item">
         <p class="list-group-item-text">Occupation</p>
@@ -21,9 +23,14 @@
       </div>
     </div>
   <div class="panel-footer">
-    <small>Built with Bootcards - Base Card</small>
+    <small><%= link_to 'Link', event['url'] %></p></small>
   </div>
 </div>
 <% end %>
+
+
+    
+      
+    
 
 
