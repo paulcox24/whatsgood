@@ -1,5 +1,5 @@
 class AddAddressToVenue < ActiveRecord::Migration
   def change
-    add_column :venues, :address, :string
+    rename_column :venues, :location, :address
   end
 end
