@@ -32,7 +32,10 @@ gem 'simple_form'
 gem 'devise'
 # Use unicorn as the app server
 # gem 'unicorn'
+
+##### Maps and Location #####
 gem 'geocoder'
+gem 'gmaps4rails' 
 
 gem 'bootstrap-sass', '~> 3.2.0'
 
