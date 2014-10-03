@@ -3,3 +3,11 @@
 
 <p>Lat: <%= @user.latitude %></p>
 <p>Long: <%= @user.longitude %></p>
+<p>Address: <%= @user.address %></p>
+
+<ul>
+  <% @user.categories.each do |category| %>
+  <li><%= category.name.titleize %></li>
+  <% end %>
+</ul>
+<%= link_to 'Events', user_events_path, class: 'btn btn-default' %>

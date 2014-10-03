@@ -20,6 +20,7 @@ $(document).ready(function() {
       } else {
         alert("Geocoder failed due to: " + status);
       }
+      $('#location_button').button('reset');
     });
     
 
@@ -33,6 +34,8 @@ $(document).ready(function() {
 
 
   $('#location_button').click(function(){
+    var btn = $(this);
+    btn.button('loading');
     navigator.geolocation.getCurrentPosition(success, error, options);
     console.log('this worked');
   });

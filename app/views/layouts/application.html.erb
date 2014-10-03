@@ -11,15 +11,18 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr1NSIXOi50ENAxBwtVfsppDGEjXQ7HdI">
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY']%>">
     </script>
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
-    <p><%= notice %></p>
-    <p><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+      <p><%= notice %></p>
+      <p><%= alert %></p>
+      <%= yield %>
+  </div>
     <%= javascript_include_tag "application" %>
+
   </body>
 </html>
