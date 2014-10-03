@@ -120,6 +120,10 @@ ActiveRecord::Schema.define(version: 20141002204736) do
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "genre"
+    t.string   "address"
   end
 
 end

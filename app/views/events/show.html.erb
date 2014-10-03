@@ -7,6 +7,10 @@
   <li>Runtime: <%= @event.runtime %></li>
   <li>Website: <%= @event.website %></li>
 </ul>
+<!-- Dropping Basic Map Container -->
+<div class='allmaps' style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
 
 <%= link_to 'Events', events_path %>
 <%= link_to 'Edit', edit_event_path %>
