@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
 
   def get_eventful(latlong)
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
-    result = eventful.call 'events/search', :category => 'music', :location => latlong, :within => 5, :date => 'Future', :image_sizes => 'large', :sort_order => 'popularity'
-    @events = result['events']['event']
+    @result = eventful.call 'events/search', :category => 'music', :location => latlong, :within => 5, :date => 'Future', :image_sizes => 'large', :sort_order => 'popularity', :page_size => 20
+    @events = @result['events']['event']
   end
 end
