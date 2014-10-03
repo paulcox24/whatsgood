@@ -12,7 +12,7 @@ class VenuesController < ApplicationController
       marker.lng venues.longitude
       # marker.lat venue.nearbys.latitude
       # marker.lng venue.nearbys.longitude 
-      marker.infowindow "<a href=http://#{venues.website}>Goto Website</a>"
+      marker.infowindow "<h6><a style=padding: 1.125em; href=http://#{venues.website}>GoTo Website</a></h6>"
     end
   end
 
@@ -22,7 +22,7 @@ class VenuesController < ApplicationController
       marker.lng venue.longitude
       # marker.lat venue.nearbys.latitude
       # marker.lng venue.nearbys.longitude 
-      marker.infowindow "<a href=http://#{venue.website}>Goto Website</a>"
+      marker.infowindow "<h6><a style=padding: 1.125em; href=http://#{venue.website}>GoTo Website</a></h6>"
     end
     # @secondhash = Gmaps4rails.build_markers(@secset) do |nearbyvenues, marker|
     #   marker.lat nearbyvenues.latitude.to_f
