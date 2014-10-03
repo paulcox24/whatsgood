@@ -7,10 +7,16 @@ class VenuesController < ApplicationController
     #  marker.lat venue.latitude
     #  marker.lng venue.longitude
     # end
+    @hash = Gmaps4rails.build_markers(@venues) do |venues, marker|
+      marker.lat venues.latitude
+      marker.lng venues.longitude
+      # marker.lat venue.nearbys.latitude
+      # marker.lng venue.nearbys.longitude 
+      marker.infowindow "<a href=http://#{venues.website}>Goto Website</a>"
+    end
   end
 
   def show
-    require 'geocoder'
     @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
