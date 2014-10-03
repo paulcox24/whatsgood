@@ -14,6 +14,16 @@
 LAT: <%= @venue.latitude %>
 LON: <%= @venue.longitude %>
 </p>
+<!-- Sliding in a break for nearby venues -->
+<h3>Nearby Venues</h3>
+<ul>
+<% @loc = @venue.nearbys(10)%>
+<% @loc.each do |location| %>
+  <% @locationseconder= [location.address] %>
+  <li><%= link_to location.name, location %> (<%= location.distance.round(2) %> miles)(lat <%= location.latitude %>)(lon <%= location.longitude %>)<% @secset =location%></li>
+  <li>@secset variable is: <%= @secset %></li> 
+<% end %>
+</ul>
 <!-- Dropping Basic Map Container -->
 <div class='allmaps' style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
@@ -21,7 +31,8 @@ LON: <%= @venue.longitude %>
 <script type="text/javascript">
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  markers = handler.addMarkers(<%=raw @hash.to_json%>);
+  // markerstwo = handler.addMarkers(<%=raw @secondhash.to_json%>);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
 });
