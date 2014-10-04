@@ -9,6 +9,7 @@
     <%= f.input :last_name %>
     <div id="location_button" class="btn btn-default" data-loading-text="Loading...">Use current location</div>
     <%= f.input :address %>
+    <h3>Interests</h3>
     <%= hidden_field_tag "user[category_ids][]", nil %>
     <% Category.all.each do |category| %>
       <%= check_box_tag "user[category_ids][]", category.id, @user.category_ids.include?(category.id), id: dom_id(category)%>
@@ -16,7 +17,7 @@
     <% end %>
     <%= f.input :latitude, :as => :hidden %>
     <%= f.input :longitude, :as => :hidden %>
-    <%= f.input :description %>
+    <%= f.input :description, label: 'About Me' %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
