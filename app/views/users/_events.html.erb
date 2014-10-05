@@ -22,7 +22,7 @@
           <% end %>  
         </div>
         <div class="list-group-item">
-          <p class="list-group-item-text"><%= sanitize event['description'] %></p>
+          <p class="list-group-item-text"><%=truncate(event['description'], :length => 240, :omission => "..." , :escape => false)%></p>
         </div>
       </div>
       <div class="panel-footer">
