@@ -9,5 +9,6 @@
   <% @user.categories.each do |category| %>
   <li><%= category.name.titleize %></li>
   <% end %>
+  <li>list for eventful search: <%= @user.categories.collect { |name| name.name }.join(',') %></li>
 </ul>
 <%= link_to 'Events', user_events_path, class: 'btn btn-default' %>
