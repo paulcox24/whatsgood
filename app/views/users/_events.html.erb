@@ -22,7 +22,11 @@
           <% end %>  
         </div>
         <div class="list-group-item">
-          <p class="list-group-item-text"><%=truncate(event['description'], :length => 240, :omission => "..." , :escape => false)%></p>
+          <% if event['description'] %>
+            <p class="list-group-item-text"><%=truncate(event['description'], :length => 240, :omission => "..." , :escape => false)%></p>
+          <% else %>
+            <p class="list-group-item-text">No Description Available</p>
+          <% end %>
         </div>
       </div>
       <div class="panel-footer">
