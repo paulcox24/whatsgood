@@ -19,7 +19,7 @@ class VenuesController < ApplicationController
     @venue.nearbys(10).each do |v|
       @locloc <<{lat: v.latitude, lng: v.longitude, infowindow: "<h6><a style=padding: 1.125em; href=http://#{v.website}>GoTo Website</a></h6>"}
     end 
-    @locloc <<{lat: @venue.latitude, lng: @venue.longitude, infowindow: "<h6><a style=padding: 1.125em; href=http://#{@venue.website}>GoTo Website</a></h6>"}
+    @locloc <<{lat: @venue.latitude, lng: @venue.longitude, icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png', infowindow: "<h6><a style=padding: 1.125em; href=http://#{@venue.website}>GoTo Website</a></h6>"}
   end
 
   def new
