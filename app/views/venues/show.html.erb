@@ -10,19 +10,24 @@
   <li>Website: <%= @venue.website %></li>
   <li>Address: <%= @venue.address %></li>
 </ul>
-<p>Test if lat lon are getting grabbed
+<!-- <p>Test if lat lon are getting grabbed
 LAT: <%= @venue.latitude %>
 LON: <%= @venue.longitude %>
-</p>
+</p> -->
 <!-- Sliding in a break for nearby venues -->
 <h3>Nearby Venues</h3>
 <ul>
 <% @loc = @venue.nearbys(10)%>
 <% @loc.each do |location| %>
-  <% @locationseconder= [location.address] %>
-  <li><%= link_to location.name, location %> (<%= location.distance.round(2) %> miles)(lat <%= location.latitude %>)(lon <%= location.longitude %>)<% @secset =location%></li>
-  <li>@secset variable is: <%= @secset %></li> 
+  <li><%= link_to location.name, location %> (<%= location.distance.round(2) %> miles)</li>
 <% end %>
+</ul>
+<ul>
+<!-- <li><%=@secondhash%></li>
+<li><%=@secondhash.to_json%></li>
+<li><%=@secondhash%></li>
+<li></li>
+<li><%= @hash %></li> -->
 </ul>
 <!-- Dropping Basic Map Container -->
 <div class='allmaps' style='width: 800px;'>
@@ -31,10 +36,10 @@ LON: <%= @venue.longitude %>
 <script type="text/javascript">
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([{(<%=raw @hash.to_json%>), (<%=raw @secondhash.to_json%>)}]);
-      // markerstwo = handler.addMarkers(<%=raw @secondhash.to_json%>);
+  markers = handler.addMarkers(<%=raw @locloc.to_json%>)
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+  handler.getMap().setZoom(14);
 });
 </script>
 
