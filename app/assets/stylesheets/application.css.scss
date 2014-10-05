@@ -11,12 +11,19 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require font-awesome
  *= require_self
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 .event-image{
   max-width: 350px;
+}
+body { padding-top: 70px; }
+
+#location_button {
+  width: 50%;
 }

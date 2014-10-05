@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><%= content_for?(:title) ? yield(:title) : "whatsgood" %></title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -21,7 +22,7 @@
       <p><%= notice %></p>
       <p><%= alert %></p>
       <%= yield %>
-  </div>
+    </div>
     <%= javascript_include_tag "application" %>
 
   </body>
