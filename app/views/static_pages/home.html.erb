@@ -1,3 +1,7 @@
+<div class="events-list">
+  <%= render partial: 'users/events' %>
+</div>
+
 <div class="location"><h1>whatsgood</h1></div>
 <!-- <div id="good_button" class="btn btn-default disabled">Show me what's good</div> -->
 
@@ -8,6 +12,3 @@
   <li>Page no: <%= @result['page_number'] %></li>
   <li>Search time: <%= @result['search_time'].round(2) %> seconds</li>
 </ul>  
- <div class="events-list">
-  <%= render partial: 'users/events' %>
-</div>
