@@ -1,4 +1,4 @@
-// $(document).ready(function() {
+$(document).ready(function() {
 
 //   var options = {
 //     enableHighAccuracy: true,
@@ -21,4 +21,9 @@
 //     navigator.geolocation.getCurrentPosition(success, error, options);
 //     console.log('this worked');
 //   });
-// });
+
+  $('.event-description').unbind('click').click(function(){
+    $(this).children('.event-description-body').slideToggle('slow');
+  });
+
+});
