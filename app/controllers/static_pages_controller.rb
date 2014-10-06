@@ -9,7 +9,6 @@ class StaticPagesController < ApplicationController
     else
       default_city = 'Salt Lake City'
       default_categories = 'music,comedy,sports'
-      get_eventful(default_city, default_categories)
       get_eventful(default_city, default_categories, default_date)
     end 
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
