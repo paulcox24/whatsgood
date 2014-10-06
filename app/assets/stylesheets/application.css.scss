@@ -27,3 +27,23 @@ body { padding-top: 70px; }
 #location_button {
   width: 50%;
 }
+
+a:hover {
+  text-decoration: none;
+}
+
+.event-description-body {
+  display: none;
+}
+
+.event-description-button:hover {
+  color: steelblue;
+}
+
+.panel {
+  max-width: 400px;
+}
+
+.list-group-item {
+  margin-right: 15px;
+}

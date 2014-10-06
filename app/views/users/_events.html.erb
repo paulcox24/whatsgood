@@ -1,11 +1,12 @@
 <% @events.in_groups_of(4, true).each do |group| %>
   <div class="row">
   <% group.each do |event| %>
-    <% if event['start_time'] >= Time.now %>
+    
     <div class='col-md-3'>
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
-          <div class="panel-title pull-left"><h3><%= link_to (sanitize event['title']), event['url'] %></h3>
+          <div class="panel-title pull-left">
+            <h3><%= link_to (sanitize event['title']), event['url'] %></h3>
           </div>
         </div>
         <div class="list-group">
@@ -16,18 +17,32 @@
             <p><%= sanitize event['city_name'] %></p>
             <p><%= event['latitude'] %></p>
             <p><%= event['longitude']%></p>
+            <% if event['stop_time'] %>
+            <h3><%= event['start_time'].localtime("-00:00").strftime("%b %d") %> - 
+            <%= event['stop_time'].localtime("-00:00").strftime("%b %d") %></h3>
+            <% else %>
+              <h3><%= event['start_time'].localtime("-00:00").strftime("%A, %b %d, %l:%M %p") %></h3>
+            <% end %>
+            <%= event['recur_string'] %><br>
+            <%= sanitize event['venue_name'] %><br>
+            <%= sanitize event['venue_address'] %><br>
+            <%= sanitize event['city_name'] %><br>
           </div>
           <div class="list-group-item">
             <% if event['image'] %>
               <div class="event-image"><%= image_tag(event['image']['large']['url'], class: "img-responsive", :alt => 'Image missing') %></div>
             <% end %>  
           </div>
-          <div class="list-group-item">
-            <% if event['description'] %>
-              <p class="list-group-item-text"><%=truncate(event['description'], :length => 240, :omission => (link_to " ... (read more)",event['url'])  , :escape => false)%></p>
-            <% else %>
-              <p class="list-group-item-text">No Description Available</p>
-            <% end %>
+          <div class="list-group-item event-description">
+            <h4 class="event-description-button">Description</h4>
+            <div class="event-description-body">
+              <% if event['description'] %>
+                <!-- <p class="list-group-item-text"><%=truncate(event['description'], :length => 240, :omission => (link_to " ... (read more)",event['url'])  , :escape => false)%></p> -->
+                <p class="list-group-item-text"><%= sanitize event['description']%></p>
+              <% else %>
+                <p class="list-group-item-text">No Description for this event</p>  
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="panel-footer">
@@ -38,8 +53,6 @@
         </div>
       </div>
     </div>
-    <% end %>
-  
   <% end %>
   </div>
 <% end %>
