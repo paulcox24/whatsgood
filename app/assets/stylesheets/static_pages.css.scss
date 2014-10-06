@@ -1,3 +1,28 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    height: 98%;
+}
+
+.allmaps {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow: scroll;
+}
+
+#multi_marks{
+  min-width: 400px;
+  min-height: 400px;
+}
+
+
+
+.events-list {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    overflow: scroll;
+}
