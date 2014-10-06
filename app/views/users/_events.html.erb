@@ -11,21 +11,25 @@
         <div class="list-group">
           <div class="list-group-item">
             <h3><%= event['start_time'].localtime("-00:00").strftime("%A, %b %d, %l:%M %p") %></h3>
-            <p><%= sanitize event['venue_name'] %></p>
-            <p><%= sanitize event['venue_address'] %></p>
-            <p><%= sanitize event['city_name'] %></p>
+            <%= sanitize event['venue_name'] %><br>
+            <%= sanitize event['venue_address'] %><br>
+            <%= sanitize event['city_name'] %><br>
           </div>
           <div class="list-group-item">
             <% if event['image'] %>
               <div class="event-image"><%= image_tag(event['image']['large']['url'], class: "img-responsive", :alt => 'Image missing') %></div>
             <% end %>  
           </div>
-          <div class="list-group-item">
-            <% if event['description'] %>
-              <p class="list-group-item-text"><%=truncate(event['description'], :length => 240, :omission => (link_to " ... (read more)",event['url'])  , :escape => false)%></p>
-            <% else %>
-              <p class="list-group-item-text">No Description Available</p>
-            <% end %>
+          <div class="list-group-item event-description">
+            <button class="btn btn-primary">Description</button>
+            <div class="event-description-body">
+              <% if event['description'] %>
+                <!-- <p class="list-group-item-text"><%=truncate(event['description'], :length => 240, :omission => (link_to " ... (read more)",event['url'])  , :escape => false)%></p> -->
+                <p class="list-group-item-text"><%= sanitize event['description']%></p>
+              <% else %>
+                <p>No Description for this event</p>  
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="panel-footer">
