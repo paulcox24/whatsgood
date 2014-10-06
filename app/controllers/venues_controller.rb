@@ -15,18 +15,11 @@ class VenuesController < ApplicationController
   end
 
   def show
-    @hash = Gmaps4rails.build_markers(@venue) do |venue, marker|
-      marker.lat venue.latitude
-      marker.lng venue.longitude
-      # marker.lat venue.nearbys.latitude
-      # marker.lng venue.nearbys.longitude 
-      marker.infowindow "<h6><a style=padding: 1.125em; href=http://#{venue.website}>GoTo Website</a></h6>"
-    end
-    @secondhash = Gmaps4rails.build_markers(@secset) do |nearbyvenues, marker|
-      marker.lat nearbyvenues.latitude.to_f
-      marker.lng nearbyvenues.longitude.to_f
-      marker.infowindow "<a href=http://#{secset.website}>Goto Website</a>"
-    end
+    @locloc = []
+    @venue.nearbys(10).each do |v|
+      @locloc <<{lat: v.latitude, lng: v.longitude, infowindow: "<h6><a style=padding: 1.125em; href=http://#{v.website}>GoTo Website</a></h6>"}
+    end 
+    @locloc <<{lat: @venue.latitude, lng: @venue.longitude, icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png', infowindow: "<h6><a style=padding: 1.125em; href=http://#{@venue.website}>GoTo Website</a></h6>"}
   end
 
   def new
