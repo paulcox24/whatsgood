@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get 'static_pages/contact'
 
+  get 'static_pages/this_week'
+
+  get 'static_pages/today'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, :only => [:show, :index]
     
