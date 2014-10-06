@@ -22,7 +22,12 @@
           </div>
           <div class="list-group-item">
             <% if event['description'] %>
-              <p class="list-group-item-text"><%=truncate(event['description'], :length => 240, :omission => (link_to " ... (read more)",event['url'])  , :escape => false)%></p>
+              <p class="list-group-item-text">
+                <%=truncate(event['description'], 
+                  :length => 400, 
+                  :omission => (link_to " ... (read more)", event['url']), 
+                  :escape => false)%>
+              </p>
             <% else %>
               <p class="list-group-item-text">No Description Available</p>
             <% end %>
