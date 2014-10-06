@@ -11,12 +11,6 @@
         </div>
         <div class="list-group">
           <div class="list-group-item">
-            <h3><%= event['start_time'].localtime("-00:00").strftime("%A, %b %d, %l:%M %p") %></h3>
-            <p><%= sanitize event['venue_name'] %></p>
-            <p><%= sanitize event['venue_address'] %></p>
-            <p><%= sanitize event['city_name'] %></p>
-            <p><%= event['latitude'] %></p>
-            <p><%= event['longitude']%></p>
             <% if event['stop_time'] %>
             <h3><%= event['start_time'].localtime("-00:00").strftime("%b %d") %> - 
             <%= event['stop_time'].localtime("-00:00").strftime("%b %d") %></h3>
