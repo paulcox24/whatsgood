@@ -10,7 +10,12 @@ class StaticPagesController < ApplicationController
       default_city = 'Salt Lake City'
       default_categories = 'music,comedy,sports'
       get_eventful(default_city, default_categories, default_date)
-    end  
+    end 
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+      marker.lat event['latitude']
+      marker.lng event['longitude']
+      marker.infowindow "<h6><a style=padding: 1.25em; href=#{event['url']}>Event Link</a><br>Title: #{event['title']}<br>Venue: #{event['venue_name']}</h6>"
+    end 
   end
 
   def about
@@ -44,7 +49,7 @@ class StaticPagesController < ApplicationController
       get_eventful(default_city, default_categories, date)
     end 
   end  
-
+  
   def get_eventful(latlong, categories=nil, date=nil)
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
     @result = eventful.call 'events/search',
@@ -56,5 +61,5 @@ class StaticPagesController < ApplicationController
               :sort_order => 'popularity',
               :page_size => 20
     @events = @result['events']['event']
-  end
+  end 
 end
