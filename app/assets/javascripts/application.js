@@ -29,20 +29,4 @@ $(document).ready(function() {
     sizer: $sizer
   });
 
-  if ($(window).width() <= 992) {
-    $('.events-list').css("width","100%");
-  }
-  else{
-    $('.events-list').css("width","60%");
-  };
-
-  $( window ).resize(function() {
-    if ($(window).width() <= 992) {
-      $('.events-list').css("width","100%");
-    }
-    else{
-      $('.events-list').css("width","60%");
-    };
-  });
-
 });

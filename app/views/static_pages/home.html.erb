@@ -3,12 +3,13 @@
 
 
 <!-- Dropping Basic Map Container -->
-
-<div class="events-list">
-  <%= render partial: 'users/events' %>
-</div>
-<div class='allmaps container-fluid visible-lg-inline visible-md-inline'>
-  <div id="multi_marks"></div>
+<div class='row'>
+  <div class="events-list col-xs-12 col-md-7 col-lg-8">
+    <%= render partial: 'users/events' %>
+  </div>
+  <div class='allmaps col-md-5 col-lg-4 visible-md-block visible-lg-block'>
+    <div id="multi_marks"></div>
+  </div>
 </div>
 
 <div class="location"><h1>whatsgood</h1></div>

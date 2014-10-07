@@ -7,22 +7,16 @@ body {
 }
 
 .allmaps {
-  float: left;
-  width: 40%;
   height: 100%;
-  overflow: scroll;
+  margin-left: -15px;
 }
 
 #multi_marks{
-  min-width: 400px;
-  min-height: 400px;
+  min-width: 275px;
+  min-height: 550px;
 }
 
-
-
 .events-list {
-    float: left;
-    width: 60%;
-    height: 100vh;
-    overflow: scroll;
+  height: 100vh;
+  overflow: scroll;
 }

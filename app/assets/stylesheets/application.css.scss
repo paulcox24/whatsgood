@@ -14,6 +14,7 @@
  *= require font-awesome
  *= require_self
  */
+$padding-base-horizontal: 5px;
 $body-bg: #519548;
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -43,7 +44,6 @@ a:hover {
 }
 
 .panel {
-  min-width: 275px;
 }
 
 .list-group-item {
