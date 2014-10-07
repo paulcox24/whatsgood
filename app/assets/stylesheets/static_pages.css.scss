@@ -18,6 +18,11 @@ body {
   overflow: scroll;
 }
 
+.files-by-loc {
+  height: 200px;
+  overflow: auto;
+}
+
 .stats {
   color: white;
 }
