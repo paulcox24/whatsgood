@@ -28,5 +28,6 @@ $(document).ready(function() {
     itemSelector: '.event-item',
     sizer: $sizer
   });
+  
 
 });
