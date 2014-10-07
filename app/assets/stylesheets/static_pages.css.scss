@@ -7,13 +7,13 @@ body {
 }
 
 .allmaps {
-  float: left;
+  float: right;
   width: 50%;
   height: 100%;
   overflow: scroll;
 }
 
-#multi_marks{
+#multi_marks, #multi_marks_today{
   min-width: 400px;
   min-height: 400px;
 }
