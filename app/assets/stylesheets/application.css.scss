@@ -20,7 +20,6 @@ $body-bg: #519548;
 @import "font-awesome";
 
 .event-image{
-  max-width: 350px;
 }
 
 body { 
@@ -44,7 +43,7 @@ a:hover {
 }
 
 .panel {
-  max-width: 400px;
+  min-width: 275px;
 }
 
 .list-group-item {
