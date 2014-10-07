@@ -1,3 +1,19 @@
-<div class="events-list">
-  <%= render partial: 'users/events' %>
+<div class='row'>
+  <div class="events-list col-xs-12 col-md-7 col-lg-8">
+    <%= render partial: 'users/events' %>
+  </div>
+  <div class='allmaps col-md-5 col-lg-4 visible-md-block visible-lg-block'>
+    <div id="multi_marks"></div>
+  </div>
 </div>
+
+<script type="text/javascript">
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: {id: 'multi_marks'}}, function(){
+    var markers = handler.addMarkers(
+      <%=raw @hash.to_json%>
+    );
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>
