@@ -22,8 +22,12 @@ $(document).ready(function() {
 //     console.log('this worked');
 //   });
 
+  
+
   $('.event-description').unbind('click').click(function(){
     $(this).children('.event-description-body').slideToggle('slow');
   });
+
+  
 
 });
