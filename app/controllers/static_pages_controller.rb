@@ -56,7 +56,7 @@ class StaticPagesController < ApplicationController
               :location => latlong,
               :within => 5,
               :date => date,
-              :image_sizes => 'large',
+              :image_sizes => 'perspectivecrop290by250',
               :sort_order => 'popularity',
               :page_size => 20
     @events = @result['events']['event']
