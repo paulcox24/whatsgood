@@ -11,11 +11,13 @@
   <h3><%= @lines_of_code %> lines of code in the app</h3>
 
   <h3>Files sorted by lines of code</h3>
-  <ul>
-    <% @files_by_lines_of_code.each do |file| %>
-      <li> <%= file %></li>
-    <% end %>
-  </ul>
+  <div class='files-by-loc'>
+    <ul>
+      <% @files_by_lines_of_code.each do |file| %>
+        <li> <%= file %></li>
+      <% end %>
+    </ul>
+  </div>
 
 
 </div>
