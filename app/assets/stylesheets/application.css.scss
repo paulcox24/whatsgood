@@ -54,6 +54,11 @@ a:hover {
 
 .panel {
   max-width: 500px;
+  color: $text-color;
+}
+
+input{
+  color: $text-color;
 }
 
 .card-date{
