@@ -32,6 +32,7 @@ body {
 
 a:hover {
   text-decoration: none;
+  color: steelblue;
 }
 
 .event-description-body {
@@ -42,7 +43,13 @@ a:hover {
   color: steelblue;
 }
 
-.panel {
+.panel-title {
+  font-size: 1.5em;
+}
+
+.card-date{
+  font-size: 1.23em;
+  font-weight: bold;
 }
 
 .list-group-item {
