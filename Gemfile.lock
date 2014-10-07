@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/paulcox24/app_stats.git
-  revision: e09006b5233cae9fd7808ee1078b5fe8f5bb5e33
+  revision: d1941a576127007501cc60ee8b3c90dc7e4c9566
   specs:
-    app_stats (0.1.1)
+    app_stats (0.1.2)
       rails (~> 4.1.5)
 
 GEM

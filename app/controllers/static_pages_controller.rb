@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    @data = AppStats::Stats.get_has_many_relationships
+    @has_many_data = AppStats::Stats.get_has_many_relationships
   end
 
   def contact
