@@ -11,11 +11,7 @@ class StaticPagesController < ApplicationController
       default_categories = 'music,comedy,sports'
       get_eventful(default_city, default_categories, default_date)
     end 
-    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
-      marker.lat event['latitude']
-      marker.lng event['longitude']
-      marker.infowindow "<h6><a style=padding: 1.25em; href=#{event['url']}>Event Link</a><br>Title: #{event['title']}<br>Venue: #{event['venue_name']}</h6>"
-    end 
+    make_map(@events)
   end
 
   def about
@@ -35,6 +31,7 @@ class StaticPagesController < ApplicationController
       default_categories = 'music,comedy,sports'
       get_eventful(default_city, default_categories, date)
     end 
+    make_map(@events)
   end
 
   def this_week
@@ -48,6 +45,7 @@ class StaticPagesController < ApplicationController
       default_categories = 'music,comedy,sports'
       get_eventful(default_city, default_categories, date)
     end 
+    make_map(@events)
   end  
   
   def get_eventful(latlong, categories=nil, date=nil)
@@ -62,4 +60,16 @@ class StaticPagesController < ApplicationController
               :page_size => 20
     @events = @result['events']['event']
   end 
+
+  def make_map(events) 
+    @hash = Gmaps4rails.build_markers(events) do |event, marker|
+      marker.lat event['latitude']
+      marker.lng event['longitude']
+      marker.infowindow "<h6><a style=padding: 1.25em; href=#{event['url']}>Event Link</a><br>Title: #{event['title']}<br>Venue: #{event['venue_name']}</h6>"
+    end 
+  end
+
 end
+
+
+
