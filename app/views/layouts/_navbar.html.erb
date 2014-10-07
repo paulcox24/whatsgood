@@ -17,9 +17,6 @@
         <li>
           <% if user_signed_in? %>
             <%= link_to current_user.email, profile_path %>
-          <% else %>
-            <a>Account</a>
-          <% end %>
         </li>
         <li><%= link_to 'Today', static_pages_today_path %></li>
         <li><%= link_to 'This Week', static_pages_this_week_path %></li>
