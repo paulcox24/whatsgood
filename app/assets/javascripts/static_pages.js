@@ -26,14 +26,4 @@ $(document).ready(function() {
     $(this).children('.event-description-body').slideToggle('slow');
   });
 
-var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: {id: 'multi_marks'}}, function(){
-    var markers = handler.addMarkers(
-      <%=raw @hash.to_json%>
-    );
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-});
-
-
 });
