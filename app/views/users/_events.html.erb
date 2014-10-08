@@ -11,7 +11,10 @@
       <div class="list-group">
         <div class="list-group-item">
           <% if event['image'] %>
+            <% image_url = event['image']['perspectivecrop290by250']['url']%>
             <div class="event-image"><%= image_tag(event['image']['perspectivecrop290by250']['url'], class: "img-responsive", :alt => 'Image missing') %></div>
+          <% else %>
+          <% image_url = 'none' %>  
           <% end %>  
         </div>
         <div class="list-group-item">
@@ -44,7 +47,7 @@
           <div class="btn-group">
             <%= link_to new_event_path(name: event['title'],
                                        description: event['description'],
-                                       image: event['image'],
+                                       image_url: image_url,
                                        start_time: event['start_time'],
                                        stop_time: event['stop_time'],
                                        venue_address: event['venue_address'],
