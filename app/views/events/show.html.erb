@@ -1,16 +1,16 @@
 <h1><%= @event.name %></h1>
 <p><%= @event.description %></p>
+<% if @event.image %>
+  <div class="event-image"><%= image_tag(@event.image), class: "img-responsive", :alt => 'Image missing') %></div>
+<% end %>
 <ul>
-  <li>Type: <%= @event.event_type %></li>
-  <li>Genre: <%= @event.genre %></li>
+  <li>Category: <%= @event.category %></li>
   <li>Start Time: <%= @event.start_time %></li>
-  <li>Runtime: <%= @event.runtime %></li>
-  <li>Website: <%= @event.website %></li>
+  <li>Stop Time: <%= @event.stop_time %></li>
+  <li>Venue name: <%= @event.venue_name %></li>
+  <li>Venue Address: <%= @event.venue_address %></li>
+  <li>City name: <%= @event.city_name %></li>
 </ul>
-<!-- Dropping Basic Map Container -->
-<div class='allmaps' style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
 
 <%= link_to 'Events', events_path %>
 <%= link_to 'Edit', edit_event_path %>

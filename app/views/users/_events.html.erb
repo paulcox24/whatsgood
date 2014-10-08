@@ -42,7 +42,14 @@
             <button type="button" class="btn btn-danger card-close"><i class="fa fa-close"></i>Close</button>
           </div>
           <div class="btn-group">
-            <%= link_to new_event_path(name: event['title'], description: event['description']), class: "btn btn-primary" do %>
+            <%= link_to new_event_path(name: event['title'],
+                                       description: event['description'],
+                                       image: event['image'],
+                                       start_time: event['start_time'],
+                                       stop_time: event['stop_time'],
+                                       venue_address: event['venue_address'],
+                                       city_name: event['city_name'],
+                                       venue_name: event['venue_name']), class: "btn btn-primary" do %>
               <i class="fa fa-star"> Favorite</i>
             <% end %>
           </div>

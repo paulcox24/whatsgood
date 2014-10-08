@@ -1,10 +1,11 @@
 <%= simple_form_for @event, html: { role: 'form'} do |f| %>
   <%= f.input :name, value: params[:name], placeholder: 'Name', label: false %>
+  <%= f.input :image, value: params[:image], as: :hidden %>
+  <%= f.input :start_time, value: params[:start_time]%>
+  <%= f.input :stop_time, value: (params[:stop_time] ? params[:stop_time] : nil ), as: :hidden%>
+  <%= f.input :venue_name, value: params[:venue_name], placeholder: 'Venue', label: false %>
+  <%= f.input :venue_address, value: params[:venue_address], placeholder: 'Address', label: false %>
+  <%= f.input :city_name, value: params[:city_name], placeholder: 'City', label: false %>
   <%= f.input :description, value: params[:description], placeholder: 'Description', label: false %>
-  <%= f.input :event_type, placeholder: 'Type', label: false %>
-  <%= f.input :genre, placeholder: 'Genre', label: false %>
-  <%= f.input :start_time, placeholder: 'Start time', label: false %>
-  <%= f.input :runtime, placeholder: 'Runtime', label: false %>
-  <%= f.input :website, placeholder: 'Website', label: false %>
   <%= f.button :submit %>
 <% end %>

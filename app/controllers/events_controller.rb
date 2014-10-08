@@ -9,7 +9,14 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new(name: params[:name], description: params[:description])
+    @event = Event.new(name: params[:name],
+                       description: params[:description],
+                       image: params[:image],
+                       start_time: params[:start_time],
+                       stop_time: params[:stop_time],
+                       venue_address: params[:venue_address],
+                       city_name: params[:city_name],
+                       venue_name: params[:venue_name])
   end
 
   def create
@@ -40,7 +47,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:start_time, :runtime, :venue_id, :description, :event_type, :genre, :name, :rating, :website)
+    params.require(:event).permit(:start_time, :stop_time, :venue_address, :venue_name, :venue_address, :city_name, :image, :description, :category, :genre, :name, :rating, :website)
   end
 
   def set_event
