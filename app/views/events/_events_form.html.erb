@@ -1,6 +1,6 @@
 <%= simple_form_for @event, html: { role: 'form'} do |f| %>
-  <%= f.input :name, placeholder: 'Name', label: false %>
-  <%= f.input :description, placeholder: 'Description', label: false %>
+  <%= f.input :name, value: params[:name], placeholder: 'Name', label: false %>
+  <%= f.input :description, value: params[:description], placeholder: 'Description', label: false %>
   <%= f.input :event_type, placeholder: 'Type', label: false %>
   <%= f.input :genre, placeholder: 'Genre', label: false %>
   <%= f.input :start_time, placeholder: 'Start time', label: false %>
