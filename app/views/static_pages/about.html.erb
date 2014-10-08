@@ -1,2 +1,23 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<div class='white'>
+  <h1>What's good about whatsgood</h1>
+
+  <h3><%= @lines_of_code %> lines of code in the app</h3>
+
+  <h3>Has Many Relationships</h3>
+  <ul>
+    <% @has_many_data.each do |stat| %>
+      <li> <%= stat %></li>
+    <% end %>
+  </ul>
+
+  <h3>Files sorted by lines of code</h3>
+  <div class='files-by-loc'>
+    <ul>
+      <% @files_by_lines_of_code.each do |file| %>
+        <li> <%= file %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%= link_to 'Export to CSV', about_path(format: :csv), class: "btn btn-primary" %>
+</div>

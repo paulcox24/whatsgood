@@ -6,23 +6,23 @@ body {
     height: 98%;
 }
 
-.allmaps {
-  float: left;
-  width: 50%;
-  height: 100%;
+
+
+#multi_marks{
+  min-width: 275px;
+  min-height: 413px;
+}
+
+.events-list {
+  height: 100vh;
   overflow: scroll;
 }
 
-#multi_marks{
-  min-width: 400px;
-  min-height: 400px;
+.files-by-loc {
+  height: 200px;
+  overflow: auto;
 }
 
-
-
-.events-list {
-    float: left;
-    width: 50%;
-    height: 100vh;
-    overflow: scroll;
+.stats {
+  color: white;
 }

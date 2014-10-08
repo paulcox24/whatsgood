@@ -14,13 +14,23 @@
  *= require font-awesome
  *= require_self
  */
-$body-bg: #519548;
+$body-bg: #36364A;
+$border-radius-base: 0;
+$border-radius-large: 0;
+$border-radius-small: 0;
+// $brand-success: #3EAB45;
+$brand-danger: #3C608A;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 
 .event-image{
-  max-width: 350px;
+}
+
+.allmaps {
+  height: 100%;
+  margin-left: -15px;
+  color: $text-color;
 }
 
 body { 
@@ -33,6 +43,7 @@ body {
 
 a:hover {
   text-decoration: none;
+  color: steelblue;
 }
 
 .event-description-body {
@@ -43,10 +54,37 @@ a:hover {
   color: steelblue;
 }
 
+.panel-title {
+  font-size: 1.5em;
+}
+
 .panel {
-  max-width: 400px;
+  max-width: 500px;
+  color: $text-color;
+}
+
+input{
+  color: $text-color;
+}
+
+.card-date{
+  font-size: 1.23em;
+  font-weight: bold;
 }
 
 .list-group-item {
   margin-right: 15px;
+}
+
+.white {
+  color: white;
+}
+
+.profile {
+  max-width: 750px;
+  min-height: 300px;
+}
+
+.profile-photo {
+  padding: 30px;
 }

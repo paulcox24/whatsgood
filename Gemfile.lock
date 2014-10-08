@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/paulcox24/app_stats.git
+  revision: 474dee95bbc34ff2166c17e51b620b6dce3dae37
+  specs:
+    app_stats (0.2.1)
+      rails (~> 4.1.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -195,6 +202,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  app_stats!
   bootstrap-sass (~> 3.2.0)
   capybara
   coffee-rails (~> 4.0.0)

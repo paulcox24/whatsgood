@@ -40,6 +40,7 @@ gem 'gmaps4rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'rails_12factor'
+gem 'app_stats', :git => 'https://github.com/paulcox24/app_stats.git', :require => true
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -11,14 +11,21 @@ class StaticPagesController < ApplicationController
       default_categories = 'music,comedy,sports'
       get_eventful(default_city, default_categories, default_date)
     end 
-    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
-      marker.lat event['latitude']
-      marker.lng event['longitude']
-      marker.infowindow "<h6><a style=padding: 1.25em; href=#{event['url']}>Event Link</a><br>Title: #{event['title']}<br>Venue: #{event['venue_name']}</h6>"
-    end 
+    make_map(@events)
   end
 
   def about
+    @has_many_data = AppStats.get_has_many_relationships
+    @lines_of_code = AppStats.get_lines_of_code
+    @files_by_lines_of_code = AppStats.sort_by_lines_of_code
+
+    respond_to do |format|
+      format.html
+      format.csv do
+          headers['Content-Disposition'] = "attachment; filename=\"app_stats\""
+          headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   def contact
@@ -35,6 +42,7 @@ class StaticPagesController < ApplicationController
       default_categories = 'music,comedy,sports'
       get_eventful(default_city, default_categories, date)
     end 
+    make_map(@events)
   end
 
   def this_week
@@ -48,6 +56,7 @@ class StaticPagesController < ApplicationController
       default_categories = 'music,comedy,sports'
       get_eventful(default_city, default_categories, date)
     end 
+    make_map(@events)
   end  
   
   def get_eventful(latlong, categories=nil, date=nil)
@@ -55,11 +64,23 @@ class StaticPagesController < ApplicationController
     @result = eventful.call 'events/search',
               :category => categories,
               :location => latlong,
-              :within => 5,
+              :within => 10,
               :date => date,
-              :image_sizes => 'large',
+              :image_sizes => 'perspectivecrop290by250',
               :sort_order => 'popularity',
               :page_size => 20
-    @events = @result['events']['event']
+      @events = @result['events']['event']
   end 
+
+  def make_map(events) 
+    @hash = Gmaps4rails.build_markers(events) do |event, marker|
+      marker.lat event['latitude']
+      marker.lng event['longitude']
+      marker.infowindow "<h6><a style=padding: 1.25em; href=#{event['url']}>Event Link</a><br>Title: #{event['title']}<br>Venue: #{event['venue_name']}</h6>"
+    end 
+  end
+
 end
+
+
+

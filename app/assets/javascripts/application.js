@@ -12,20 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
 //= require underscore
 //= require gmaps/google
 //= require jquery.shuffle
-
 $(document).ready(function() {
 
   var $grid = $('#grid'),
-      $sizer = $grid.find('.shuffle__sizer');
+  $sizer = $grid.find('.shuffle__sizer');
 
   $grid.shuffle({
     itemSelector: '.event-item',
     sizer: $sizer
+  });
+ 
+  $('.card-close').on('click').click(function(){
+	$grid.shuffle('remove', $(this).closest('.event-item'));
   });
 });
