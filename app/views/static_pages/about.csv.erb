@@ -1,0 +1,18 @@
+<%= CSV.generate_line ['Lines of Code in App'] %>
+<%= CSV.generate_line [@lines_of_code,'Lines of code'] %>
+
+<%= CSV.generate_line ['Has many relationships'] %>
+<%- headers = ['Number', 'File'] -%>
+<%= CSV.generate_line headers %>
+<%- @has_many_data.each do |stat| -%>
+  <%= CSV.generate_line stat.split(' ') %>
+<%- end -%>
+
+
+<%= CSV.generate_line ['Files by lines of code'] %>
+<%- headers = ['LOC', 'File'] -%>
+<%= CSV.generate_line headers %>
+<%- @files_by_lines_of_code.each do |file| -%>
+  <%= CSV.generate_line file.split(' ') %>
+<%- end -%>
+
