@@ -56,12 +56,12 @@ class StaticPagesController < ApplicationController
     @result = eventful.call 'events/search',
               :category => categories,
               :location => latlong,
-              :within => 5,
+              :within => 10,
               :date => date,
               :image_sizes => 'perspectivecrop290by250',
               :sort_order => 'popularity',
               :page_size => 20
-    @events = @result['events']['event']
+      @events = @result['events']['event']
   end 
 
   def make_map(events) 
