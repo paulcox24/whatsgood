@@ -5,7 +5,8 @@
       <i class="fa fa-pencil"> Edit Profile</i>
     <% end %>
   </div>
-  <div class="list-group">
+  <div class="col-sm-4 profile-photo"><%= image_tag "icon-user-default.png", class: "img-responsive img-circle"%></div>
+  <div class="list-group col-sm-8">
     <div class="list-group-item">
       <p class="list-group-item-text">Name</p>
       <h4 class="list-group-item-heading lead"><%= @user.first_name %> <%= @user.last_name %></h4>
@@ -25,15 +26,5 @@
 </div>
 
 
-<ul>
-  <% @user.categories.each do |category| %>
-  <li><%= category.name.titleize %></li>
-  <% end %>
-  <li>list for eventful search: <%= @user.categories.collect { |name| name.name }.join(',') %></li>
-</ul>
 <%= link_to 'Events', user_events_path, class: 'btn btn-default' %>
-
-<%= link_to edit_user_registration_path, class: "btn btn-primary pull-right" do %>
-    <i class="fa fa-pencil"> Edit Profile</i>
-<% end %>
 
