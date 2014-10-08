@@ -18,6 +18,14 @@ class StaticPagesController < ApplicationController
     @has_many_data = AppStats.get_has_many_relationships
     @lines_of_code = AppStats.get_lines_of_code
     @files_by_lines_of_code = AppStats.sort_by_lines_of_code
+
+    respond_to do |format|
+      format.html
+      format.csv do
+          headers['Content-Disposition'] = "attachment; filename=\"app_stats\""
+          headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   def contact
