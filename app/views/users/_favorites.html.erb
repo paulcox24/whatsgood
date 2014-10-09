@@ -5,7 +5,7 @@
         <div class="panel-heading clearfix">
           <button type="button" class="close card-close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
           <h3 class="panel-title">
-            <%= sanitize event.name %>
+            <%= link_to (sanitize event.name), event.website %>
           </h3>
         </div>
         <div class="list-group">

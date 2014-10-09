@@ -53,6 +53,7 @@
                                                                  venue_name: event['venue_name'],
                                                                  venue_address: event['venue_address'],
                                                                  city_name: event['city_name'],
+                                                                 website: event['url'],
                                                                  description: (truncate(event['description'], length:900)),}),
                                                           method: :post, class: "btn btn-primary" do %>
                 <i class="fa fa-star"></i> Favorite
