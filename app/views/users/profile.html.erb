@@ -5,7 +5,7 @@
       <i class="fa fa-pencil"> Edit Profile</i>
     <% end %>
   </div>
-  <div class="col-sm-4 profile-photo list-group"><%= image_tag "icon-user-default.png", class: "img-responsive img-circle"%></div>
+  <div class="col-sm-4"><%= image_tag "icon-user-default.png", class: "img-responsive img-circle profile-photo"%></div>
   <div class="list-group col-sm-8">
     <div class="list-group-item">
       <p class="list-group-item-text">Name</p>
@@ -23,6 +23,10 @@
   </div>
   <div class="panel-footer">
   </div>
+</div>
+
+<div class="page-header">
+  <h3>Favorited Events </h3>
 </div>
 
 <%= render partial: 'users/favorites', :locals => {:events => @user.events} %>
