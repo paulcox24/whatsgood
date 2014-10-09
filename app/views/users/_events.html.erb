@@ -46,15 +46,15 @@
           </div>
           <div class="btn-group">
             <% if current_user %>
-              <%= link_to user_events_path(current_user, Event.new.id,  
-                                         name: event['title'],
-                                         description: (truncate(event['description'], length:900)),
-                                         image_url: image_url,
-                                         start_time: event['start_time'],
-                                         stop_time: event['stop_time'],
-                                         venue_address: event['venue_address'],
-                                         city_name: event['city_name'],
-                                         venue_name: event['venue_name']), method: :post, class: "btn btn-primary" do %>
+              <%= link_to user_events_path(current_user, event: {name: event['title'],
+                                                                 image_url: image_url,
+                                                                 start_time: event['start_time'],
+                                                                 stop_time: event['stop_time'],
+                                                                 venue_name: event['venue_name'],
+                                                                 venue_address: event['venue_address'],
+                                                                 city_name: event['city_name'],
+                                                                 description: (truncate(event['description'], length:900)),}),
+                                                          method: :post, class: "btn btn-primary" do %>
                 <i class="fa fa-star"></i> Favorite
               <% end %>
             <% else %>
