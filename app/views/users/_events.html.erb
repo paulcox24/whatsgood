@@ -32,7 +32,6 @@
           <h4 class="event-description-button">Description</h4>
           <div class="event-description-body">
             <% if event['description'] %>
-            <% event_descript = event['description'] %>
               <p class="list-group-item-text"><%= sanitize event['description']%></p>
             <% else %>
               <p class="list-group-item-text">No Description for this event</p>  
@@ -49,7 +48,7 @@
             <% if current_user %>
               <%= link_to new_user_event_path(current_user, 
                                         name: event['title'],
-                                         description: (truncate(event_descript, length:500)),
+                                         description: (truncate(event['description'], length:900)),
                                          image_url: image_url,
                                          start_time: event['start_time'],
                                          stop_time: event['stop_time'],
