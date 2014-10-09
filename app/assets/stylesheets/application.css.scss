@@ -59,7 +59,7 @@ a:hover {
 }
 
 .panel {
-  max-width: 500px;
+  max-width: 640px;
   color: $text-color;
 }
 
@@ -81,10 +81,20 @@ input{
 }
 
 .profile {
-  max-width: 750px;
+  max-width: 982px;
   min-height: 300px;
+  margin: 15px;
 }
 
 .profile-photo {
   padding: 30px;
+}
+
+.big {
+  max-width: 100%;
+}
+
+.list-group-item {
+  padding: 10px;
+  margin: 0;
 }

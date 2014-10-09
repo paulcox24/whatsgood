@@ -1,17 +1,19 @@
 <h1><%= @event.name %></h1>
-<p><%= @event.description %></p>
-<ul>
-  <li>Type: <%= @event.event_type %></li>
-  <li>Genre: <%= @event.genre %></li>
-  <li>Start Time: <%= @event.start_time %></li>
-  <li>Runtime: <%= @event.runtime %></li>
-  <li>Website: <%= @event.website %></li>
-</ul>
-<!-- Dropping Basic Map Container -->
-<div class='allmaps' style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
+<%= sanitize @event.description %>
 
-<%= link_to 'Events', events_path %>
-<%= link_to 'Edit', edit_event_path %>
-<%= link_to 'Delete', @event, method: :delete, data: {confirm: 'You sure?'} %>
+
+<%= image_tag @event.image_url, class: 'img img-responsive', alt: 'No Image' %>
+
+
+<ul>
+  <li>Category: <%= @event.category %></li>
+  <li>Start Time: <%= @event.start_time %></li>
+  <li>Stop Time: <%= @event.stop_time %></li>
+  <li>Venue name: <%= @event.venue_name %></li>
+  <li>Venue Address: <%= @event.venue_address %></li>
+  <li>City name: <%= @event.city_name %></li>
+</ul>
+
+<%= link_to 'Events', user_events_path %>
+<%= link_to 'Edit', edit_user_event_path %>
+<%= link_to 'Delete',  user_event_path(@user.id, @event.id), method: :delete, data: {confirm: 'You sure?'} %>
