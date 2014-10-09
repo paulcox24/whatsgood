@@ -9,15 +9,9 @@ class EventsController < ApplicationController
   def show
   end
 
+
   def new
-    @event = Event.new(name: params[:name],
-                       description: params[:description],
-                       image_url: params[:image_url],
-                       start_time: params[:start_time],
-                       stop_time: params[:stop_time],
-                       venue_address: params[:venue_address],
-                       city_name: params[:city_name],
-                       venue_name: params[:venue_name])
+    @event = Event.new
   end
 
   def create
@@ -61,7 +55,7 @@ class EventsController < ApplicationController
                                   :name, 
                                   :rating, 
                                   :website, 
-                                  :user_id)
+                                  :user_id,)
   end
 
   def set_event
