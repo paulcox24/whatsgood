@@ -46,20 +46,28 @@
           </div>
           <div class="btn-group">
             <% if current_user %>
-              <%= link_to user_events_path(current_user, event: {name: event['title'],
-                                                                 image_url: image_url,
-                                                                 start_time: event['start_time'],
-                                                                 stop_time: event['stop_time'],
-                                                                 venue_name: event['venue_name'],
-                                                                 venue_address: event['venue_address'],
-                                                                 city_name: event['city_name'],
-                                                                 description: (truncate(event['description'], length:900)),}),
-                                                          method: :post, class: "btn btn-primary" do %>
-                <i class="fa fa-star"></i> Favorite
-              <% end %>
-            <% else %>
-                 <%= link_to new_user_session_path, class: "btn btn-primary" do %>
+              <% if (current_user.events.collect { |event| event.eventful_id }).include? event['id'] %>
+                <%= link_to profile_path, class: "btn btn-success" do %>
+                    <i class="fa fa-star"></i> Favorited
+                <% end %>
+              <% else %>
+                <%= link_to user_events_path(current_user, event: {name: event['title'],
+                                                                   image_url: image_url,
+                                                                   start_time: event['start_time'],
+                                                                   stop_time: event['stop_time'],
+                                                                   venue_name: event['venue_name'],
+                                                                   venue_address: event['venue_address'],
+                                                                   city_name: event['city_name'],
+                                                                   website: event['url'],
+                                                                   eventful_id: event['id'],
+                                                                   description: (truncate(event['description'], length:900)),}),
+                                                            method: :post, class: "btn btn-primary" do %>
                   <i class="fa fa-star"></i> Favorite
+                <% end %>
+              <% end %>  
+            <% else %>
+              <%= link_to new_user_session_path, class: "btn btn-primary" do %>
+                <i class="fa fa-star"></i> Favorite
               <% end %>
             <% end %>
 
