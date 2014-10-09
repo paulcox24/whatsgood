@@ -1,55 +1,54 @@
 <div id="grid" class="row-fluid">
-<% events.each do |event| %>
-  <div class="col-sm-6 col-lg-4 event-item" data-groups='["photography"]' id=<%event.id%>> 
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <button type="button" class="close card-close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h3 class="panel-title">
-          <%= sanitize event.name %>
-        </h3>
-      </div>
-      <div class="list-group">
-        <div class="list-group-item">
-          <div class="event-image"><%= image_tag event.image_url, class: 'img img-responsive', alt: 'No Image' %></div> 
+  <% events.each do |event| %>
+    <div class="col-sm-6 col-md-4 col-lg-3 event-item" data-groups='["photography"]' id=<%= event.id %> > 
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <button type="button" class="close card-close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h3 class="panel-title">
+            <%= sanitize event.name %>
+          </h3>
         </div>
-        <div class="list-group-item">
-          <% if event.stop_time %>
-            <div class="card-date"><%= event.start_time.strftime("%b %d") %> - 
-            <%= event.stop_time.strftime("%b %d") %></div>
-          <% else %>
-            <div class="card-date"><%= event.start_time.strftime("%a, %B %d, %l:%M %p")%></div>
-          <% end %>
-          <%= sanitize event.venue_name %><br>
-          <%= sanitize event.venue_address %><br>
-          <%= sanitize event.city_name %><br>
-        </div>
-        <div class="list-group-item event-description">
-          <h4 class="event-description-button">Description</h4>
-          <div class="event-description-body">
-            <% if event.description %>
-              <p class="list-group-item-text"><%= sanitize event.description%></p>
+        <div class="list-group">
+          <div class="list-group-item">
+            <div class="event-image"><%= image_tag event.image_url, class: 'img img-responsive', alt: 'No Image' %></div> 
+          </div>
+          <div class="list-group-item">
+            <% if event.stop_time %>
+              <div class="card-date"><%= event.start_time.strftime("%b %d") %> - 
+              <%= event.stop_time.strftime("%b %d") %></div>
             <% else %>
-              <p class="list-group-item-text">No Description for this event</p>  
+              <div class="card-date"><%= event.start_time.strftime("%a, %B %d, %l:%M %p")%></div>
             <% end %>
+            <%= sanitize event.venue_name %><br>
+            <%= sanitize event.venue_address %><br>
+            <%= sanitize event.city_name %><br>
+          </div>
+          <div class="list-group-item event-description">
+            <h4 class="event-description-button">Description</h4>
+            <div class="event-description-body">
+              <% if event.description %>
+                <p class="list-group-item-text"><%= sanitize event.description%></p>
+              <% else %>
+                <p class="list-group-item-text">No Description for this event</p>  
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="panel-footer">
-        <div class="btn-group btn-group-justified pull-right">
-          <div class="btn-group">
-            <button type="button" class="btn btn-danger card-close"><i class="fa fa-close"></i>Close</button>
-          </div>
-          <div class="btn-group">
-            <%= link_to user_event_path(@user.id, event.id), method: :delete, data: {confirm: 'You sure?'}, class: "btn btn-warning" do %>
-              <i class="fa fa-star"> Unfavorite</i>
-            <% end %>
+        <div class="panel-footer">
+          <div class="btn-group btn-group-justified pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger card-close"><i class="fa fa-close"></i>Close</button>
+            </div>
+            <div class="btn-group">
+              <%= link_to user_event_path(@user.id, event.id), method: :delete, data: {confirm: 'You sure?'}, class: "btn btn-warning" do %>
+                <i class="fa fa-star"> Unfavorite</i>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-<% end %>
+  <% end %>
 </div>
 
 
