@@ -9,15 +9,9 @@ class EventsController < ApplicationController
   def show
   end
 
+
   def new
-    @event = Event.new(name: params[:name],
-                       description: params[:description],
-                       image_url: params[:image_url],
-                       start_time: params[:start_time],
-                       stop_time: params[:stop_time],
-                       venue_address: params[:venue_address],
-                       city_name: params[:city_name],
-                       venue_name: params[:venue_name])
+    @event = Event.new
   end
 
   def create
@@ -48,20 +42,21 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:start_time,
-                                  :stop_time,
-                                  :venue_address,
-                                  :venue_name,
-                                  :venue_address,
-                                  :city_name,
-                                  :image_url,
-                                  :description,
-                                  :category,
-                                  :genre, 
-                                  :name, 
-                                  :rating, 
-                                  :website, 
-                                  :user_id)
+      params.require(:event).permit(:start_time,
+                                    :stop_time,
+                                    :venue_address,
+                                    :venue_name,
+                                    :venue_address,
+                                    :city_name,
+                                    :image_url,
+                                    :description,
+                                    :category,
+                                    :genre, 
+                                    :name, 
+                                    :rating, 
+                                    :website, 
+                                    :user_id,)
+    
   end
 
   def set_event
