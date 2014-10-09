@@ -1,6 +1,6 @@
 <h1>All Events</h1>
 <%= link_to 'New Event', new_user_event_path(@user) %>
-<div class="panel profile">
+<div class="panel big">
   <table>
     <thead>
       <tr>
@@ -20,7 +20,7 @@
         <tr>
           <td><%= event.rating %></td>
           <td><%= event.name %></td>
-          <td><%= event.description %></td>
+          <td><%= sanitize event.description %></td>
           <td><%= event.category %></td>
           <td><%= event.start_time %></td>
           <td><%= event.stop_time %></td>
