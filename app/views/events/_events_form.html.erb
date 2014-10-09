@@ -1,4 +1,4 @@
-<%= simple_form_for @event, html: { role: 'form'} do |f| %>
+<%= simple_form_for [@user, @event], html: { role: 'form'} do |f| %>
   <%= f.input :name, value: params[:name], placeholder: 'Name', label: false %>
   <%= f.input :image_url, value: params[:image_url], as: :hidden %>
   <%= f.input :start_time, value: params[:start_time]%>

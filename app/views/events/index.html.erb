@@ -1,5 +1,5 @@
 <h1>All Events</h1>
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_user_event_path(@user) %>
 <div class="panel profile">
 <table>
   <thead>
@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% @user.events.each do |event| %>
       <tr>
         <td><%= event.rating %></td>
         <td><%= event.name %></td>
@@ -25,7 +25,7 @@
         <td><%= event.start_time %></td>
         <td><%= event.stop_time %></td>
         <td><%= event.website %></td>
-        <td><%= link_to 'View', event %></td>
+        <td><%= link_to 'View', user_event_path(event.id) %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Delete', event, method: :delete, data: {confirm: 'You sure?'} %></td>
       </tr>

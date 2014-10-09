@@ -13,6 +13,6 @@
   <li>City name: <%= @event.city_name %></li>
 </ul>
 
-<%= link_to 'Events', events_path %>
-<%= link_to 'Edit', edit_event_path %>
-<%= link_to 'Delete', @event, method: :delete, data: {confirm: 'You sure?'} %>
+<%= link_to 'Events', user_events_path %>
+<%= link_to 'Edit', edit_user_event_path %>
+<%= link_to 'Delete',  user_event_path(@user.id, @event.id), method: :delete, data: {confirm: 'You sure?'} %>

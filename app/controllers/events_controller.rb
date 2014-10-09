@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
   
   def index
     @events = Event.all
@@ -23,7 +24,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to @event
+      redirect_to user_event_path(@user.id, @event.id)
     else
       render :new
     end  
@@ -34,7 +35,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to @event
+      redirect_to user_event_path(@user.id, @event.id), notice: 'Event updated'
     else
       render :edit
     end  
@@ -42,15 +43,19 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_path, notice: 'Event cancelled'
+    redirect_to user_events_path, notice: 'Event cancelled'
   end
 
   private
   def event_params
-    params.require(:event).permit(:start_time, :stop_time, :venue_address, :venue_name, :venue_address, :city_name, :image_url, :description, :category, :genre, :name, :rating, :website)
+    params.require(:event).permit(:start_time, :stop_time, :venue_address, :venue_name, :venue_address, :city_name, :image_url, :description, :category, :genre, :name, :rating, :website, :user_id)
   end
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end
