@@ -1,3 +1,5 @@
+<input type="hidden" name="page-number" value="1" id="page-number">
+<input type="hidden" name="can-load-more" value="true" id="can-load-more">
 <div class='row'>
   <div class="events-list col-xs-12 col-md-7 col-lg-8">
     <%= render partial: 'users/events', :locals => {:events => @events} %>
@@ -6,7 +8,7 @@
     <div id="multi_marks"></div>
     <div class="stats"><h1>whatsgood</h1>
       <!-- <div id="good_button" class="btn btn-default disabled">Show me what's good</div> -->
-
+      <h1 id="loading-status"></h1>
       <ul>
         <li>Total items: <%= @result['total_items'] %></li>
         <li>Page Size: <%= @result['page_size'] %></li>

@@ -28,21 +28,35 @@ $(document).ready(function() {
     $(this).children('.event-description-body').slideToggle('slow');
   });
 
-  $(window).scroll(function() {
-    if($(window).scrollTop() + $(window).height() == $(document).height()) {
-       alert("bottom!");
-       $.ajax({
+
+  jQuery(function($) {
+    $('.events-list').bind('scroll', function() {
+        if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+
+        if ($("#can-load-more").val() == "true"){
+        $("#can-load-more").val("false");
+        $("#loading-status").text("loading more...");
+        //alert(parseInt($("#page-number").val())+1);
+        //var myData = { 'name': "derek" };
+        $.ajax({
+            data: {'page_number': parseInt($("#page-number").val())+1},
             url: '/static_pages/load_more_results',
             type: 'GET',
-            data: {name: "derek"},
-            success: function (result) {
+            
+            /*success: function (result) {
                 alert("yeah!!");
-            },
+            },*/
             error: function () {
                 alert("error");
+                $("#loading-status").text("ERROR...");
+                $("#can-load-more").val("true");
             }
         });
-    }
-	});
+        }else{
+          alert("cant do that..");
+        };
+      }
+    })
+});
 
 });
