@@ -61,7 +61,7 @@
                                                                    website: event['url'],
                                                                    eventful_id: event['id'],
                                                                    description: (truncate(event['description'], length:900)),}),
-                                                            method: :post, class: "btn btn-primary" do %>
+                                                            method: :post, remote: true, class: "btn btn-primary fav" do %>
                   <i class="fa fa-star"></i> Favorite
                 <% end %>
               <% end %>  
