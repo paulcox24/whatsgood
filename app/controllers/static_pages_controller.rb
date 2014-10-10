@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  
   def home
     date = 'Future'
     if current_user
@@ -58,7 +57,8 @@ class StaticPagesController < ApplicationController
               :date => date,
               :image_sizes => 'perspectivecrop290by250',
               :sort_order => 'popularity',
-              :page_size => 20
+              :page_size => 20,
+              :include => 'categories'
       @events = @result['events']['event']
   end 
 
