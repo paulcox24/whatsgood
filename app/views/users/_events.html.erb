@@ -14,7 +14,8 @@
             <% image_url = event['image']['perspectivecrop290by250']['url']%>
             <div class="event-image"><%= image_tag(event['image']['perspectivecrop290by250']['url'], class: "img-responsive", :alt => 'Image missing') %></div>
           <% else %>
-          <% image_url = 'events-calendar-icon.png' %>  
+            <% image_url = "events-calendar-icon.png" %>
+            <div class="event-image"><%= image_tag("events-calendar-icon.png", class: "img-responsive", alt: "Oops no image") %></div>  
           <% end %>  
         </div>
         <div class="list-group-item">

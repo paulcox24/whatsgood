@@ -24,9 +24,7 @@ $(document).ready(function() {
 
   
 
-  $('.event-description').unbind('click').click(function(){
-    $(this).children('.event-description-body').slideToggle('slow');
-  });
+  
 
   
 
