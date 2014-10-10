@@ -28,6 +28,10 @@ $(document).ready(function() {
     $(this).children('.event-description-body').slideToggle('slow');
   });
 
-  
+  $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() == $(document).height()) {
+       alert("bottom!");
+    }
+	});
 
 });
