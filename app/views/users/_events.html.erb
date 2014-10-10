@@ -1,5 +1,5 @@
 <div id="grid" class="row-fluid">
-<% @events.each do |event| %>
+<% events.each do |event| %>
   <div class="col-sm-6 col-lg-4 event-item" data-groups='["photography"]' id=<%event['id']%>> 
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -11,7 +11,10 @@
       <div class="list-group">
         <div class="list-group-item">
           <% if event['image'] %>
+            <% image_url = event['image']['perspectivecrop290by250']['url']%>
             <div class="event-image"><%= image_tag(event['image']['perspectivecrop290by250']['url'], class: "img-responsive", :alt => 'Image missing') %></div>
+          <% else %>
+          <% image_url = 'events-calendar-icon.png' %>  
           <% end %>  
         </div>
         <div class="list-group-item">
@@ -42,7 +45,32 @@
             <button type="button" class="btn btn-danger card-close"><i class="fa fa-close"></i>Close</button>
           </div>
           <div class="btn-group">
-            <button type="button" class="btn btn-primary"><i class="fa fa-star"></i>Favorite</button>
+            <% if current_user %>
+              <% if (current_user.events.collect { |event| event.eventful_id }).include? event['id'] %>
+                <%= link_to profile_path, class: "btn btn-success" do %>
+                    <i class="fa fa-star"></i> Favorited
+                <% end %>
+              <% else %>
+                <%= link_to user_events_path(current_user, event: {name: event['title'],
+                                                                   image_url: image_url,
+                                                                   start_time: event['start_time'],
+                                                                   stop_time: event['stop_time'],
+                                                                   venue_name: event['venue_name'],
+                                                                   venue_address: event['venue_address'],
+                                                                   city_name: event['city_name'],
+                                                                   website: event['url'],
+                                                                   eventful_id: event['id'],
+                                                                   description: (truncate(event['description'], length:900)),}),
+                                                            method: :post, class: "btn btn-primary" do %>
+                  <i class="fa fa-star"></i> Favorite
+                <% end %>
+              <% end %>  
+            <% else %>
+              <%= link_to new_user_session_path, class: "btn btn-primary" do %>
+                <i class="fa fa-star"></i> Favorite
+              <% end %>
+            <% end %>
+
           </div>
         </div>
       </div>

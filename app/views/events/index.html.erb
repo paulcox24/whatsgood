@@ -1,37 +1,36 @@
 <h1>All Events</h1>
-<%= link_to 'New Event', new_event_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Rating</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Genre</th>
-      <th>Start Time</th>
-      <th>Runtime</th>
-      <th>Website</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
+<%= link_to 'New Event', new_user_event_path(@user) %>
+<div class="panel big">
+  <table>
+    <thead>
       <tr>
-        <td><%= event.rating %></td>
-        <td><%= event.name %></td>
-        <td><%= event.description %></td>
-        <td><%= event.event_type %></td>
-        <td><%= event.genre %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.runtime %></td>
-        <td><%= event.website %></td>
-        <td><%= link_to 'View', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Delete', event, method: :delete, data: {confirm: 'You sure?'} %></td>
+        <th>Rating</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Start Time</th>
+        <th>Stop Time</th>
+        <th>Website</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @user.events.each do |event| %>
+        <tr>
+          <td><%= event.rating %></td>
+          <td><%= event.name %></td>
+          <td><%= sanitize event.description %></td>
+          <td><%= event.category %></td>
+          <td><%= event.start_time %></td>
+          <td><%= event.stop_time %></td>
+          <td><%= event.website %></td>
+          <td><%= link_to 'View', user_event_path(@user, event) %></td>
+          <td><%= link_to 'Edit', edit_user_event_path(@user, event) %></td>
+          <td><%= link_to 'Delete', user_event_path(@user, event), method: :delete, data: {confirm: 'You sure?'} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 

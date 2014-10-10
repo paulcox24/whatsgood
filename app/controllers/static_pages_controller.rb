@@ -1,15 +1,11 @@
 class StaticPagesController < ApplicationController
   
   def home
-    default_date = 'Future'
+    date = 'Future'
     if current_user
-      latlong = "#{current_user.latitude},#{current_user.longitude}"
-      categories = current_user.categories.collect { |category| category.name }.join(',')
-    	get_eventful(latlong, categories, default_date)
+      user_eventful(date)
     else
-      default_city = 'Salt Lake City'
-      default_categories = 'music,comedy,sports'
-      get_eventful(default_city, default_categories, default_date)
+      default_eventful(date)
     end 
     make_map(@events)
   end
@@ -34,13 +30,9 @@ class StaticPagesController < ApplicationController
   def today
     date = 'Today'
     if current_user
-      latlong = "#{current_user.latitude},#{current_user.longitude}"
-      categories = current_user.categories.collect { |category| category.name }.join(',')
-      get_eventful(latlong, categories, date)
+      user_eventful(date)
     else
-      default_city = 'Salt Lake City'
-      default_categories = 'music,comedy,sports'
-      get_eventful(default_city, default_categories, date)
+      default_eventful(date)
     end 
     make_map(@events)
   end
@@ -48,16 +40,14 @@ class StaticPagesController < ApplicationController
   def this_week
     date = 'This Week'
     if current_user
-      latlong = "#{current_user.latitude},#{current_user.longitude}"
-      categories = current_user.categories.collect { |category| category.name }.join(',')
-      get_eventful(latlong, categories, date)
+      user_eventful(date)
     else
-      default_city = 'Salt Lake City'
-      default_categories = 'music,comedy,sports'
-      get_eventful(default_city, default_categories, date)
+      default_eventful(date)
     end 
     make_map(@events)
   end  
+
+  private
   
   def get_eventful(latlong, categories=nil, date=nil)
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
@@ -81,15 +71,16 @@ class StaticPagesController < ApplicationController
     end 
   end
 
- #  def gmaps4rails_marker_picture
- #  @markerpic = {
- #  "picture" => , "http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/1.0/images/heart30.png"          # string,  mandatory
- #   "width" =>  , 30         # integer, mandatory
- #   "height" => , 30        # integer, mandatory
- #  }
- # end
+  def default_eventful(date)
+    default_city = 'Las Vegas'
+    default_categories = 'music,comedy,sports'
+    get_eventful(default_city, default_categories, date)
+  end
+
+  def user_eventful(date)
+    latlong = "#{current_user.latitude},#{current_user.longitude}"
+    categories = current_user.categories.collect { |category| category.name }.join(',')
+    get_eventful(latlong, categories, date)
+  end
 
 end
-
-
-

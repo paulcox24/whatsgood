@@ -9,13 +9,6 @@
 categories = ['music','comedy','movies_film','art','attractions','singles_social','sports']
 
 5.times do |counter|
-  Event.create(
-    name: "#{ (counter + 1).ordinalize } event", 
-    description: "This is the description for #{ (counter + 1).ordinalize } event", 
-    event_type: 'Movie')
-end
-
-5.times do |counter|
   Venue.create(
     name: "#{ (counter + 1).ordinalize } Venue", 
     description: "This is the description for #{ (counter + 1).ordinalize } venue", 
