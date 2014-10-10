@@ -31,6 +31,17 @@ $(document).ready(function() {
   $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() == $(document).height()) {
        alert("bottom!");
+       $.ajax({
+            url: '/static_pages/load_more_results',
+            type: 'GET',
+            data: {name: "derek"},
+            success: function (result) {
+                alert("yeah!!");
+            },
+            error: function () {
+                alert("error");
+            }
+        });
     }
 	});
 

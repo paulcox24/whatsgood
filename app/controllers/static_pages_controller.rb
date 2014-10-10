@@ -46,7 +46,9 @@ class StaticPagesController < ApplicationController
     end 
     make_map(@events)
   end  
-
+  def load_more_results(name)
+    @myname = name
+  end
   private
   
   def get_eventful(latlong, categories=nil, date=nil)
@@ -82,5 +84,7 @@ class StaticPagesController < ApplicationController
     categories = current_user.categories.collect { |category| category.name }.join(',')
     get_eventful(latlong, categories, date)
   end
+
+
 
 end
