@@ -34,5 +34,9 @@ $(document).ready(function() {
       // layout remaining item elements
       .isotope('layout');
     });
+
+  $('.fav').on('click').click(function(){
+    $(this).parent().html('<a class="btn btn-success" href="/profile"><i class="fa fa-star"></i> Favorited</a>')
+    });
 });
 
