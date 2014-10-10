@@ -72,7 +72,7 @@ class StaticPagesController < ApplicationController
   end
 
   def default_eventful(date)
-    default_city = 'Las Vegas'
+    default_city = 'Salt Lake City'
     default_categories = 'music,comedy,sports'
     get_eventful(default_city, default_categories, date)
   end
