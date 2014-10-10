@@ -1,31 +1,90 @@
-<h2>Sign up</h2>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">Sign Up</h3>
+    <div class="pull-right"> Already have an account? &nbsp;<%= render "devise/shared/links" %></div>
+  </div>  
+  <div class="panel-body">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form', class: 'form-horizontal'}) do |f| %>
+      <%= f.error_notification %>
+        
+      <div class="form-group">
+          <%= f.label :email, "Email", class: "col-xs-4 control-label"%>
+        <div class="col-xs-8">
+          <%= f.text_field :email, class: "form-control", required: true, autofocus: true%>
+        </div>
+      </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+      <div class="form-group">
+          <%= f.label :first_name, "First Name", class: "col-xs-4 control-label"%>
+        <div class="col-xs-8">
+          <%= f.text_field :first_name, class: "form-control"%>
+        </div>
+      </div>
 
-    
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <div id="location_button" class="btn btn-default" data-loading-text="Loading...">Use current location</div>
-    <%= f.input :address %>
-    <%= f.input :description, label: 'About Me' %>
-    <h3>Interests</h3>
-    <%= hidden_field_tag "user[category_ids][]", nil %>
-    <% Category.all.each do |category| %>
-      <%= check_box_tag "user[category_ids][]", category.id, @user.category_ids.include?(category.id), id: dom_id(category)%>
-      <%= label_tag dom_id(category), category.name.titleize %><br>
+      <div class="form-group">
+          <%= f.label :last_name, "Last Name", class: "col-xs-4 control-label"%>
+        <div class="col-xs-8">
+          <%= f.text_field :last_name, class: "form-control"%>
+        </div>
+      </div>
+      <div class='form-group'>
+        <div id="location_button" class="btn btn-primary col-xs-7 col-xs-offset-5 " data-loading-text="Loading...">Use current location</div>
+      </div>  
+
+      <div class="form-group">
+          <%= f.label :address, "Address", class: "col-xs-4 control-label"%>
+        <div class="col-xs-8">
+          <%= f.text_area :address, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <%= f.label :description, "About me", class: "col-xs-4 control-label"%>
+        <div class="col-xs-8">
+          <%= f.text_area :description, class: "form-control"%>
+        </div>
+      </div>
+        
+      <div class="form-group">
+        <label class= "col-xs-4 control-label">Interest Categories</label>
+        <div class='col-xs-7 col-xs-offset-1 checkbox'>
+          <%= hidden_field_tag "user[category_ids][]", nil %>
+          <% Category.all.each do |category| %>
+            <%= check_box_tag "user[category_ids][]", category.id, @user.category_ids.include?(category.id), id: dom_id(category)%>
+            <%= label_tag dom_id(category), category.name.titleize %><br><br>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <%= f.label :password, "Password", class: "col-xs-4 control-label"%>
+        <div class="col-xs-8">
+          <%= f.password_field :password, class: 'form-control', autocomplete: "off", required: true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <%= f.label :password_confirmation, "Password Confirmation", class: "col-xs-4 control-label"%>
+        <div class="col-xs-8">
+          <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
+        </div>
+      </div>
+
+      <%= f.input :latitude, :as => :hidden %>
+      <%= f.input :longitude, :as => :hidden %>
+
+      <div class="btn-group pull-right">
+        <%= f.button :submit, "Submit", class: 'btn btn-primary' %>
+      </div> 
     <% end %>
-    <%= f.input :latitude, :as => :hidden %>
-    <%= f.input :longitude, :as => :hidden %>
-    <%= f.input :password, required: true %>
-    <%= f.input :password_confirmation, required: true %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="panel-footer">
+    </div>
+</div>  
 
-<%= render "devise/shared/links" %>
+
+
+
+  
+
