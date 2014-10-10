@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20141009222705) do
   add_index "venue_acts", ["venue_id"], name: "index_venue_acts_on_venue_id", using: :btree
 
   create_table "venues", force: true do |t|
-    t.text     "address"
+    t.text     "location"
     t.string   "name"
     t.text     "description"
     t.string   "venue_type"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20141009222705) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "genre"
+    t.string   "address"
   end
 
 end
