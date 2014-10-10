@@ -16,18 +16,23 @@
 //= require_tree .
 //= require underscore
 //= require gmaps/google
-//= require jquery.shuffle
+//= require isotope.pkgd.min
+//= require imagesloaded.pkgd.min
 $(document).ready(function() {
-
-  var $grid = $('#grid'),
-  $sizer = $grid.find('.shuffle__sizer');
-
-  $grid.shuffle({
-    itemSelector: '.event-item',
-    sizer: $sizer
+  
+   // initialize Isotope after all images have loaded
+  var $grid = $('#grid').imagesLoaded( function() {
+    $grid.isotope({
+      // options
+      itemSelector: '.event-item',
+      layoutMode: 'masonry'
+    });
   });
- 
+
   $('.card-close').on('click').click(function(){
-	$grid.shuffle('remove', $(this).closest('.event-item'));
-  });
+    $grid.isotope( 'remove', $(this).closest('.event-item') )
+      // layout remaining item elements
+      .isotope('layout');
+    });
 });
+
