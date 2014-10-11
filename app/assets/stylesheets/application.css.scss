@@ -32,6 +32,10 @@ $brand-danger: #3C608A;
   margin-left: -15px;
   color: $text-color;
 }
+// few map tweakz -miker //
+.allmaps div {
+  border-radius: .25em; 
+}
 
 body { 
   padding-top: 70px; 
@@ -102,4 +106,27 @@ input{
 .list-group-item {
   padding: 10px;
   margin: 0;
+}
+
+// Mike Small Style Tweakz //
+
+nav.navbar {
+  letter-spacing: .125em;
+  line-height: 1.125em; 
+}
+
+.btn-group, button {
+  padding: .25em; 
+}
+
+.panel-footer .btn-group button, a.btn.btn-primary, button.btn.btn-danger {
+  border-radius: .25em; 
+}
+
+h1, h3 {
+  letter-spacing: .05em; 
+}
+
+ul.nav a:hover { 
+  color: dodgerblue !important; 
 }
