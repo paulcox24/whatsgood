@@ -72,34 +72,32 @@
     </div>
   </div>
 
-  <!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="modal-<%= event['id'] %>" tabindex="-1" role="dialog">
-  <div class="panel panel-default modal-dialog">
-    <div class="panel-heading clearfix">
-      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h3 class="panel-title">
-        <%= link_to (sanitize event['title']), event['url'] %>
-      </h3>
-    </div>
-    <div class="list-group">
-      <div class="list-group-item">
-        <h4>Description</h4>
-        <div class="event-description-body show">
-          <% if event['description'] %>
-            <p class="list-group-item-text"><%= sanitize event['description']%></p>
-          <% else %>
-            <p class="list-group-item-text">No Description for this event</p>  
-          <% end %>
+<!-- Modal for card back -->
+  <div class="modal fade" id="modal-<%= event['id'] %>" tabindex="-1" role="dialog">
+    <div class="panel panel-default modal-dialog">
+      <div class="panel-heading clearfix">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="panel-title">
+          <%= link_to (sanitize event['title']), event['url'] %>
+        </h3>
+      </div>
+      <div class="list-group">
+        <div class="list-group-item">
+          <h4>Description</h4>
+          <div class="event-description-body show">
+            <% if event['description'] %>
+              <p class="list-group-item-text"><%= sanitize event['description']%></p>
+            <% else %>
+              <p class="list-group-item-text">No Description for this event</p>  
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="panel-footer">
-      <button type="button" class="btn btn-danger pull-right" data-dismiss='modal'><i class="fa fa-close"></i>Close</button>
+      <div class="panel-footer">
+        <button type="button" class="btn btn-danger pull-right" data-dismiss='modal'><i class="fa fa-close"></i>Close</button>
+      </div>
     </div>
   </div>
-</div>
 
 <% end %>
 </div>
