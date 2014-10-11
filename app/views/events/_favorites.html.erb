@@ -25,9 +25,36 @@
             <%= sanitize event.venue_address %><br>
             <%= sanitize event.city_name %><br>
           </div>
-          <div class="list-group-item event-description">
-            <h4 class="event-description-button">Description</h4>
-            <div class="event-description-body">
+        </div>
+        <div class="panel-footer">
+          <div class="btn-group btn-group-justified pull-right">
+            <div class="btn-group">
+              <button class="btn btn-danger" data-toggle="modal" data-target="#modal-<%= event['id'] %>">
+                Description
+              </button>
+            </div>
+            <div class="btn-group">
+              <%= link_to user_event_path(@user.id, event.id), method: :delete, remote: true, class: "btn btn-warning un-fav" do %>
+                <i class="fa fa-star"></i> Unfavorite
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for card back -->
+    <div class="modal fade" id="modal-<%= event.id %>" tabindex="-1" role="dialog">
+      <div class="panel panel-default modal-dialog">
+        <div class="panel-heading clearfix">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h3 class="panel-title">
+            <%= link_to (sanitize event.name), event.website %>
+          </h3>
+        </div>
+        <div class="list-group">
+          <div class="list-group-item">
+            <div class="event-description-body show">
               <% if event.description %>
                 <p class="list-group-item-text"><%= sanitize event.description%></p>
               <% else %>
@@ -37,16 +64,7 @@
           </div>
         </div>
         <div class="panel-footer">
-          <div class="btn-group btn-group-justified pull-right">
-            <div class="btn-group">
-              <button type="button" class="btn btn-danger card-close"><i class="fa fa-close"></i>Close</button>
-            </div>
-            <div class="btn-group">
-              <%= link_to user_event_path(@user.id, event.id), method: :delete, remote: true, class: "btn btn-warning un-fav" do %>
-                <i class="fa fa-star"></i> Unfavorite
-              <% end %>
-            </div>
-          </div>
+          <button type="button" class="btn btn-danger btn-block" data-dismiss='modal'><i class="fa fa-close"></i>Close</button>
         </div>
       </div>
     </div>

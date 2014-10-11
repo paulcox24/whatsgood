@@ -50,6 +50,10 @@ a:hover {
   display: none;
 }
 
+.show {
+  display: inherit;
+}
+
 .event-description-button:hover {
   color: steelblue;
 }
