@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'categories/update_eventful_categories', as: 'update_categories'
+
+  resources :categories, only: [:destroy, :index]
+
   root 'static_pages#home'
 
   get 'static_pages/about', as: 'about'
