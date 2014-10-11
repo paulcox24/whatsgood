@@ -29,11 +29,6 @@ $(document).ready(function() {
     });
   });
 
-  $('.event-description').unbind('click').click(function(){
-    $(this).children('.event-description-body').toggle();
-    $grid.isotope('updateSortData').isotope();
-  });
-
   $('.card-close').on('click').click(function(){
     $grid.isotope( 'remove', $(this).closest('.event-item') )
       // layout remaining item elements
