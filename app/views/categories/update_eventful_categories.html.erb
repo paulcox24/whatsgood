@@ -1,0 +1,8 @@
+<h1>Categories#update_eventful_categories</h1>
+<% @categories.each do |category|%>
+<p><%= category.name.titleize %></p>
+<% end %>
+<h2>from eventful</h2>
+<% @eventful_categories.each do |category|%>
+<p><%= category.titleize %></p>
+<% end %>
