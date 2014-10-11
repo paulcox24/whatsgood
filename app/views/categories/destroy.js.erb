@@ -1,0 +1,5 @@
+<% if @category.destroyed? %>
+  $("#category-<%= @category.id %>").remove();
+<% else %>
+  alert('<%= @notice %>');
+<% end %>

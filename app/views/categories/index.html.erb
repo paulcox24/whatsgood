@@ -1,14 +1,16 @@
-<h1>Categories index</h1>
-<%= link_to 'Pull all categoies from Eventful', update_categories_path, data: {confirm: 'You sure?'}, class: 'btn btn-primary' %>
-<table>
-  <tr><th><h3>Category</h3></th></tr>
 
-  <% @categories.each do |category|%>
+<table class="table table-striped panel categories">
     <tr>
-      <td><%= category.name.titleize %></td>
-       <td><%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: 'You sure?'} %></td>
+      <th><h3>Category</h3></th>
+      <th><%= link_to 'Pull all categoies from Eventful', update_categories_path, data: {confirm: 'You sure?'}, class: 'btn btn-primary pull-right' %></th>
     </tr>
-  <% end %>
+
+    <% @categories.each do |category|%>
+      <tr id="category-<%= category.id %>">
+        <td ><%= category.name.titleize %></td>
+        <td><%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: 'You sure?'}, remote: true, class: 'btn btn-xs btn-default pull-right' %></td>
+      </tr>
+    <% end %>
 </table>
 
 
