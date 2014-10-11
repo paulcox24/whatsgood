@@ -55,7 +55,7 @@
                                                                    city_name: event['city_name'],
                                                                    website: event['url'],
                                                                    eventful_id: event['id'],
-                                                                   description: (truncate(event['description'], length:900)),}),
+                                                                   description: (truncate(event['description'], length:1000))}),
                                                             method: :post, remote: true, class: "btn btn-primary fav" do %>
                   <i class="fa fa-star"></i> Favorite
                 <% end %>
@@ -93,7 +93,7 @@
         </div>
       </div>
       <div class="panel-footer">
-        <button type="button" class="btn btn-danger gtn-block" data-dismiss='modal'><i class="fa fa-close"></i>Close</button>
+        <button type="button" class="btn btn-danger btn-block" data-dismiss='modal'><i class="fa fa-close"></i>Close</button>
       </div>
     </div>
   </div>
