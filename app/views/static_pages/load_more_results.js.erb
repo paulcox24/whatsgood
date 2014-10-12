@@ -4,7 +4,7 @@ $container.isotope({
       itemSelector: '.event-item'
 })
 
-var $new_results = $("<%= j render partial: 'users/events', :locals => {:events => @events} %>");
+var $new_results = $("<%= j render partial: 'events/events', :locals => {:events => @events} %>");
 var $children = $new_results.children();
 $container.append($children).isotope('appended', $children);
 new_page_number = parseInt($("#page-number").val())+1;

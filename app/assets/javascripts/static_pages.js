@@ -13,6 +13,16 @@ $(document).ready(function() {
       // layout remaining item elements
       .isotope('layout');
     });
+
+   $('.fav').on('click').click(function(){
+    $(this).parent().html('<a class="btn btn-success" href="/profile"><i class="fa fa-star"></i> Favorited</a>')
+    });
+
+  $('.un-fav').on('click').click(function(){
+    $grid.isotope( 'remove', $(this).closest('.event-item') )
+      // layout remaining item elements
+      .isotope('layout');
+    });
 //   var options = {
 //     enableHighAccuracy: true,
 //     maximumAge: 0

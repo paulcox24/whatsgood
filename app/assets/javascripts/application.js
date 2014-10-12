@@ -19,7 +19,7 @@
 //= require isotope.pkgd.min
 //= require imagesloaded.pkgd.min
 $(document).ready(function() {
-  
-  
+
+ 
 });
 

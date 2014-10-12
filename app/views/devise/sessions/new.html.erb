@@ -1,15 +1,37 @@
-<h2>Sign in</h2>
+<div class="panel panel-default login">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">Login</h3>
+    <span class="pull-right">Don't have an account? &nbsp; <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary" %></span>
+  </div>  
+  <div class="panel-body">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form', class: 'form-horizontal'}) do |f| %>
+        
+      <div class="form-group form-group-lg">
+          <%= f.label :email, "Email", class: "col-xs-4 control-label"%>
+        <div class="col-xs-8">
+          <%= f.text_field :email, class: "form-control", required: false, autofocus: true%>
+        </div>
+      </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <div class="form-group form-group-lg">
+          <%= f.label :password, "Password", class: "col-xs-4 control-label"%>
+        <div class="col-xs-8">
+          <%= f.password_field :password, class: 'form-control', autocomplete: "off", required: false %>
+          <%= link_to "Forgot your password?", new_password_path(resource_name)%>
+          </br></br>
+        </div>
+      </div>
+
+      <div class="btn-group pull-right">
+        <%= f.button :submit, "Sign in", class: 'btn btn-success' %>
+      </div> 
+      <div class="btn-group pull-right" data-toggle="buttons">
+        <label class="btn btn-primary">
+          <input class="boolean optional" id="user_remember_me" name="user[remember_me]" type="checkbox" value="1"> Remember me
+        </label>
+      </div>
+
+    <% end %>
   </div>
+</div>  
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
