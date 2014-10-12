@@ -1,5 +1,18 @@
 $(document).ready(function() {
+ // initialize Isotope after all images have loaded
+  var $grid = $('#grid').imagesLoaded( function() {
+    $grid.isotope({
+      // options
+      itemSelector: '.event-item',
+      layoutMode: 'masonry'
+    });
+  });
 
+  $('.card-close').on('click').click(function(){
+    $grid.isotope( 'remove', $(this).closest('.event-item') )
+      // layout remaining item elements
+      .isotope('layout');
+    });
 //   var options = {
 //     enableHighAccuracy: true,
 //     maximumAge: 0
@@ -23,10 +36,7 @@ $(document).ready(function() {
 //   });
 
   
-
-  $('.event-description').unbind('click').click(function(){
-    $(this).children('.event-description-body').slideToggle('slow');
-  });
+  $(document).on('click', '.event-description', function() { $(this).children('.event-description-body').slideToggle('slow'); });
 
 
   jQuery(function($) {
@@ -43,9 +53,20 @@ $(document).ready(function() {
             url: '/static_pages/load_more_results',
             type: 'GET',
             
-            /*success: function (result) {
-                alert("yeah!!");
-            },*/
+            success: function (result) {
+             var $grid = $("#grid").imagesLoaded( function() {
+              $grid.isotope({
+                // options
+                itemSelector: '.event-item',
+                layoutMode: 'masonry'
+              });
+            });
+              $('.card-close').on('click').click(function(){
+              $grid.isotope( 'remove', $(this).closest('.event-item') )
+                // layout remaining item elements
+                .isotope('layout');
+              });
+            },
             error: function () {
                 alert("error");
                 $("#loading-status").text("ERROR...");
@@ -53,7 +74,7 @@ $(document).ready(function() {
             }
         });
         }else{
-          alert("cant do that..");
+          //alert("cant do that..");
         };
       }
     })

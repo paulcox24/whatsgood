@@ -55,7 +55,7 @@ class StaticPagesController < ApplicationController
               :date => "Future",
               :image_sizes => 'perspectivecrop290by250',
               :sort_order => 'popularity',
-              :page_size => 20,
+              :page_size => 10,
               :page_number => params['page_number']
       @events = @result['events']['event']
       #@test = params[:name]
@@ -72,7 +72,7 @@ class StaticPagesController < ApplicationController
               :date => date,
               :image_sizes => 'perspectivecrop290by250',
               :sort_order => 'popularity',
-              :page_size => 20
+              :page_size => 10
       @events = @result['events']['event']
   end 
 
