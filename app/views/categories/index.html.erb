@@ -1,0 +1,16 @@
+
+<table class="table table-striped panel categories">
+    <tr>
+      <th><h3>Category</h3></th>
+      <th><%= link_to 'Pull all categoies from Eventful', update_categories_path, class: 'btn btn-primary pull-right' %></th>
+    </tr>
+
+    <% @categories.each do |category|%>
+      <tr id="category-<%= category.id %>">
+        <td ><%= category.name.titleize %></td>
+        <td><%= link_to 'Delete', category_path(category), method: :delete, remote: true, class: 'btn btn-xs btn-default pull-right' %></td>
+      </tr>
+    <% end %>
+</table>
+
+

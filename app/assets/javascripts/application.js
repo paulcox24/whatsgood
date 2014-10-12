@@ -19,20 +19,7 @@
 //= require isotope.pkgd.min
 //= require imagesloaded.pkgd.min
 $(document).ready(function() {
-  
-   // initialize Isotope after all images have loaded
-  var $grid = $('#grid').imagesLoaded( function() {
-    $grid.isotope({
-      // options
-      itemSelector: '.event-item',
-      layoutMode: 'masonry'
-    });
-  });
 
-  $('.card-close').on('click').click(function(){
-    $grid.isotope( 'remove', $(this).closest('.event-item') )
-      // layout remaining item elements
-      .isotope('layout');
-    });
+ 
 });
 

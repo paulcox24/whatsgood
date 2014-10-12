@@ -45,10 +45,25 @@ class StaticPagesController < ApplicationController
     end 
     make_map(@events)
   end  
-
+  def load_more_results()
+    eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
+    @result = eventful.call 'events/search',
+              :category => current_user.categories.collect { |category| category.name }.join(','),
+              :location => "#{current_user.latitude},#{current_user.longitude}",
+              :within => 10,
+              :date => "Future",
+              :image_sizes => 'perspectivecrop290by250',
+              :sort_order => 'popularity',
+              :page_size => 10,
+              :include => 'categories',
+              :page_number => params['page_number']
+      @events = @result['events']['event']
+      #@test = params[:name]
+  end
   private
   
   def get_eventful(latlong, categories=nil, date=nil)
+    Rails.logger.debug("Params #{params.inspect}")
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
     @result = eventful.call 'events/search',
               :category => categories,
@@ -57,8 +72,8 @@ class StaticPagesController < ApplicationController
               :date => date,
               :image_sizes => 'perspectivecrop290by250',
               :sort_order => 'popularity',
-              :page_size => 20,
-              :include => 'categories'
+              :include => 'categories',
+              :page_size => 10
       @events = @result['events']['event']
   end 
 
@@ -82,5 +97,7 @@ class StaticPagesController < ApplicationController
     categories = current_user.categories.collect { |category| category.name }.join(',')
     get_eventful(latlong, categories, date)
   end
+
+
 
 end
