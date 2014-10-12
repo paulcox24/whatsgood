@@ -7,14 +7,7 @@ $container.isotope({
 var $new_results = $("<%= j render partial: 'users/events', :locals => {:events => @events} %>");
 var $children = $new_results.children();
 $container.append($children).isotope('appended', $children);
-//$("#grid").isotope( 'append', $new_results.children() );
-//$("#grid").append($new_results.children());
 new_page_number = parseInt($("#page-number").val())+1;
 $("#page-number").val(new_page_number);
 $("#can-load-more").val("true");
 $("#loading-status").text("");
-
-
-
-
-//alert("loaded");
