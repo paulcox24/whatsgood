@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
     @eventful_categories.delete_if {|category| @category_names.include? category[1] }
 
     @eventful_categories.each do |category| 
-      Category.create(name: category[1].sub(/&amp;/, '&'), cat_id: category[2])
+      Category.create(name: category[1].sub(/&amp;/, '&'), cat_id: category[0])
     end  
     redirect_to categories_path
   end
