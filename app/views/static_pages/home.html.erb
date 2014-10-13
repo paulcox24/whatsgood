@@ -7,14 +7,16 @@
   <div class='allmaps col-md-5 col-lg-4 visible-md-block visible-lg-block'>
     <div id="multi_marks"></div>
 
-    <div class="btn-group" id="cat-boxes" data-toggle="buttons">
-      <% current_user.categories.each do |cat| %>
-      <label class="btn btn-primary active">
-        <input type="checkbox" value="<%= cat.name %>"checked> <%= cat.name %>
-      </label>
-      <% end %>
-    </div>
-    <button type="button" class="btn btn-success" id="cat-apply">Apply</button>
+    <% if current_user %>
+      <div class="btn-group" id="cat-boxes" data-toggle="buttons">
+        <% current_user.categories.each do |cat| %>
+        <label class="btn btn-primary active">
+          <input type="checkbox" value="<%= cat.name %>"checked> <%= cat.name %>
+        </label>
+        <% end %>
+      </div>
+      <button type="button" class="btn btn-success" id="cat-apply">Apply</button>
+    <% end %>
 
     <div class="stats"><h1>whatsgood</h1>
       <h1 id="loading-status"></h1>
