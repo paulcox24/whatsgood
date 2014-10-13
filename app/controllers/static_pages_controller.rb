@@ -1,4 +1,8 @@
 class StaticPagesController < ApplicationController
+
+  CATEGORIES = 'music,comedy,sports'
+  CITY ='Salt Lake City'
+  
   def home
     date = 'Future'
     if current_user
@@ -48,8 +52,8 @@ class StaticPagesController < ApplicationController
   def load_more_results()
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
     @result = eventful.call 'events/search',
-              :category => current_user.categories.collect { |category| category.name }.join(','),
-              :location => "#{current_user.latitude},#{current_user.longitude}",
+              :category => get_categories,
+              :location => get_location,
               :within => 10,
               :date => "Future",
               :image_sizes => 'perspectivecrop290by250',
@@ -87,8 +91,8 @@ class StaticPagesController < ApplicationController
   end
 
   def default_eventful(date)
-    default_city = 'Salt Lake City'
-    default_categories = 'music,comedy,sports'
+    default_city = CITY
+    default_categories = CATEGORIES
     get_eventful(default_city, default_categories, date)
   end
 
@@ -97,6 +101,14 @@ class StaticPagesController < ApplicationController
     categories = current_user.categories.collect { |category| category.name }.join(',')
     get_eventful(latlong, categories, date)
   end
+
+  def get_categories
+    current_user ? current_user.categories.collect { |category| category.name }.join(',') : CATEGORIES
+  end  
+
+  def get_location
+    current_user ? "#{current_user.latitude},#{current_user.longitude}" : CITY
+  end  
 
 
 

@@ -54,9 +54,6 @@ $(document).ready(function() {
 //   });
 
   
-  $(document).on('click', '.event-description', function() { $(this).children('.event-description-body').slideToggle('slow'); });
-
-
   jQuery(function($) {
     $('.events-list').bind('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
