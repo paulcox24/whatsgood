@@ -24,12 +24,14 @@ $(document).ready(function() {
       .isotope('layout');
     });
 
-  $('#cat-apply').on('click').click(function(){
+  $('#cat-boxes').on('click').click(function(){
     var catList = "";
     $('#cat-boxes input:checked').each(function() {
         catList = catList + "." + $(this).attr('value') + ", ";
     });
-    $grid.isotope({ filter: catList.substring(0, catList.length - 2) });
+    catList = catList + ".nullnull";
+    //alert(catList);
+    $grid.isotope({ filter: catList });
   });
 //   var options = {
 //     enableHighAccuracy: true,
