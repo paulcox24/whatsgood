@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009222705) do
+ActiveRecord::Schema.define(version: 20141013171505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20141009222705) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "category_id"
   end
 
   create_table "categorizations", force: true do |t|
@@ -118,7 +119,7 @@ ActiveRecord::Schema.define(version: 20141009222705) do
   add_index "venue_acts", ["venue_id"], name: "index_venue_acts_on_venue_id", using: :btree
 
   create_table "venues", force: true do |t|
-    t.text     "location"
+    t.text     "address"
     t.string   "name"
     t.text     "description"
     t.string   "venue_type"
@@ -130,7 +131,6 @@ ActiveRecord::Schema.define(version: 20141009222705) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "genre"
-    t.string   "address"
   end
 
 end
