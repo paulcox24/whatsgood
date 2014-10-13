@@ -62,7 +62,7 @@ $(document).ready(function() {
 
         if ($("#can-load-more").val() == "true"){
         $("#can-load-more").val("false");
-        $("#loading-status").text("loading more...");
+        $("#loading-status").html("loading more...");
         //alert(parseInt($("#page-number").val())+1);
         //var myData = { 'name': "derek" };
         $.ajax({

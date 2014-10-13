@@ -20,16 +20,18 @@ $border-radius-large: 0;
 $border-radius-small: 0;
 // $brand-success: #3EAB45;
 $brand-danger: #3C608A;
+$grid-gutter-width: 23px;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 
 .event-image{
+  background-color: black;
 }
 
 .allmaps {
   height: 100%;
-  margin-left: -15px;
+  margin-left: -12px;
   color: $text-color;
 }
 // few map tweakz -miker //
@@ -38,7 +40,7 @@ $brand-danger: #3C608A;
 }
 
 body { 
-  padding-top: 70px; 
+  padding-top: 60px; 
 }
 
 #location_button {
@@ -58,6 +60,7 @@ a:hover {
 .panel {
   max-width: 640px;
   color: $text-color;
+  border: none;
 }
 
 .categories {
@@ -71,10 +74,6 @@ input{
 .card-date{
   font-size: 1.23em;
   font-weight: bold;
-}
-
-.list-group-item {
-  margin-right: 15px;
 }
 
 .white {
@@ -106,6 +105,15 @@ input{
 .list-group-item {
   padding: 10px;
   margin: 0;
+}
+
+.image-block {
+  margin: 0;
+  padding: 0;
+}
+
+.centered {
+  margin: 0 auto !important;
 }
 
 // Mike Small Style Tweakz //
