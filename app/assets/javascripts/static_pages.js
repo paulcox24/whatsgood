@@ -60,7 +60,7 @@ $(document).ready(function() {
 
         if ($("#can-load-more").val() == "true"){
         $("#can-load-more").val("false");
-        $("#loading-status").html("loading more...");
+        $("#loading-status").text("loading more...");
         //alert(parseInt($("#page-number").val())+1);
         //var myData = { 'name': "derek" };
         $.ajax({
@@ -102,40 +102,6 @@ $(document).ready(function() {
         };
       }
     })
-});
-
-// start function for snaggin' da address 
-jQuery(function($) {
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(success_handler, error_handler);
-  }
-  function success_handler(position) {
-    latitude = postion.coords.latitude;
-    longitude = postion.coords.longitude;
-    accuracy = postion.coords.accuracy; 
-  }
-  navigator.geolocation.getCurrentPosition(
-    success_handler,
-    error_handler,
-    {enableHighAccuracy:true}
-  );
-  function success_handler(position) {
-        /* Get the location data */
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-        accuracy = position.coords.accuracy;
- 
-        $.cookie("posLat", latitude);
-        $.cookie("posLon", longitude);
-        $.cookie("posAccuracy", accuracy);
-    }
-  /* Check if location data is available in the cookies */
-  if($.cookie("posLat")) {
-    latitude  = $.cookie("posLat");
-    longitude = $.cookie("posLon");
-    accuracy  = $.cookie("posAccuracy");
-    // do something here
-}
 });
 
 });
