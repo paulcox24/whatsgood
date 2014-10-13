@@ -24,13 +24,11 @@ $(document).ready(function() {
       .isotope('layout');
     });
 
-  $('#cat-boxes').on('click').click(function(){
+  $('#cat-boxes').change(function(){
     var catList = "";
     $('#cat-boxes input:checked').each(function() {
-        catList = catList + "." + $(this).attr('value') + ", ";
+        catList = $(this).attr('value');
     });
-    catList = catList + ".nullnull";
-    //alert(catList);
     $grid.isotope({ filter: catList });
   });
 //   var options = {
