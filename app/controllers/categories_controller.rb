@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   def update_eventful_categories
     @categories = Category.all
     @category_names = @categories.map { |category| category.name }
-    @category_ids = @categories.map { |category| category.category_id }
+    @category_ids = @categories.map { |category| category.cat_id }
 
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
     category_list = eventful.call 'categories/list'

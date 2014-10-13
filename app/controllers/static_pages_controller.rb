@@ -48,7 +48,7 @@ class StaticPagesController < ApplicationController
   def load_more_results()
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
     @result = eventful.call 'events/search',
-              :category => current_user.categories.collect { |category| category.name }.join(','),
+              :category => current_user.categories.collect { |category| category.cat_id }.join(','),
               :location => "#{current_user.latitude},#{current_user.longitude}",
               :within => 10,
               :date => "Future",
@@ -94,7 +94,7 @@ class StaticPagesController < ApplicationController
 
   def user_eventful(date)
     latlong = "#{current_user.latitude},#{current_user.longitude}"
-    categories = current_user.categories.collect { |category| category.name }.join(',')
+    categories = current_user.categories.collect { |category| category.cat_id }.join(',')
     get_eventful(latlong, categories, date)
   end
 
