@@ -1,12 +1,23 @@
+<input type="hidden" name="page-number" value="1" id="page-number">
+<input type="hidden" name="can-load-more" value="true" id="can-load-more">
 <div class='row'>
   <div class="events-list col-xs-12 col-md-7 col-lg-8">
     <%= render partial: 'events/events', :locals => {:events => @events} %>
   </div>
   <div class='allmaps col-md-5 col-lg-4 visible-md-block visible-lg-block'>
     <div id="multi_marks"></div>
-    <div class="stats"><h1>whatsgood</h1>
-      <!-- <div id="good_button" class="btn btn-default disabled">Show me what's good</div> -->
 
+    <div class="btn-group" id="cat-boxes" data-toggle="buttons">
+      <% current_user.categories.each do |cat| %>
+      <label class="btn btn-primary active">
+        <input type="checkbox" value="<%= cat.name %>"checked> <%= cat.name %>
+      </label>
+      <% end %>
+    </div>
+    <button type="button" class="btn btn-success" id="cat-apply">Apply</button>
+
+    <div class="stats"><h1>whatsgood</h1>
+      <h1 id="loading-status"></h1>
       <ul>
         <li>Total items: <%= @result['total_items'] %></li>
         <li>Page Size: <%= @result['page_size'] %></li>

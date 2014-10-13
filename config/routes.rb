@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get 'static_pages/today'
 
+  get 'static_pages/load_more_results' => 'static_pages#load_more_results'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, :only => [:show, :index] do
     resources :events
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
   
   resources :venues
   resources :acts
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
