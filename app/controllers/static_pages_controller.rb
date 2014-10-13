@@ -13,23 +13,6 @@ class StaticPagesController < ApplicationController
     make_map(@events)
   end
 
-  def about
-    @has_many_data = AppStats.get_has_many_relationships
-    @lines_of_code = AppStats.get_lines_of_code
-    @files_by_lines_of_code = AppStats.sort_by_lines_of_code
-
-    respond_to do |format|
-      format.html
-      format.csv do
-          headers['Content-Disposition'] = "attachment; filename=\"app_stats\""
-          headers['Content-Type'] ||= 'text/csv'
-      end
-    end
-  end
-
-  def contact
-  end
-
   def today
     date = 'Today'
     if current_user
@@ -49,6 +32,24 @@ class StaticPagesController < ApplicationController
     end 
     make_map(@events)
   end  
+  
+  def about
+    @has_many_data = AppStats.get_has_many_relationships
+    @lines_of_code = AppStats.get_lines_of_code
+    @files_by_lines_of_code = AppStats.sort_by_lines_of_code
+
+    respond_to do |format|
+      format.html
+      format.csv do
+          headers['Content-Disposition'] = "attachment; filename=\"app_stats\""
+          headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
+
+  def contact
+  end
+
   def load_more_results()
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
     @result = eventful.call 'events/search',
@@ -64,8 +65,8 @@ class StaticPagesController < ApplicationController
       @events = @result['events']['event']
       #@test = params[:name]
   end
+
   private
-  
   def get_eventful(latlong, categories=nil, date=nil)
     Rails.logger.debug("Params #{params.inspect}")
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
@@ -109,7 +110,5 @@ class StaticPagesController < ApplicationController
   def get_location
     current_user ? "#{current_user.latitude},#{current_user.longitude}" : CITY
   end  
-
-
 
 end
