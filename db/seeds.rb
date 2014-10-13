@@ -21,7 +21,7 @@ end
     description: "This is the description for #{ (counter + 1).ordinalize } Act")
 end
 
-categories.each do |category|
-  Category.create(name: category)
-end
+# categories.each do |category|
+#   Category.create(name: category)
+# end
 
