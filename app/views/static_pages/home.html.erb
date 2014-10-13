@@ -1,5 +1,8 @@
 <input type="hidden" name="page-number" value="1" id="page-number">
 <input type="hidden" name="can-load-more" value="true" id="can-load-more">
+<input type="hidden" name="search-date" value="<%= @date %>" id="search-date">
+
+
 <div class='row'>
   <div class="events-list col-xs-12 col-md-7 col-lg-8">
     <%= render partial: 'events/events', :locals => {:events => @events} %>

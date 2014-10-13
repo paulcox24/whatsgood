@@ -54,9 +54,6 @@ $(document).ready(function() {
 //   });
 
   
-  $(document).on('click', '.event-description', function() { $(this).children('.event-description-body').slideToggle('slow'); });
-
-
   jQuery(function($) {
     $('.events-list').bind('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
@@ -67,7 +64,7 @@ $(document).ready(function() {
         //alert(parseInt($("#page-number").val())+1);
         //var myData = { 'name': "derek" };
         $.ajax({
-            data: {'page_number': parseInt($("#page-number").val())+1},
+            data: {'page_number': parseInt($("#page-number").val())+1, 'search_date': $('#search-date').val() },
             url: '/static_pages/load_more_results',
             type: 'GET',
             

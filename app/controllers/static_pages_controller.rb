@@ -1,13 +1,37 @@
 class StaticPagesController < ApplicationController
+
+  CATEGORIES = 'music,comedy,sports'
+  CITY ='Salt Lake City'
+  
   def home
-    date = 'Future'
+    @date = 'Future'
     if current_user
-      user_eventful(date)
+      user_eventful(@date)
     else
-      default_eventful(date)
+      default_eventful(@date)
     end 
     make_map(@events)
   end
+
+  def today
+    @date = 'Today'
+    if current_user
+      user_eventful(@date)
+    else
+      default_eventful(@date)
+    end 
+    make_map(@events)
+  end
+
+  def this_week
+    @date = "This Week"
+    if current_user
+      user_eventful(@date)
+    else
+      default_eventful(@date)
+    end 
+    make_map(@events)
+  end  
 
   def about
     @has_many_data = AppStats.get_has_many_relationships
@@ -26,32 +50,13 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
-  def today
-    date = 'Today'
-    if current_user
-      user_eventful(date)
-    else
-      default_eventful(date)
-    end 
-    make_map(@events)
-  end
-
-  def this_week
-    date = 'This Week'
-    if current_user
-      user_eventful(date)
-    else
-      default_eventful(date)
-    end 
-    make_map(@events)
-  end  
   def load_more_results()
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
     @result = eventful.call 'events/search',
-              :category => current_user.categories.collect { |category| category.name }.join(','),
-              :location => "#{current_user.latitude},#{current_user.longitude}",
+              :category => get_categories,
+              :location => get_location,
               :within => 10,
-              :date => "Future",
+              :date => params['search_date'],
               :image_sizes => 'perspectivecrop290by250',
               :sort_order => 'popularity',
               :page_size => 10,
@@ -60,8 +65,8 @@ class StaticPagesController < ApplicationController
       @events = @result['events']['event']
       #@test = params[:name]
   end
+
   private
-  
   def get_eventful(latlong, categories=nil, date=nil)
     Rails.logger.debug("Params #{params.inspect}")
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
@@ -87,8 +92,8 @@ class StaticPagesController < ApplicationController
   end
 
   def default_eventful(date)
-    default_city = 'Salt Lake City'
-    default_categories = 'music,comedy,sports'
+    default_city = CITY
+    default_categories = CATEGORIES
     get_eventful(default_city, default_categories, date)
   end
 
@@ -98,6 +103,12 @@ class StaticPagesController < ApplicationController
     get_eventful(latlong, categories, date)
   end
 
+  def get_categories
+    current_user ? current_user.categories.collect { |category| category.name }.join(',') : CATEGORIES
+  end  
 
+  def get_location
+    current_user ? "#{current_user.latitude},#{current_user.longitude}" : CITY
+  end  
 
 end
