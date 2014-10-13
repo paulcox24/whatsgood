@@ -59,6 +59,7 @@ a:hover {
 .panel {
   max-width: 640px;
   color: $text-color;
+  border: none;
 }
 
 .categories {
@@ -103,6 +104,11 @@ input{
 .list-group-item {
   padding: 10px;
   margin: 0;
+}
+
+.image-block {
+  margin: 0;
+  padding: 0;
 }
 
 .centered {
