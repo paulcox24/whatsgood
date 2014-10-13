@@ -23,6 +23,14 @@ $(document).ready(function() {
       // layout remaining item elements
       .isotope('layout');
     });
+
+  $('#cat-apply').on('click').click(function(){
+    var catList = "";
+    $('#cat-boxes input:checked').each(function() {
+        catList = catList + "." + $(this).attr('value') + ", ";
+    });
+    $grid.isotope({ filter: catList.substring(0, catList.length - 2) });
+  });
 //   var options = {
 //     enableHighAccuracy: true,
 //     maximumAge: 0
@@ -76,6 +84,15 @@ $(document).ready(function() {
                 // layout remaining item elements
                 .isotope('layout');
               });
+               $('.fav').on('click').click(function(){
+                $(this).parent().html('<a class="btn btn-success" href="/profile"><i class="fa fa-star"></i> Favorited</a>')
+                });
+
+              $('.un-fav').on('click').click(function(){
+                $grid.isotope( 'remove', $(this).closest('.event-item') )
+                  // layout remaining item elements
+                  .isotope('layout');
+                });
             },
             error: function () {
                 alert("error");

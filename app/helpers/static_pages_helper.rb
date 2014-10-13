@@ -1,5 +1,5 @@
 module StaticPagesHelper
-	def test(event)
+	def category_class(event)
 		e = event
 		category = ""
 		e['categories']['category'].each do |i|
