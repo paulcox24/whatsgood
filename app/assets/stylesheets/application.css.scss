@@ -25,6 +25,7 @@ $brand-danger: #3C608A;
 @import "font-awesome";
 
 .event-image{
+  background-color: black;
 }
 
 .allmaps {
@@ -73,10 +74,6 @@ input{
   font-weight: bold;
 }
 
-.list-group-item {
-  margin-right: 15px;
-}
-
 .white {
   color: white;
 }
@@ -106,6 +103,10 @@ input{
 .list-group-item {
   padding: 10px;
   margin: 0;
+}
+
+.centered {
+  margin: 0 auto !important;
 }
 
 // Mike Small Style Tweakz //
