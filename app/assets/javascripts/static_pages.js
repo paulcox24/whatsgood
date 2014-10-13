@@ -64,7 +64,7 @@ $(document).ready(function() {
         //alert(parseInt($("#page-number").val())+1);
         //var myData = { 'name': "derek" };
         $.ajax({
-            data: {'page_number': parseInt($("#page-number").val())+1},
+            data: {'page_number': parseInt($("#page-number").val())+1, 'search_date': $('#search-date').val() },
             url: '/static_pages/load_more_results',
             type: 'GET',
             

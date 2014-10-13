@@ -4,35 +4,35 @@ class StaticPagesController < ApplicationController
   CITY ='Salt Lake City'
   
   def home
-    date = 'Future'
+    @date = 'Future'
     if current_user
-      user_eventful(date)
+      user_eventful(@date)
     else
-      default_eventful(date)
+      default_eventful(@date)
     end 
     make_map(@events)
   end
 
   def today
-    date = 'Today'
+    @date = 'Today'
     if current_user
-      user_eventful(date)
+      user_eventful(@date)
     else
-      default_eventful(date)
+      default_eventful(@date)
     end 
     make_map(@events)
   end
 
   def this_week
-    date = 'This Week'
+    @date = "This Week"
     if current_user
-      user_eventful(date)
+      user_eventful(@date)
     else
-      default_eventful(date)
+      default_eventful(@date)
     end 
     make_map(@events)
   end  
-  
+
   def about
     @has_many_data = AppStats.get_has_many_relationships
     @lines_of_code = AppStats.get_lines_of_code
@@ -56,7 +56,7 @@ class StaticPagesController < ApplicationController
               :category => get_categories,
               :location => get_location,
               :within => 10,
-              :date => "Future",
+              :date => params['search_date'],
               :image_sizes => 'perspectivecrop290by250',
               :sort_order => 'popularity',
               :page_size => 10,
