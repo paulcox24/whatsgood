@@ -20,6 +20,7 @@ $border-radius-large: 0;
 $border-radius-small: 0;
 // $brand-success: #3EAB45;
 $brand-danger: #3C608A;
+$grid-gutter-width: 23px;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
@@ -30,7 +31,7 @@ $brand-danger: #3C608A;
 
 .allmaps {
   height: 100%;
-  margin-left: -15px;
+  margin-left: -12px;
   color: $text-color;
 }
 // few map tweakz -miker //
@@ -39,7 +40,7 @@ $brand-danger: #3C608A;
 }
 
 body { 
-  padding-top: 70px; 
+  padding-top: 60px; 
 }
 
 #location_button {
