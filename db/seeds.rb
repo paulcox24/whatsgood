@@ -8,18 +8,13 @@
 
 categories = ['music','comedy','movies_film','art','attractions','singles_social','sports']
 
-5.times do |counter|
-  Venue.create(
-    name: "#{ (counter + 1).ordinalize } Venue", 
-    description: "This is the description for #{ (counter + 1).ordinalize } venue", 
-    venue_type: 'Movie theater')
-end
-
-5.times do |counter|
-  Act.create(
-    name: "#{ (counter + 1).ordinalize } Act", 
-    description: "This is the description for #{ (counter + 1).ordinalize } Act")
-end
+User.create(name: 'Boss',
+            email: 'boss@email.com',
+            password: 'password',
+            password_confirmation: 'password',
+            description: 'Im an admin',
+            address: 'Salt Lake City',
+            is_admin: true)
 
 categories.each do |category|
   Category.create(name: category)
