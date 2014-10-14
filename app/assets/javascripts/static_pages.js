@@ -28,7 +28,8 @@ $(document).ready(function() {
     });
 
    $('.fav').on('click').click(function(){
-    $(this).parent().html('<a class="btn btn-success" href="/profile"><i class="fa fa-star"></i> Favorited</a>')
+    var user = $('#current-user').val()
+    $(this).parent().html('<a class="btn btn-success" href="/users/'+user+'/profile"><i class="fa fa-star"></i> Favorited</a>')
     });
 
   $('.un-fav').on('click').click(function(){
