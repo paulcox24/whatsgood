@@ -3,7 +3,7 @@
     <h3 class="panel-title pull-left">Edit your profile</h3>
   </div>  
   <div class="panel-body">
-    <%= simple_form_for(@user, html: { method: :put, role: 'form', class: 'form-horizontal'}) do |f| %>
+    <%= simple_form_for(@user, html: { role: 'form', class: 'form-horizontal'}) do |f| %>
       <%= f.error_notification %>
         
       <div class="form-group">
