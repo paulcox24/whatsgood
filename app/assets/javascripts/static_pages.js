@@ -7,11 +7,19 @@ $(document).ready(function() {
       layoutMode: 'masonry'
     });
     function onLayout() {
-      alert('layout done');
+      $( ".events-list" ).scroll();
     }
     // bind event listener
-   // $grid.isotope( 'on', 'layoutComplete', onLayout );
+    $grid.isotope( 'on', 'layoutComplete', function() {
+      setTimeout(function (){
+
+             $( ".events-list" ).scroll();//something you want delayed
+
+         }, 10); 
+      
+    });
   });
+
 
   $('.card-close').on('click').click(function(){
     $grid.isotope( 'remove', $(this).closest('.event-item') )
@@ -36,14 +44,25 @@ $(document).ready(function() {
     });
     $grid.isotope({ filter: catList });
   });
-  function isElementVisible(elementToBeChecked)
-  {
-    var TopView = $(window).scrollTop();
-    var BotView = TopView + $(window).height();
-    var TopElement = $(elementToBeChecked).offset().top;
-    var BotElement = TopElement + $(elementToBeChecked).height();
-    return ((BotElement <= BotView) && (TopElement >= TopView));
-  }
+
+  $.fn.isOnScreen = function(){
+    
+    var win = $(window);
+    
+    var viewport = {
+        top : win.scrollTop(),
+        left : win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+    
+    var bounds = this.offset();
+    bounds.right = bounds.left + this.outerWidth();
+    bounds.bottom = bounds.top + this.outerHeight();
+    
+    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+    
+  };
 //   var options = {
 //     enableHighAccuracy: true,
 //     maximumAge: 0
@@ -68,9 +87,9 @@ $(document).ready(function() {
 
   
 jQuery(function($) {
-    $('.events-list').bind('scroll', function() {
-        if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+  $('.events-list').bind('scroll', function() {
 
+        if($("#cards-bottom").isOnScreen()) {
         if ($("#can-load-more").val() == "true"){
         $("#can-load-more").val("false");
         $("#loading-status").text("loading more...");
