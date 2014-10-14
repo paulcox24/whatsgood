@@ -12,14 +12,16 @@
     <div id="multi_marks"></div>
 
     <% if current_user %>
-      <div class="btn-group" id="cat-boxes" data-toggle="buttons">
+      <div class="btn-group cat-boxes" id="cat-boxes" data-toggle="buttons">
         <% current_user.categories.each do |cat| %>
-        <label class="btn btn-primary active">
-          <input type="checkbox" value="<%= cat.name %>"checked> <%= cat.name %>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" value=".<%= cat.cat_id %>"checked> <%= cat.name %>
         </label>
         <% end %>
+        <label class="btn btn-primary active">
+          <input type="radio" name="options" value="*"checked> All
+        </label>
       </div>
-      <button type="button" class="btn btn-success" id="cat-apply">Apply</button>
     <% end %>
 
     <div class="stats"><h1>whatsgood</h1>
@@ -56,11 +58,13 @@
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(displayOnMap);
   });
+  //heart takes a min to load but it's thur
   function displayOnMap(position){
   var marker = handler.addMarker({
+    picture: {url: "<%=image_path('heart30.png')%>", width: 30, height: 26},
     lat: position.coords.latitude,
     lng: position.coords.longitude,
-    infowindow: "<h6 style=padding: 1.25em;>You're Here, Zoom Out!</h6>"
+    infowindow: "<div style=background-color:yellow; margin:auto; padding:auto;><h6 style=padding: 1.25em;>You're Here, Zoom Out!</h6></div>"
   });
   handler.map.centerOn(marker);
   handler.getMap();

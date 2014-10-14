@@ -46,6 +46,7 @@
   });
   function displayOnMap(position){
   var marker = handler.addMarker({
+    picture: {url: "<%=image_path('heart30.png')%>", width: 30, height: 26},
     lat: position.coords.latitude,
     lng: position.coords.longitude,
     infowindow: "<h6 style=padding: 1.25em;>You're Here, Zoom Out!</h6>"

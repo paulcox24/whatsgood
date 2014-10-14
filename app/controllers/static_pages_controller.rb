@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
   def home
     @date = 'Future'
     if current_user
+      puts "doing user"
       user_eventful(@date)
     else
       default_eventful(@date)
@@ -99,12 +100,12 @@ class StaticPagesController < ApplicationController
 
   def user_eventful(date)
     latlong = "#{current_user.latitude},#{current_user.longitude}"
-    categories = current_user.categories.collect { |category| category.name }.join(',')
+    categories = current_user.categories.collect { |category| category.cat_id }.join(',')
     get_eventful(latlong, categories, date)
   end
 
   def get_categories
-    current_user ? current_user.categories.collect { |category| category.name }.join(',') : CATEGORIES
+    current_user ? current_user.categories.collect { |category| category.cat_id }.join(',') : CATEGORIES
   end  
 
   def get_location

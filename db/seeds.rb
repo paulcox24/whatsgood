@@ -8,7 +8,7 @@
 
 categories = ['music','comedy','movies_film','art','attractions','singles_social','sports']
 
-User.create(name: 'Boss',
+User.create(first_name: 'Boss',
             email: 'boss@email.com',
             password: 'password',
             password_confirmation: 'password',
@@ -16,7 +16,7 @@ User.create(name: 'Boss',
             address: 'Salt Lake City',
             is_admin: true)
 
-categories.each do |category|
-  Category.create(name: category)
-end
+# categories.each do |category|
+#   Category.create(name: category)
+# end
 
