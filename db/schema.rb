@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009222705) do
+ActiveRecord::Schema.define(version: 20141014031708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,12 +84,12 @@ ActiveRecord::Schema.define(version: 20141009222705) do
   add_index "interests", ["user_id"], name: "index_interests_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                                           default: "", null: false
-    t.string   "encrypted_password",                              default: "", null: false
+    t.string   "email",                                           default: "",    null: false
+    t.string   "encrypted_password",                              default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                   default: 0,  null: false
+    t.integer  "sign_in_count",                                   default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20141009222705) do
     t.text     "description"
     t.decimal  "latitude",               precision: 10, scale: 6
     t.decimal  "longitude",              precision: 10, scale: 6
+    t.boolean  "is_admin",                                        default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -118,7 +119,7 @@ ActiveRecord::Schema.define(version: 20141009222705) do
   add_index "venue_acts", ["venue_id"], name: "index_venue_acts_on_venue_id", using: :btree
 
   create_table "venues", force: true do |t|
-    t.text     "location"
+    t.text     "address"
     t.string   "name"
     t.text     "description"
     t.string   "venue_type"
@@ -130,7 +131,6 @@ ActiveRecord::Schema.define(version: 20141009222705) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "genre"
-    t.string   "address"
   end
 
 end
