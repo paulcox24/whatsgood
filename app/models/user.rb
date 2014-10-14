@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode  # auto-fetch address
 
+  def can_edit_user?(user)
+    self == user || self.is_admin
+  end  
 end

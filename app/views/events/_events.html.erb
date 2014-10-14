@@ -43,7 +43,7 @@
           <div class="btn-group">
             <% if current_user %>
               <% if (current_user.events.collect { |event| event.eventful_id }).include? event['id'] %>
-                <%= link_to profile_path, class: "btn btn-success" do %>
+                <%= link_to user_profile_path(current_user), class: "btn btn-success" do %>
                     <i class="fa fa-star"></i> Favorited
                 <% end %>
               <% else %>

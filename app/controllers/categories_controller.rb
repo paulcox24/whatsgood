@@ -17,17 +17,25 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all.order(:name)
+    if current_user.is_admin
+      @categories = Category.all.order(:name)
+    else 
+      redirect_to root_path, notice: "Not allowed" 
+    end  
   end
 
   def destroy
-    @category = Category.find(params[:id])
-    @category.destroy
+    if current_user.is_admin
+      @category = Category.find(params[:id])
+      @category.destroy
 
-    respond_to do |format|
-      format.html { redirect_to categories_path }
-      format.js
-    end 
+      respond_to do |format|
+        format.html { redirect_to categories_path }
+        format.js
+      end
+    else
+      redirect_to root_path, notice: "Not allowed" 
+    end
   end
 end
 

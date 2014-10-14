@@ -18,11 +18,11 @@ Rails.application.routes.draw do
   get 'static_pages/load_more_results' => 'static_pages#load_more_results'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :users, :only => [:show, :index] do
+  resources :users, :only => [:show, :index, :edit, :update, :destroy] do
+    get '/profile', to: 'users#profile', as: :profile
     resources :events
   end  
     
-  get '/profile', to: 'users#profile', as: :profile
   
   resources :venues
   resources :acts

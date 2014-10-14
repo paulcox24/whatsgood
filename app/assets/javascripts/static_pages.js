@@ -73,7 +73,7 @@ jQuery(function($) {
 
         if ($("#can-load-more").val() == "true"){
         $("#can-load-more").val("false");
-        $("#loading-status").html("loading more...");
+        $("#loading-status").text("loading more...");
         //alert(parseInt($("#page-number").val())+1);
         //var myData = { 'name': "derek" };
         $.ajax({
