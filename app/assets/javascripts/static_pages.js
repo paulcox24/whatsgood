@@ -124,9 +124,11 @@ jQuery(function($) {
                 });
             },
             error: function () {
-                alert("error");
-                $("#loading-status").text("ERROR...");
-                $("#can-load-more").val("true");
+              $("#can-load-more").val("false");
+              $("#loading-status").text("No Results Found");
+              setTimeout(function(){
+                  $("#loading-status").fadeOut("slow");
+              },2000)
             }
         });
         }else{
