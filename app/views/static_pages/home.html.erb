@@ -12,16 +12,7 @@
     <div id="multi_marks"></div>
 
     <% if current_user %>
-      <div class="btn-group cat-boxes" id="cat-boxes" data-toggle="buttons">
-        <% current_user.categories.each do |cat| %>
-        <label class="btn btn-primary">
-          <input type="radio" name="options" value=".<%= cat.cat_id %>"checked> <%= cat.name %>
-        </label>
-        <% end %>
-        <label class="btn btn-primary active">
-          <input type="radio" name="options" value="*"checked> All
-        </label>
-      </div>
+      <%= render 'filter' %>
     <% end %>
 
     <div class="stats"><h1>whatsgood</h1>

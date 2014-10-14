@@ -9,6 +9,11 @@
   </div>
   <div class='allmaps col-md-5 col-lg-4 visible-md-block visible-lg-block'>
     <div id="multi_marks"></div>
+
+    <% if current_user %>
+      <%= render 'filter' %>
+    <% end %>
+
     <div class="stats"><h1>whatsgood</h1>
       <ul>
         <li>Total items: <%= @result['total_items'] %></li>
