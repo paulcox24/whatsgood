@@ -36,7 +36,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event.destroy
+
+    @event.destroy if @event.user == current_user
     redirect_to user_profile_path(@user)
   end
 
