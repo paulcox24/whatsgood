@@ -1,10 +1,10 @@
 <div class="panel panel-default login">
   <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left">Login</h3>
-    <span class="pull-right">Don't have an account? &nbsp; <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary" %></span>
+    <%= simple_form_for(resource, url: session_path(resource), html: { role: 'form', class: 'form-horizontal'}) do |f| %>
+    <span class="pull-right">Don't have an account? &nbsp; <%= link_to "Sign up", new_registration_path(resource), class: "btn btn-primary" %></span>
   </div>  
   <div class="panel-body">
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form', class: 'form-horizontal'}) do |f| %>
       <div class="container-fluid">  
         <div class="form-group form-group-lg">
           <div>
@@ -15,7 +15,7 @@
         <div class="form-group form-group-lg">
           <div>
             <%= f.password_field :password, class: 'form-control', autocomplete: "off", required: false, placeholder: 'Password' %>
-            <%= link_to "Forgot your password?", new_password_path(resource_name), class: "pull-right"%>
+            <%= link_to "Forgot your password?", new_password_path(resource), class: "pull-right"%>
             </br></br>
           </div>
         </div>
