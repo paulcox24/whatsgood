@@ -10,7 +10,7 @@
     <tr>
       <td><%= user.email %></td>
       <td><%= user.is_admin ? 'Admin' : ''  %></td>
-      <td><%= link_to edit_user_registration_path, class: "btn btn-primary btn-sm" do %>
+      <td><%= link_to edit_user_path(user), class: "btn btn-primary btn-sm" do %>
           <i class="fa fa-pencil"> Edit Profile</i>
         <% end %>
       </td>
