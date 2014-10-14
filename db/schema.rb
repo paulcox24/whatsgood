@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009222705) do
+ActiveRecord::Schema.define(version: 20141013192052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20141009222705) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cat_id"
   end
 
   create_table "categorizations", force: true do |t|
@@ -73,16 +74,6 @@ ActiveRecord::Schema.define(version: 20141009222705) do
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
-  create_table "interests", force: true do |t|
-    t.string   "interest_type"
-    t.string   "genre"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "interests", ["user_id"], name: "index_interests_on_user_id", using: :btree
-
   create_table "users", force: true do |t|
     t.string   "email",                                           default: "", null: false
     t.string   "encrypted_password",                              default: "", null: false
@@ -118,7 +109,7 @@ ActiveRecord::Schema.define(version: 20141009222705) do
   add_index "venue_acts", ["venue_id"], name: "index_venue_acts_on_venue_id", using: :btree
 
   create_table "venues", force: true do |t|
-    t.text     "location"
+    t.text     "address"
     t.string   "name"
     t.text     "description"
     t.string   "venue_type"
@@ -130,7 +121,6 @@ ActiveRecord::Schema.define(version: 20141009222705) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "genre"
-    t.string   "address"
   end
 
 end

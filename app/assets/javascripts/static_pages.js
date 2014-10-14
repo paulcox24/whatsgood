@@ -24,12 +24,12 @@ $(document).ready(function() {
       .isotope('layout');
     });
 
-  $('#cat-apply').on('click').click(function(){
+  $('#cat-boxes').change(function(){
     var catList = "";
     $('#cat-boxes input:checked').each(function() {
-        catList = catList + "." + $(this).attr('value') + ", ";
+        catList = $(this).attr('value');
     });
-    $grid.isotope({ filter: catList.substring(0, catList.length - 2) });
+    $grid.isotope({ filter: catList });
   });
 //   var options = {
 //     enableHighAccuracy: true,
