@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.all
+    if current_user.is_admin
+      @users = User.all
+    else 
+      redirect_to root_path, notice: "Not allowed" 
+    end 
   end
 
   def profile
@@ -20,7 +24,7 @@ class UsersController < ApplicationController
         render :edit
       end  
     else
-      redirect_to users_path, notice: "Not allowed"
+      redirect_to root_path, notice: "Not allowed"
     end  
   end
 
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
       @event.destroy 
       redirect_to users_path
     else
-      redirect_to users_path, notice: "Not allowed"
+      redirect_to root_path, notice: "Not allowed"
     end  
   end
 
