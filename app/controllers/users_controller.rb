@@ -13,14 +13,24 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(account_update_params)
-      redirect_to profile_path
+    if current_user.is_admin
+      if @user.update(account_update_params)
+        redirect_to profile_path
+      else
+        render :edit
+      end  
     else
-      render :edit
+      redirect_to users_path, notice: "Not allowed"
     end  
   end
 
   def destroy
+    if current_user.is_admin
+      @event.destroy 
+      redirect_to users_path
+    else
+      redirect_to users_path, notice: "Not allowed"
+    end  
   end
 
   private
