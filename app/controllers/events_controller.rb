@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     @event = @user.events.build(event_params)
 
     if @event.save
-      redirect_to profile_path
+      redirect_to user_profile_path(@user)
     else
       render :new
     end  
@@ -37,7 +37,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to profile_path
+    redirect_to user_profile_path(@user)
   end
 
   private

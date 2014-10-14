@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    params[:id] ? @user = User.find(params[:id]) : @user = current_user
+    @user = User.find(params[:user_id])
   end
 
   def edit
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def update
     if current_user.is_admin
       if @user.update(account_update_params)
-        redirect_to profile_path
+        redirect_to user_profile_path(@user)
       else
         render :edit
       end  
