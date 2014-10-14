@@ -1,3 +1,7 @@
+<% if current_user %>
+  <input type="hidden" name="current-user" value="<%= current_user.id %>" id="current-user">
+<% end %>  
+
 <div id="grid" class="row-fluid">
   <% events.each do |event| %>
     <div class="col-sm-6 col-md-4 col-lg-3 event-item" data-groups='["photography"]' id=<%= event.id %> > 
