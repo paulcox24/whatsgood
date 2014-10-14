@@ -6,6 +6,11 @@ $(document).ready(function() {
       itemSelector: '.event-item',
       layoutMode: 'masonry'
     });
+    function onLayout() {
+      alert('layout done');
+    }
+    // bind event listener
+   // $grid.isotope( 'on', 'layoutComplete', onLayout );
   });
 
   $('.card-close').on('click').click(function(){
@@ -31,6 +36,14 @@ $(document).ready(function() {
     });
     $grid.isotope({ filter: catList });
   });
+  function isElementVisible(elementToBeChecked)
+  {
+    var TopView = $(window).scrollTop();
+    var BotView = TopView + $(window).height();
+    var TopElement = $(elementToBeChecked).offset().top;
+    var BotElement = TopElement + $(elementToBeChecked).height();
+    return ((BotElement <= BotView) && (TopElement >= TopView));
+  }
 //   var options = {
 //     enableHighAccuracy: true,
 //     maximumAge: 0
@@ -54,7 +67,7 @@ $(document).ready(function() {
 //   });
 
   
-  jQuery(function($) {
+jQuery(function($) {
     $('.events-list').bind('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
 
