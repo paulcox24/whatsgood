@@ -36,11 +36,13 @@
           <div class="list-group no-margin">
             <div class="list-group-item no-border no-padding">
               <div class="favorited-list"> Others who favorited this event</div>
-              <a class="list-group-item no-border" href="/">
-                <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
-                <h4 class="list-group-item-heading">Sizelove, Darren</h4>
-                <p class="list-group-item-text">Camion Corp.</p>
-              </a>
+              <% User.all.each do |user| %>
+                <a class="list-group-item no-border" href="/users/<%= user.id %>/profile">
+                  <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
+                  <h4 class="list-group-item-heading"><%= user.first_name %> <%= user.last_name %></h4>
+                  <p class="list-group-item-text"><%= user.email %></p>
+                </a>
+              <% end %>
             </div>
           </div>  
         </div>
