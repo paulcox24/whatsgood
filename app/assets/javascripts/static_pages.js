@@ -1,6 +1,11 @@
 $(document).ready(function() {
   //variables
   var user = $('#current-user').val();
+  var $bottom_screen = $("#cards-bottom");
+  var $can_load_more = $("#can-load-more");
+  var $page_number = $("#page-number");
+  var $total_pages = $("#total-pages");
+  var $loading_status = $("#loading-status");
  // initialize Isotope after all images have loaded
   var $grid = $('#grid').imagesLoaded( function() {
     $grid.isotope({
@@ -32,7 +37,6 @@ $(document).ready(function() {
   });
 
   $('#cat-boxes').change(function(){
-    alert("ya");
     $('#cat-boxes input:checked').each(function() {
       $grid.isotope({ filter: $(this).attr('value') });
     });
@@ -77,24 +81,21 @@ $(document).ready(function() {
 jQuery(function($) {
   $('.events-list').bind('scroll', function() {
 
-        if($("#cards-bottom").isOnScreen()) {
-        if ($("#can-load-more").val() == "true" && parseInt($("#page-number").val())+1 <= parseInt($("#total-pages").val())){
-        $("#can-load-more").val("false");
-        $("#loading-status").text("loading more...");
+        if($bottom_screen.isOnScreen()) {
+        if ($can_load_more.val() == "true" && parseInt($page_number.val())+1 <= parseInt($total_pages.val())){
+        $can_load_more.val("false");
+        $loading_status.text("loading more...");
         $.ajax({
-            data: {'page_number': parseInt($("#page-number").val())+1, 'search_date': $('#search-date').val() },
+            data: {'page_number': parseInt($page_number.val())+1, 'search_date': $('#search-date').val() },
             url: '/static_pages/load_more_results',
             type: 'GET',
-            
             success: function (result) {
-
-
             },
             error: function () {
-              $("#can-load-more").val("false");
-              $("#loading-status").text("No Results Found");
+              $can_load_more.val("false");
+              $loading_status.text("No More Results Found");
               setTimeout(function(){
-                  $("#loading-status").fadeOut("slow");
+                  $loading_status.fadeOut("slow");
               },2000)
             }
         });
