@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  //variables
+  var user = $('#current-user').val();
  // initialize Isotope after all images have loaded
   var $grid = $('#grid').imagesLoaded( function() {
     $grid.isotope({
@@ -18,48 +20,36 @@ $(document).ready(function() {
   });
 
   $grid.on('click', '.card-close', function(){
-    $grid.isotope( 'remove', $(this).closest('.event-item') )
-      // layout remaining item elements
-      .isotope('layout');
-   });
+    $grid.isotope( 'remove', $(this).closest('.event-item') ).isotope('layout');
+  });
 
+  $grid.on('click', '.fav', function(){
+    $(this).parent().html('<a class="btn btn-success" href="/users/'+user+'/profile"><i class="fa fa-star"></i> Favorited</a>');
+  });
 
-   $('.fav').on('click').click(function(){
-    var user = $('#current-user').val()
-    $(this).parent().html('<a class="btn btn-success" href="/users/'+user+'/profile"><i class="fa fa-star"></i> Favorited</a>')
-    });
-
-  $('.un-fav').on('click').click(function(){
-    $grid.isotope( 'remove', $(this).closest('.event-item') )
-      // layout remaining item elements
-      .isotope('layout');
-    });
+  $grid.on('click', '.un-fav', function(){
+    $grid.isotope( 'remove', $(this).closest('.event-item') ).isotope('layout');
+  });
 
   $('#cat-boxes').change(function(){
-    var catList = "";
+    alert("ya");
     $('#cat-boxes input:checked').each(function() {
-        catList = $(this).attr('value');
+      $grid.isotope({ filter: $(this).attr('value') });
     });
-    $grid.isotope({ filter: catList });
   });
 
   $.fn.isOnScreen = function(){
-    
     var win = $(window);
-    
     var viewport = {
         top : win.scrollTop(),
         left : win.scrollLeft()
     };
     viewport.right = viewport.left + win.width();
     viewport.bottom = viewport.top + win.height();
-    
     var bounds = this.offset();
     bounds.right = bounds.left + this.outerWidth();
-    bounds.bottom = bounds.top + this.outerHeight();
-    
-    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-    
+    bounds.bottom = bounds.top + this.outerHeight();  
+    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));  
   };
 //   var options = {
 //     enableHighAccuracy: true,
