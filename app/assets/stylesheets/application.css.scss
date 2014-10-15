@@ -126,3 +126,26 @@ nav.navbar {
   padding: 2em 0em;
 }
 
+.no-padding {
+  padding: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-border {
+  border: none;
+}
+
+.full-card-description {
+  max-height: 200px;
+  overflow: auto;
+}
+
+.favorited-list {
+  font-size: 1.23em;
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid #dddddd;
+}

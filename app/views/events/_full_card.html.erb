@@ -7,38 +7,53 @@
           <%= link_to (sanitize event['title']), event['url'] %>
         </h3>
       </div>
-      <div class="list-group">
-        <div class="list-group-item image-block">
-          <% if event['image'] %>
-            <% image_url = event['image']['perspectivecrop290by250']['url']%>
-            <div class="event-image"><%= image_tag(event['image']['perspectivecrop290by250']['url'], class: "img-responsive centered", :alt => 'Image missing') %></div>
-          <% else %>
-            <% image_url = "events-calendar-icon.png" %>
-            <div class="event-image"><%= image_tag("events-calendar-icon.png", class: "img-responsive centered", alt: "Oops no image") %></div>  
-          <% end %>  
-        </div>
-        <div class="list-group-item">
-          <% if event['stop_time'] %>
-          <div class="card-date"><%= event['start_time'].localtime("-00:00").strftime("%b %d") %> - 
-          <%= event['stop_time'].localtime("-00:00").strftime("%b %d") %></div>
-          <% else %>
-            <div class="card-date"><%= event['start_time'].localtime("-00:00").strftime("%a, %B %d, %l:%M %p") %></div>
-          <% end %>
-          <%= sanitize event['venue_name'] %><br>
-          <%= sanitize event['venue_address'] %><br>
-          <%= sanitize event['city_name'] %><br>
-        </div>
-        <div class="list-group-item">
-          <div class="event-description-body">
-            <% if event['description'] %>
-              <p class="list-group-item-text"><%= sanitize event['description']%></p>
-            <% else %>
-              <p class="list-group-item-text">No Description for this event</p>  
-            <% end %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="list-group no-margin">
+            <div class="list-group-item image-block no-border">
+              <% if event['image'] %>
+                <% image_url = event['image']['perspectivecrop290by250']['url']%>
+                <div class="event-image"><%= image_tag(event['image']['perspectivecrop290by250']['url'], class: "img-responsive centered", :alt => 'Image missing') %></div>
+              <% else %>
+                <% image_url = "events-calendar-icon.png" %>
+                <div class="event-image"><%= image_tag("events-calendar-icon.png", class: "img-responsive centered", alt: "Oops no image") %></div>  
+              <% end %>  
+            </div>
+            <div class="list-group-item no-border">
+              <% if event['stop_time'] %>
+              <div class="card-date"><%= event['start_time'].localtime("-00:00").strftime("%b %d") %> - 
+              <%= event['stop_time'].localtime("-00:00").strftime("%b %d") %></div>
+              <% else %>
+                <div class="card-date"><%= event['start_time'].localtime("-00:00").strftime("%a, %B %d, %l:%M %p") %></div>
+              <% end %>
+              <%= sanitize event['venue_name'] %><br>
+              <%= sanitize event['venue_address'] %><br>
+              <%= sanitize event['city_name'] %><br>
+            </div>
           </div>
+        </div>  
+        <div class="col-sm-6">
+          <div class="list-group no-margin">
+            <div class="list-group-item no-border no-padding">
+              <div class="favorited-list"> Others who favorited this event</div>
+              <a class="list-group-item no-border" href="/">
+                <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
+                <h4 class="list-group-item-heading">Sizelove, Darren</h4>
+                <p class="list-group-item-text">Camion Corp.</p>
+              </a>
+            </div>
+          </div>  
         </div>
       </div>
-
+      <div class="list-group">
+        <div class="list-group-item full-card-description">
+          <% if event['description'] %>
+            <p class="list-group-item-text"><%= sanitize event['description']%></p>
+          <% else %>
+            <p class="list-group-item-text">No Description for this event</p>  
+          <% end %>
+        </div>
+      </div>  
       <div class="panel-footer">
         <div class="btn-group btn-group-justified pull-right">
           <div class="btn-group">
