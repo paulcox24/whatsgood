@@ -1,8 +1,8 @@
 <% if current_user %>
   <input type="hidden" name="current-user" value="<%= current_user.id %>" id="current-user">
 <% end %>  
-
 <div id="grid" class="row-fluid">
+  <% if events != false %>
 <% events.each do |event| %>
 
   <div class="col-sm-6 col-lg-4 event-item <%= category_class(event) %>" id=<%event['id']%>> 
@@ -82,8 +82,22 @@
   </div>
 
 <% end %>
+<% else %>
+  <div class="panel panel-default no-results">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">No Results Found</h3>
+  </div>
+  <div class="panel-body">
+    <p>No results could be found, update your interests to find more of whatsgood around you.</p>
+  </div>
+  <div class="panel-footer">
+    <%= link_to edit_user_registration_path, class: "btn btn-primary pull-right" do %>
+      <i class="fa fa-pencil"> Update Interests</i>
+    <% end %>
+  </div>
+</div><% end %>
 </div>
-<div id="cards-bottom">&nbsp;</div>
+<div id="cards-bottom">&nbsp;<br></div>
 
 
     
