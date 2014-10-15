@@ -91,11 +91,9 @@ jQuery(function($) {
   $('.events-list').bind('scroll', function() {
 
         if($("#cards-bottom").isOnScreen()) {
-        if ($("#can-load-more").val() == "true"){
+        if ($("#can-load-more").val() == "true" && parseInt($("#page-number").val())+1 <= parseInt($("#total-pages").val())){
         $("#can-load-more").val("false");
         $("#loading-status").text("loading more...");
-        //alert(parseInt($("#page-number").val())+1);
-        //var myData = { 'name': "derek" };
         $.ajax({
             data: {'page_number': parseInt($("#page-number").val())+1, 'search_date': $('#search-date').val() },
             url: '/static_pages/load_more_results',

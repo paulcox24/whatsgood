@@ -1,4 +1,5 @@
 <input type="hidden" name="page-number" value="1" id="page-number">
+<input type="hidden" value="<%= @result['page_count'] %>" id="total-pages">
 <input type="hidden" name="can-load-more" value="true" id="can-load-more">
 <input type="hidden" name="search-date" value="<%= @date %>" id="search-date">
 
@@ -16,6 +17,7 @@
 
     <div class="stats"><h1>whatsgood</h1>
       <ul>
+        <%= @events %>
         <li>Total items: <%= @result['total_items'] %></li>
         <li>Page Size: <%= @result['page_size'] %></li>
         <li>Pages: <%= @result['page_count'] %></li>
