@@ -1,7 +1,7 @@
 <div class="panel panel-default profile">
   <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left">Profile</h3>
-    <% if current_user && current_user.id == event.user_id %>
+    <% if current_user && current_user.id.to_s == params['user_id']%>
       <%= link_to edit_user_registration_path, class: "btn btn-primary pull-right" do %>
         <i class="fa fa-pencil"> Edit Profile</i>
       <% end %>
