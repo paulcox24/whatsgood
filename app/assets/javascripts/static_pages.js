@@ -6,7 +6,20 @@ $(document).ready(function() {
       itemSelector: '.event-item',
       layoutMode: 'masonry'
     });
+    function onLayout() {
+      $( ".events-list" ).scroll();
+    }
+    // bind event listener
+    $grid.isotope( 'on', 'layoutComplete', function() {
+      setTimeout(function (){
+
+             $( ".events-list" ).scroll();//something you want delayed
+
+         }, 10); 
+      
+    });
   });
+
 
   $('.card-close').on('click').click(function(){
     $grid.isotope( 'remove', $(this).closest('.event-item') )
@@ -32,6 +45,25 @@ $(document).ready(function() {
     });
     $grid.isotope({ filter: catList });
   });
+
+  $.fn.isOnScreen = function(){
+    
+    var win = $(window);
+    
+    var viewport = {
+        top : win.scrollTop(),
+        left : win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+    
+    var bounds = this.offset();
+    bounds.right = bounds.left + this.outerWidth();
+    bounds.bottom = bounds.top + this.outerHeight();
+    
+    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+    
+  };
 //   var options = {
 //     enableHighAccuracy: true,
 //     maximumAge: 0
@@ -55,10 +87,10 @@ $(document).ready(function() {
 //   });
 
   
-  jQuery(function($) {
-    $('.events-list').bind('scroll', function() {
-        if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+jQuery(function($) {
+  $('.events-list').bind('scroll', function() {
 
+        if($("#cards-bottom").isOnScreen()) {
         if ($("#can-load-more").val() == "true"){
         $("#can-load-more").val("false");
         $("#loading-status").text("loading more...");
@@ -93,9 +125,11 @@ $(document).ready(function() {
                 });
             },
             error: function () {
-                alert("error");
-                $("#loading-status").text("ERROR...");
-                $("#can-load-more").val("true");
+              $("#can-load-more").val("false");
+              $("#loading-status").text("No Results Found");
+              setTimeout(function(){
+                  $("#loading-status").fadeOut("slow");
+              },2000)
             }
         });
         }else{
