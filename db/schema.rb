@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(version: 20141014031708) do
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
+  create_table "interests", force: true do |t|
+    t.string   "interest_type"
+    t.string   "genre"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "interests", ["user_id"], name: "index_interests_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                                           default: "",    null: false
     t.string   "encrypted_password",                              default: "",    null: false
@@ -93,6 +103,10 @@ ActiveRecord::Schema.define(version: 20141014031708) do
     t.text     "description"
     t.decimal  "latitude",               precision: 10, scale: 6
     t.decimal  "longitude",              precision: 10, scale: 6
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.boolean  "is_admin",                                        default: false
   end
 
@@ -110,7 +124,7 @@ ActiveRecord::Schema.define(version: 20141014031708) do
   add_index "venue_acts", ["venue_id"], name: "index_venue_acts_on_venue_id", using: :btree
 
   create_table "venues", force: true do |t|
-    t.text     "address"
+    t.text     "location"
     t.string   "name"
     t.text     "description"
     t.string   "venue_type"
@@ -122,6 +136,7 @@ ActiveRecord::Schema.define(version: 20141014031708) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "genre"
+    t.string   "address"
   end
 
 end
