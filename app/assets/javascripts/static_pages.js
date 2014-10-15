@@ -12,20 +12,17 @@ $(document).ready(function() {
     // bind event listener
     $grid.isotope( 'on', 'layoutComplete', function() {
       setTimeout(function (){
-
-             $( ".events-list" ).scroll();//something you want delayed
-
+          $( ".events-list" ).scroll();
          }, 10); 
-      
     });
   });
 
-
-  $('.card-close').on('click').click(function(){
+  $grid.on('click', '.card-close', function(){
     $grid.isotope( 'remove', $(this).closest('.event-item') )
       // layout remaining item elements
       .isotope('layout');
-    });
+   });
+
 
    $('.fav').on('click').click(function(){
     var user = $('#current-user').val()
@@ -100,27 +97,8 @@ jQuery(function($) {
             type: 'GET',
             
             success: function (result) {
-             var $grid = $("#grid").imagesLoaded( function() {
-              $grid.isotope({
-                // options
-                itemSelector: '.event-item',
-                layoutMode: 'masonry'
-              });
-            });
-              $('.card-close').on('click').click(function(){
-              $grid.isotope( 'remove', $(this).closest('.event-item') )
-                // layout remaining item elements
-                .isotope('layout');
-              });
-               $('.fav').on('click').click(function(){
-                $(this).parent().html('<a class="btn btn-success" href="/profile"><i class="fa fa-star"></i> Favorited</a>')
-                });
 
-              $('.un-fav').on('click').click(function(){
-                $grid.isotope( 'remove', $(this).closest('.event-item') )
-                  // layout remaining item elements
-                  .isotope('layout');
-                });
+
             },
             error: function () {
               $("#can-load-more").val("false");
