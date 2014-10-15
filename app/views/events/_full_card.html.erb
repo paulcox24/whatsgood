@@ -37,7 +37,7 @@
             <div class="list-group-item no-border no-padding">
               <div class="favorited-list"> Others who favorited this event</div>
               <% User.all.each do |user| %>
-                <a class="list-group-item no-border" href="/users/<%= user.id %>/profile">
+                <a class="list-group-item no-border" href=<%= user_profile_path(user) %> >
                   <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
                   <h4 class="list-group-item-heading"><%= user.first_name %> <%= user.last_name %></h4>
                   <p class="list-group-item-text"><%= user.email %></p>
