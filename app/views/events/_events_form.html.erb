@@ -1,5 +1,6 @@
 <%= simple_form_for [@user, @event], html: { role: 'form'} do |f| %>
   <%= f.input :name, placeholder: 'Name', label: false %>
+  <%= f.input :category_list, placeholder: 'Categories', label: false %>
   <%= f.input :image_url, as: :hidden %>
   <%= f.input :start_time %>
   <%= f.input :stop_time %>
