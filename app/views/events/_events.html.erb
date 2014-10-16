@@ -51,7 +51,7 @@
                 <% end %>
               <% else %>
                 <%= link_to user_events_path(current_user, event: {name: event['title'],
-                                                                  category_class: category_class(event),
+                                                                  category_list: category_class(event),
                                                                   image_url: image_url,
                                                                   start_time: event['start_time'],
                                                                   stop_time: event['stop_time'],
