@@ -6,7 +6,7 @@
         <i class="fa fa-pencil"> Edit Profile</i>
       <% end %>
     <% else %>
-      
+      <%= link_to "Follow", follow_path(user: @user), class: "btn btn-primary pull-right" %>
     <% end %>  
   </div>
   <div class="col-sm-4"><%= image_tag "icon-user-default.png", class: "img-responsive img-circle profile-photo centered"%></div>
