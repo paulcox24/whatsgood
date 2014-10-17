@@ -6,12 +6,11 @@ class StaticPagesController < ApplicationController
   def home
     @date = 'Future'
     if current_user
-      puts "doing user"
       user_eventful(@date)
     else
       default_eventful(@date)
     end 
-    make_map(@events)
+   make_map(@events)
   end
 
   def today
@@ -69,27 +68,32 @@ class StaticPagesController < ApplicationController
 
   private
   def get_eventful(latlong, categories=nil, date=nil)
-    Rails.logger.debug("Params #{params.inspect}")
-    eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
-    @result = eventful.call 'events/search',
-              :category => categories,
-              :location => latlong,
-              :within => 10,
-              :date => date,
-              :image_sizes => 'perspectivecrop290by250',
-              :sort_order => 'popularity',
-              :include => 'categories',
-              :page_size => 10
+    begin
+      eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
+      @result = eventful.call 'events/search',
+            :category => categories,
+            :location => latlong,
+            :within => 10,
+            :date => date,
+            :image_sizes => 'perspectivecrop290by250',
+            :sort_order => 'popularity',
+            :include => 'categories',
+            :page_size => 10
       @events = @result['events']['event']
+    rescue
+      @events = false
+      end
   end 
 
   def make_map(events) 
+    if events != false
     @hash = Gmaps4rails.build_markers(events) do |event, marker|
       marker.lat event['latitude']
       marker.lng event['longitude']
       marker.title event['title']
       marker.infowindow "<h6><a style=padding: 1.25em; href=#{event['url']}>Event Link</a><br>Title: #{event['title']}<br>Venue: #{event['venue_name']}</h6>"
     end 
+  end
   end
 
   def default_eventful(date)

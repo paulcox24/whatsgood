@@ -57,7 +57,8 @@ class EventsController < ApplicationController
                                     :rating, 
                                     :website, 
                                     :user_id,
-                                    :eventful_id)
+                                    :eventful_id,
+                                    :category_list)
     
   end
 

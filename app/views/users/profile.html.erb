@@ -1,9 +1,11 @@
 <div class="panel panel-default profile">
   <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left">Profile</h3>
-    <%= link_to edit_user_registration_path, class: "btn btn-primary pull-right" do %>
-      <i class="fa fa-pencil"> Edit Profile</i>
-    <% end %>
+    <% if current_user && current_user.id.to_s == params['user_id']%>
+      <%= link_to edit_user_registration_path, class: "btn btn-primary pull-right" do %>
+        <i class="fa fa-pencil"> Edit Profile</i>
+      <% end %>
+    <% end %>  
   </div>
   <div class="col-sm-4"><%= image_tag "icon-user-default.png", class: "img-responsive img-circle profile-photo centered"%></div>
   <div class="list-group col-sm-8 bio">
@@ -27,6 +29,16 @@
 
 <div class="page-header">
   <h3>Favorited Events </h3>
+  <div class="btn-group cat-boxes" id="cat-boxes" data-toggle="buttons">
+    <label class="btn btn-primary active">
+    <input type="radio" name="options" value="*"checked> All
+  </label>
+   <% @user.categories.each do |cat| %>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" value=".<%= cat.cat_id %>"checked> <%= cat.name %>
+    </label>
+  <% end %>
+</div>
 </div>
 
 <%= render partial: 'events/favorites', :locals => {:events => @user.events} %>

@@ -1,4 +1,5 @@
 <input type="hidden" name="page-number" value="1" id="page-number">
+<input type="hidden" value="<%= @result['page_count'] %>" id="total-pages">
 <input type="hidden" name="can-load-more" value="true" id="can-load-more">
 <input type="hidden" name="search-date" value="<%= @date %>" id="search-date">
 
@@ -15,19 +16,17 @@
       <%= render 'filter' %>
     <% end %>
 
-    <div class="stats"><h1>whatsgood</h1>
+    <!-- <div class="stats"><h1>whatsgood</h1>
       <ul>
-        <li>Total items: <%= @result['total_items'] %></li>
-        <li>Page Size: <%= @result['page_size'] %></li>
-        <li>Pages: <%= @result['page_count'] %></li>
-        <li>Page no: <%= @result['page_number'] %></li>
-        <li>Search time: <%= @result['search_time'].round(2) %> seconds</li>
+        <li>Total items: <%#= @result['total_items'] %></li>
+        <li>Page Size: <%#= @result['page_size'] %></li>
+        <li>Pages: <%#= @result['page_count'] %></li>
+        <li>Page no: <%#= @result['page_number'] %></li>
+        <li>Search time: <%#= @result['search_time'].round(2) %> seconds</li>
       </ul>  
-    </div>
+    </div> -->
   </div>
 </div>
-
-
 
 <script type="text/javascript">
   var handler = Gmaps.build('Google');
@@ -49,13 +48,12 @@
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(displayOnMap);
   });
-  //heart takes a min to load but it's thur
   function displayOnMap(position){
   var marker = handler.addMarker({
     picture: {url: "<%=image_path('heart30.png')%>", width: 30, height: 26},
     lat: position.coords.latitude,
     lng: position.coords.longitude,
-    infowindow: "<div style=background-color:yellow; margin:auto; padding:auto;><h6 style=padding: 1.25em;>You're Here, Zoom Out!</h6></div>"
+    infowindow: "<h6 style=padding: 1.25em;>You're Here, Zoom Out!</h6>"
   });
   handler.map.centerOn(marker);
   handler.getMap();
@@ -87,3 +85,6 @@
     handler.fitMapToBounds();
   });
 </script>
+
+
+

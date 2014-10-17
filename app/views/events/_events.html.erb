@@ -1,8 +1,8 @@
 <% if current_user %>
   <input type="hidden" name="current-user" value="<%= current_user.id %>" id="current-user">
 <% end %>  
-
 <div id="grid" class="row-fluid">
+  <% if events != false %>
 <% events.each do |event| %>
 
   <div class="col-sm-6 col-lg-4 event-item <%= category_class(event) %>" id=<%event['id']%>> 
@@ -34,14 +34,13 @@
           <%= sanitize event['venue_address'] %><br>
           <%= sanitize event['city_name'] %><br>
         </div>
-        
       </div>
 
       <div class="panel-footer">
         <div class="btn-group btn-group-justified pull-right">
           <div class="btn-group">
-            <button class="btn btn-danger" data-toggle="modal" data-target="#modal-<%= event['id'] %>">
-              Description
+            <button class="btn btn-danger" data-toggle="modal" data-target="#modal-<%= event['id'].gsub('@','') %>">
+              <i class="fa fa-search-plus"></i> More
             </button>
           </div>
           <div class="btn-group">
@@ -52,15 +51,16 @@
                 <% end %>
               <% else %>
                 <%= link_to user_events_path(current_user, event: {name: event['title'],
-                                                                   image_url: image_url,
-                                                                   start_time: event['start_time'],
-                                                                   stop_time: event['stop_time'],
-                                                                   venue_name: event['venue_name'],
-                                                                   venue_address: event['venue_address'],
-                                                                   city_name: event['city_name'],
-                                                                   website: event['url'],
-                                                                   eventful_id: event['id'],
-                                                                   description: (truncate(event['description'], length:1000))}),
+                                                                  category_list: category_class(event),
+                                                                  image_url: image_url,
+                                                                  start_time: event['start_time'],
+                                                                  stop_time: event['stop_time'],
+                                                                  venue_name: event['venue_name'],
+                                                                  venue_address: event['venue_address'],
+                                                                  city_name: event['city_name'],
+                                                                  website: event['url'],
+                                                                  eventful_id: event['id'],
+                                                                  description: (truncate(event['description'], length:1000))}),
                                                             method: :post, remote: true, class: "btn btn-primary fav" do %>
                   <i class="fa fa-star"></i> Favorite
                 <% end %>
@@ -77,35 +77,28 @@
     </div>
   </div>
 
-<!-- Modal for card back -->
-  <div class="modal fade" id="modal-<%= event['id'] %>" tabindex="-1" role="dialog">
-    <div class="panel panel-default modal-dialog">
-      <div class="panel-heading clearfix">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h3 class="panel-title">
-          <%= link_to (sanitize event['title']), event['url'] %>
-        </h3>
-      </div>
-      <div class="list-group">
-        <div class="list-group-item">
-          <div class="event-description-body">
-            <% if event['description'] %>
-              <p class="list-group-item-text"><%= sanitize event['description']%></p>
-            <% else %>
-              <p class="list-group-item-text">No Description for this event</p>  
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="panel-footer">
-        <button type="button" class="btn btn-danger btn-block" data-dismiss='modal'><i class="fa fa-close"></i>Close</button>
-      </div>
-    </div>
+<!-- Modal for full card -->
+  <div class="modal fade" id="modal-<%= event['id'].gsub('@','') %>" tabindex="-1" role="dialog">
+    <%= render partial: 'events/full_card', locals: {:event => event} %>
   </div>
 
 <% end %>
+<% else %>
+  <div class="panel panel-default no-results">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">No Results Found</h3>
+  </div>
+  <div class="panel-body">
+    <p>No results could be found, update your interests to find more of whatsgood around you.</p>
+  </div>
+  <div class="panel-footer">
+    <%= link_to edit_user_registration_path, class: "btn btn-primary pull-right" do %>
+      <i class="fa fa-pencil"> Update Interests</i>
+    <% end %>
+  </div>
+</div><% end %>
 </div>
-<div id="cards-bottom">&nbsp;</div>
+<div id="cards-bottom">&nbsp;<br></div>
 
 
     

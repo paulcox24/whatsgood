@@ -1,0 +1,63 @@
+
+<div class="modal-dialog"> 
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="panel-title">
+          <%= link_to (sanitize event.name), event.website %>
+        </h3>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="list-group no-margin">
+            <div class="list-group-item image-block no-border">
+              <div class="event-image">
+                <%= image_tag event.image_url, class: 'img img-responsive centered', alt: 'Oops no image' %>
+              </div>  
+            </div>
+            <div class="list-group-item no-border">
+              <% if event.stop_time %>
+                <div class="card-date"><%= event.start_time.strftime("%b %d") %> - 
+                <%= event.stop_time.strftime("%b %d") %></div>
+              <% else %>
+                <div class="card-date"><%= event.start_time.strftime("%a, %B %d, %l:%M %p")%></div>
+              <% end %>
+              <%= sanitize event.venue_name %><br>
+              <%= sanitize event.venue_address %><br>
+              <%= sanitize event.city_name %><br>
+            </div>
+          </div>
+        </div>  
+        <div class="col-sm-6">
+          <div class="list-group no-margin">
+            <div class="list-group-item no-border no-padding">
+              <span class="favorited-list"> Others who favorited this event</span>
+              <% event_favoritors(event.eventful_id).each do |user| %>
+                <a class="list-group-item no-border" href=<%= current_user ? user_profile_path(user) : new_user_session_path %> >
+                  <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
+                  <h4 class="list-group-item-heading"><%= user.first_name %> <%= user.last_name %></h4>
+                  <p class="list-group-item-text"><%= user.email %></p>
+                </a>
+              <% end %>
+            </div>
+          </div>  
+        </div>
+      </div>
+      <div class="list-group">
+        <div class="list-group-item full-card-description">
+          <% if event.description %>
+            <p class="list-group-item-text"><%= event.description %></p>
+          <% else %>
+            <p class="list-group-item-text">No Description for this event</p>  
+          <% end %>
+        </div>
+      </div>  
+      <div class="panel-footer">
+        <div class="btn-group btn-group-justified">
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

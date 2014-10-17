@@ -10,5 +10,11 @@ module StaticPagesHelper
     end 
   return category
   end
+
+  def event_favoritors(eventful)
+    events = Event.where(eventful_id: eventful)
+    event_favoritors_ids = events.map {|event| event.user_id }
+    @event_favoritors = User.find(event_favoritors_ids)
+  end  
   
 end
