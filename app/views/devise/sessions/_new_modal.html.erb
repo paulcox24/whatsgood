@@ -27,6 +27,7 @@
       </div>
       <div class="btn-group col-xs-6">
         <%= f.button :submit, "Sign in", class: 'btn btn-success btn-block' %>
+        <%= link_to "Sign In With Facebook", user_omniauth_authorize_path(:facebook) %>
       </div> 
 
     <% end %>
