@@ -62,3 +62,4 @@ gem 'eventfulapi'
 gem "font-awesome-rails"
 gem 'modernizr-rails'
 gem 'omniauth'
+gem 'omniauth-facebook'
