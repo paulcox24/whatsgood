@@ -8,7 +8,7 @@
     <% else %>
       <% if current_user && current_user.follows?(@user) %>
         <div id= "un-follow-box">
-          <%= link_to unfollow_path(user: @user), class: "btn btn-danger pull-right", id: "unfollow" do %>
+          <%= link_to unfollow_path(user: @user), remote: true, class: "btn btn-danger pull-right", id: "unfollow" do %>
             <i class="fa fa-close"> Unfollow</i>
           <% end %>
         </div>  
