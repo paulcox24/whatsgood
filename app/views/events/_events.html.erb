@@ -51,15 +51,16 @@
                 <% end %>
               <% else %>
                 <%= link_to user_events_path(current_user, event: {name: event['title'],
-                                                                   image_url: image_url,
-                                                                   start_time: event['start_time'],
-                                                                   stop_time: event['stop_time'],
-                                                                   venue_name: event['venue_name'],
-                                                                   venue_address: event['venue_address'],
-                                                                   city_name: event['city_name'],
-                                                                   website: event['url'],
-                                                                   eventful_id: event['id'],
-                                                                   description: (truncate(event['description'], length:1000))}),
+                                                                  category_list: category_class(event),
+                                                                  image_url: image_url,
+                                                                  start_time: event['start_time'],
+                                                                  stop_time: event['stop_time'],
+                                                                  venue_name: event['venue_name'],
+                                                                  venue_address: event['venue_address'],
+                                                                  city_name: event['city_name'],
+                                                                  website: event['url'],
+                                                                  eventful_id: event['id'],
+                                                                  description: (truncate(event['description'], length:1000))}),
                                                             method: :post, remote: true, class: "btn btn-primary fav" do %>
                   <i class="fa fa-star"></i> Favorite
                 <% end %>
