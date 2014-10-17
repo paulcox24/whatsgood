@@ -61,3 +61,4 @@ gem 'simplecov', :require => false, :group => :test
 gem 'eventfulapi'
 gem "font-awesome-rails"
 gem 'modernizr-rails'
+gem 'omniauth'
