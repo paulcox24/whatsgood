@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'categories/update_eventful_categories', as: 'update_categories'
 
   get 'socialization/follow', as: 'follow'
+  get 'socialization/unfollow', as: 'unfollow'
 
   resources :categories, only: [:destroy, :index]
 

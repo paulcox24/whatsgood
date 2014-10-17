@@ -1,13 +1,17 @@
 <div class="panel panel-default profile">
   <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left">Profile</h3>
-    <% if current_user && current_user.id.to_s == params['user_id']%>
+    <% if current_user && current_user == @user %>
       <%= link_to edit_user_registration_path, class: "btn btn-primary pull-right" do %>
         <i class="fa fa-pencil"> Edit Profile</i>
       <% end %>
     <% else %>
-      <%= link_to "Follow", follow_path(user: @user), class: "btn btn-primary pull-right" %>
-    <% end %>  
+      <% if current_user && current_user.follows?(@user) %>
+        <%= link_to "Unfollow", unfollow_path(user: @user), remote: true, class: "btn btn-primary pull-right" %>
+      <% else %>
+        <%= link_to "Follow", follow_path(user: @user), remote: true, class: "btn btn-primary pull-right" %>
+      <% end %>  
+    <% end %>
   </div>
   <div class="col-sm-4"><%= image_tag "icon-user-default.png", class: "img-responsive img-circle profile-photo centered"%></div>
   <div class="list-group col-sm-8 bio">

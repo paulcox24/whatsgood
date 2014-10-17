@@ -5,6 +5,6 @@ class SocializationController < ApplicationController
   end
 
   def unfollow
-    
+    current_user.unfollow!(User.find(params['user']))
   end
 end
