@@ -1,0 +1,4 @@
+$('#un-follow-box')
+  .html('<%= link_to follow_path(user: @user), remote: true, class: "btn btn-primary pull-right", id: "follow" do%><i class="fa fa-thumb-tack"> Follow</i><% end %>')
+  .attr('id', 'follow-box');
+
