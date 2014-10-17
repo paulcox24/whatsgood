@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end  
 
   def account_update_params
-    params.require(:user).permit(:is_admin, :first_name, :latitude, :longitude, :last_name, :address, :description, :email, :password, :password_confirmation, :current_password, :category_ids => [])
+    params.require(:user).permit(:is_admin, :first_name, :latitude, :longitude, :last_name, :address, :description, :email, :password, :password_confirmation, :current_password, :category_ids => [], :provider, :uid)
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014031708) do
+ActiveRecord::Schema.define(version: 20141017165211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20141014031708) do
     t.string   "image_url"
     t.integer  "user_id"
     t.string   "eventful_id"
+    t.string   "category_list"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
@@ -94,6 +95,8 @@ ActiveRecord::Schema.define(version: 20141014031708) do
     t.decimal  "latitude",               precision: 10, scale: 6
     t.decimal  "longitude",              precision: 10, scale: 6
     t.boolean  "is_admin",                                        default: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
