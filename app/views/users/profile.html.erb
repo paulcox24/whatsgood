@@ -7,13 +7,17 @@
       <% end %>
     <% else %>
       <% if current_user && current_user.follows?(@user) %>
-        <%= link_to unfollow_path(user: @user), class: "btn btn-danger pull-right", id: "follow" do %>
-          <i class="fa fa-close"> Unfollow</i>
+        <div id= "un-follow-box">
+          <%= link_to unfollow_path(user: @user), class: "btn btn-danger pull-right", id: "unfollow" do %>
+            <i class="fa fa-close"> Unfollow</i>
           <% end %>
+        </div>  
       <% else %>
-        <%= link_to follow_path(user: @user), class: "btn btn-primary pull-right", id: "follow" do%>
-          <i class="fa fa-thumb-tack"> Follow</i>
-        <% end %>
+        <div id= "follow-box">
+          <%= link_to follow_path(user: @user), remote: true, class: "btn btn-primary pull-right", id: "follow" do%>
+            <i class="fa fa-thumb-tack"> Follow</i>
+          <% end %>
+        </div>
       <% end %>  
     <% end %>
   </div>
