@@ -90,6 +90,13 @@ jQuery(function($) {
             url: '/static_pages/load_more_results',
             type: 'GET',
             success: function (result) {
+              $grid = $('#grid').imagesLoaded( function() {
+                $grid.isotope({
+                  // options
+                  itemSelector: '.event-item',
+                  layoutMode: 'masonry'
+                });
+              });
             },
             error: function () {
               $can_load_more.val("false");
