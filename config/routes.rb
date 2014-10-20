@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/load_more_results' => 'static_pages#load_more_results'
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations' , omniauth_callbacks: "omniauth_callbacks"}
   resources :users, :only => [:show, :index, :edit, :update, :destroy] do
     get '/profile', to: 'users#profile', as: :profile
     resources :events
