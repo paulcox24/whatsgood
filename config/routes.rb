@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, :only => [:show, :index, :edit, :update, :destroy] do
     get '/profile', to: 'users#profile', as: :profile
+    put '/profile', to: 'users#update'
     resources :events
   end  
     

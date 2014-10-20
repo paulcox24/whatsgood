@@ -75,17 +75,6 @@ ActiveRecord::Schema.define(version: 20141017172704) do
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
-<<<<<<< HEAD
-  create_table "interests", force: true do |t|
-    t.string   "interest_type"
-    t.string   "genre"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "interests", ["user_id"], name: "index_interests_on_user_id", using: :btree
-=======
   create_table "follows", force: true do |t|
     t.string   "follower_type"
     t.integer  "follower_id"
@@ -96,6 +85,16 @@ ActiveRecord::Schema.define(version: 20141017172704) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "interests", force: true do |t|
+    t.string   "interest_type"
+    t.string   "genre"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "interests", ["user_id"], name: "index_interests_on_user_id", using: :btree
 
   create_table "likes", force: true do |t|
     t.string   "liker_type"
@@ -118,7 +117,6 @@ ActiveRecord::Schema.define(version: 20141017172704) do
 
   add_index "mentions", ["mentionable_id", "mentionable_type"], name: "fk_mentionables", using: :btree
   add_index "mentions", ["mentioner_id", "mentioner_type"], name: "fk_mentions", using: :btree
->>>>>>> a6d74e3a285b77ff71cc073177ec9a15c2e46a99
 
   create_table "users", force: true do |t|
     t.string   "email",                                           default: "",    null: false
