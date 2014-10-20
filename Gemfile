@@ -37,6 +37,11 @@ gem 'devise'
 gem 'geocoder'
 gem 'gmaps4rails' 
 
+###### Picturzzz ####
+gem 'paperclip'
+gem 'cocaine'
+gem 'rmagick'
+
 gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'rails_12factor'

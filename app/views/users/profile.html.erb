@@ -21,7 +21,14 @@
       <% end %>  
     <% end %>
   </div>
-  <div class="col-sm-4"><%= image_tag "icon-user-default.png", class: "img-responsive img-circle profile-photo centered"%></div>
+  <div class="col-sm-4">
+    <% if @user.avatar? %>
+      <%= image_tag @user.avatar.url(:medium) %>
+    <% else %>
+      <%= image_tag "icon-user-default.png", class: "img-responsive img-circle profile-photo centered"%>
+    <% end %>
+  </div>
+
   <div class="list-group col-sm-8 bio">
     <div class="list-group-item">
       <p class="list-group-item-text">Name</p>
