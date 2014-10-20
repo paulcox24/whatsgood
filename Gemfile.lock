@@ -251,9 +251,9 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   modernizr-rails
-  paperclip
   omniauth
   omniauth-facebook
+  paperclip
   pg
   pry-nav
   pry-rails
