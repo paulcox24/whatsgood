@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20141017172704) do
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
+  create_table "interests", force: true do |t|
+    t.string   "interest_type"
+    t.string   "genre"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "interests", ["user_id"], name: "index_interests_on_user_id", using: :btree
+
   create_table "likes", force: true do |t|
     t.string   "liker_type"
     t.integer  "liker_id"
@@ -127,6 +137,10 @@ ActiveRecord::Schema.define(version: 20141017172704) do
     t.text     "description"
     t.decimal  "latitude",               precision: 10, scale: 6
     t.decimal  "longitude",              precision: 10, scale: 6
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.boolean  "is_admin",                                        default: false
     t.string   "provider"
     t.string   "uid"
@@ -146,7 +160,7 @@ ActiveRecord::Schema.define(version: 20141017172704) do
   add_index "venue_acts", ["venue_id"], name: "index_venue_acts_on_venue_id", using: :btree
 
   create_table "venues", force: true do |t|
-    t.text     "address"
+    t.text     "location"
     t.string   "name"
     t.text     "description"
     t.string   "venue_type"
@@ -158,6 +172,7 @@ ActiveRecord::Schema.define(version: 20141017172704) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "genre"
+    t.string   "address"
   end
 
 end
