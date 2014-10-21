@@ -6,7 +6,7 @@
     <% else %>
       <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
     <% end %>  
-    <h4 class="list-group-item-heading"><%= activity.owner.first_name + activity.owner.last_name %> <small><%= activity.owner.email %></small> </h4>
+    <h4 class="list-group-item-heading"><%= activity.owner.first_name + " " + activity.owner.last_name %> <small><%= activity.owner.email %></small> </h4>
     <p class="list-group-item-text"><%= render_activity activity, locals: {activity: activity} %></p>
   </a>
 <% end %>
