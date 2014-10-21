@@ -24,12 +24,17 @@ class User < ActiveRecord::Base
     self == user || self.is_admin
   end  
 
+  def picture_from_url(url)
+    self.picture = URI.parse(url)
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider 
       user.uid      = auth.uid
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
+      user.avatar = picture_from_url(url)
       user.save
     end
   end
