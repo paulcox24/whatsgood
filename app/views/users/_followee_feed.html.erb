@@ -10,3 +10,7 @@
     <p class="list-group-item-text"><%= render_activity activity, locals: {activity: activity} %></p>
   </a>
 <% end %>
+
+<% if activities == [] %>
+<p class="list-group-item no-border">No activity</p>
+<% end %>
