@@ -31,6 +31,17 @@ class User < ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.email = auth.info.email
+      #avatar photo
+      r = open(auth.info.image)
+      bytes = r.read
+      img = Magick::Image.from_blob(bytes).first
+      fmt = img.format
+      data=StringIO.new(bytes)
+      data.class.class_eval { attr_accessor :original_filename, :content_type }
+      data.original_filename = Time.now.to_i.to_s+"."+fmt
+      data.content_type='image.jpeg'
+      user.avatar = data
+
       user.save
     end
   end
