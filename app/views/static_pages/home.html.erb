@@ -28,63 +28,7 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  var handler = Gmaps.build('Google');
-  handler.buildMap({
-      internal: {id: 'multi_marks'},
-      provider: {
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        styles:  mapStyle
-      }
-    },
-    function(){
-      if(navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(displayOnMap);
-  });
-
-
-  var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: {id: 'multi_marks'} }, function(){
-  if(navigator.geolocation)
-    navigator.geolocation.getCurrentPosition(displayOnMap);
-  });
-  function displayOnMap(position){
-  var marker = handler.addMarker({
-    picture: {url: "<%=image_path('heart30.png')%>", width: 30, height: 26},
-    lat: position.coords.latitude,
-    lng: position.coords.longitude,
-    infowindow: "<h6 style=padding: 1.25em;>You're Here, Zoom Out!</h6>"
-  });
-  handler.map.centerOn(marker);
-  handler.getMap();
-  };
-
-  var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: {id: 'multi_marks'}}, function(){
-    var markers = handler.addMarkers(
-      <%=raw @hash.to_json%>
-    );
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
-
-  var mapStyle = [{"featureType":"landscape","stylers":[{"hue":"#F1FF00"},{"saturation":-27.4},{"lightness":9.4},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#0099FF"},{"saturation":-20},{"lightness":36.4},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#00FF4F"},{"saturation":0},{"lightness":0},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FFB300"},{"saturation":-38},{"lightness":11.2},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#00B6FF"},{"saturation":4.2},{"lightness":-63.4},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#9FFF00"},{"saturation":0},{"lightness":0},{"gamma":1}]}]
-
-  var handler = Gmaps.build('Google');
-  handler.buildMap({
-      internal: {id: 'multi_marks'},
-      provider: {
-        styles:    mapStyle
-      }
-    },
-    function(){
-    var markers = handler.addMarkers(
-      <%=raw @hash.to_json%>
-    );
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
-</script>
+<%= render partial: 'static_pages/mapjs' %>
 
 
 
