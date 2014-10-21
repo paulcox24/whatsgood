@@ -18,6 +18,7 @@ class EventsController < ApplicationController
     @event = @user.events.build(event_params)
 
     if @event.save
+      @event.create_activity :create, owner: current_user, parameters: {title: @event.name, start_time: @event.start_time}
       redirect_to user_profile_path(@user)
     else
       render :new
@@ -37,6 +38,7 @@ class EventsController < ApplicationController
 
   def destroy
 
+    @event.create_activity :destroy, owner: current_user, parameters: {title: @event.name, start_time: @event.start_time}
     @event.destroy if @event.user == current_user
     redirect_to user_profile_path(@user)
   end
