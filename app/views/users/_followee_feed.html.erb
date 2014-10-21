@@ -1,6 +1,4 @@
-<h1>All user feed</h1>
-
-<% @activities.each do |activity| %>
+<% activities.each do |activity| %>
   <a class="list-group-item" href=<%= current_user ? user_profile_path(activity.owner_id) : new_user_session_path %> >
     <small class="list-group-item-text pull-right"><%= activity.created_at.localtime.strftime("%a, %b %d, %l:%M %p")%></small>
     <% if activity.owner.avatar? %>
@@ -11,5 +9,4 @@
     <h4 class="list-group-item-heading"><%= activity.owner.first_name + activity.owner.last_name %> <small><%= activity.owner.email %></small> </h4>
     <p class="list-group-item-text"><%= render_activity activity, locals: {activity: activity} %></p>
   </a>
-  <%= activity.inspect %>
 <% end %>
