@@ -25,11 +25,12 @@ class User < ActiveRecord::Base
   end  
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    where("email = ? OR provider = ? AND uid = ? ", auth.info.email, auth.provider, auth.uid).first_or_create do |user|
       user.provider = auth.provider 
       user.uid      = auth.uid
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
+      user.email = auth.info.email
       user.save
     end
   end
