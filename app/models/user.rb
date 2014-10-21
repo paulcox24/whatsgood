@@ -30,9 +30,8 @@ class User < ActiveRecord::Base
       user.uid      = auth.uid
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-     # user.avatar = picture_from_url(auth.info.image)
       user.email = auth.info.email
-
+      #avatar photo
       r = open(auth.info.image)
       bytes = r.read
       img = Magick::Image.from_blob(bytes).first
@@ -42,7 +41,6 @@ class User < ActiveRecord::Base
       data.original_filename = Time.now.to_i.to_s+"."+fmt
       data.content_type='image.jpeg'
       user.avatar = data
-
 
       user.save
     end
