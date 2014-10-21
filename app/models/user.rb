@@ -24,10 +24,6 @@ class User < ActiveRecord::Base
     self == user || self.is_admin
   end  
 
-  def picture_from_url(url)
-    self.picture = URI.parse(url)
-  end
-
   def self.from_omniauth(auth)
     where("email = ? OR provider = ? AND uid = ? ", auth.info.email, auth.provider, auth.uid).first_or_create do |user|
       user.provider = auth.provider 
