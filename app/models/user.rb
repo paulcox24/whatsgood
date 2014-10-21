@@ -29,12 +29,25 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    where("email = ? OR provider = ? AND uid = ? ", auth.info.email, auth.provider, auth.uid).first_or_create do |user|
       user.provider = auth.provider 
       user.uid      = auth.uid
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.avatar = picture_from_url(url)
+     # user.avatar = picture_from_url(auth.info.image)
+      user.email = auth.info.email
+
+      r = open(auth.info.image)
+      bytes = r.read
+      img = Magick::Image.from_blob(bytes).first
+      fmt = img.format
+      data=StringIO.new(bytes)
+      data.class.class_eval { attr_accessor :original_filename, :content_type }
+      data.original_filename = Time.now.to_i.to_s+"."+fmt
+      data.content_type='image.jpeg'
+      user.avatar = data
+
+
       user.save
     end
   end
