@@ -34,7 +34,11 @@
               <span class="favorited-list"> Others who favorited this event</span>
               <% event_favoritors(event.eventful_id).each do |user| %>
                 <a class="list-group-item no-border" href=<%= current_user ? user_profile_path(user) : new_user_session_path %> >
-                  <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
+                  <% if user.avatar? %>
+                    <%= image_tag user.avatar.url(:medium), class: "img-responsive img-circle pull-left", alt: "icon-user-default.png" %>
+                  <% else %>
+                    <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
+                  <% end %> 
                   <h4 class="list-group-item-heading"><%= user.first_name %> <%= user.last_name %></h4>
                   <p class="list-group-item-text"><%= user.email %></p>
                 </a>
