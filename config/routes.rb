@@ -28,9 +28,6 @@ Rails.application.routes.draw do
     put '/profile', to: 'users#update'
     resources :events
   end  
-    
-  
-  resources :venues
   resources :acts
 
 
