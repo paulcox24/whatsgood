@@ -17,4 +17,4 @@
 
 coverage/
 .env
-public/system/users/avatars/
+/public/system/users/avatars/
