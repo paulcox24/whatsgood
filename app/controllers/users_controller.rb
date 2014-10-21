@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:user_id])
-    # binding.pry
+    @activities = PublicActivity::Activity.order('created_at desc').where(owner_id: @user.followees(User), owner_type: "User")
   end
 
   def edit

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include PublicActivity::StoreController
   require 'eventful/api'
 	require 'app_stats/stats'
   require 'csv'

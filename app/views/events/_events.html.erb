@@ -60,7 +60,7 @@
                                                                   city_name: event['city_name'],
                                                                   website: event['url'],
                                                                   eventful_id: event['id'],
-                                                                  description: (truncate(event['description'], length:1000))}),
+                                                                  description: (truncate(event['description'], length:800))}),
                                                             method: :post, remote: true, class: "btn btn-primary fav" do %>
                   <i class="fa fa-star"></i> Favorite
                 <% end %>

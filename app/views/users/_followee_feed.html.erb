@@ -1,0 +1,15 @@
+<% activities.each do |activity| %>
+  <a class="list-group-item" href=<%= current_user ? user_profile_path(activity.owner_id) : new_user_session_path %> >
+    <% if activity.owner.avatar? %>
+      <%= image_tag activity.owner.avatar.url(:medium), class: "img-responsive img-circle pull-left", alt: "icon-user-default.png" %>
+    <% else %>
+      <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
+    <% end %>  
+    <div class="list-group-item-text"><%= render_activity activity, locals: {activity: activity} %></div>
+    <small class="list-group-item-text"><strong><%= activity.owner.email %></strong> <%= time_ago_in_words activity.created_at%> ago</small>
+  </a>
+<% end %>
+
+<% if activities == [] %>
+<p class="list-group-item no-border">No activity</p>
+<% end %>
