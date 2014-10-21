@@ -50,16 +50,6 @@ ActiveRecord::Schema.define(version: 20141021173344) do
   add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
   add_index "categorizations", ["user_id"], name: "index_categorizations_on_user_id", using: :btree
 
-  create_table "event_acts", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "act_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "event_acts", ["act_id"], name: "index_event_acts_on_act_id", using: :btree
-  add_index "event_acts", ["event_id"], name: "index_event_acts_on_event_id", using: :btree
-
   create_table "events", force: true do |t|
     t.datetime "start_time"
     t.integer  "venue_id"
