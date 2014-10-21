@@ -1,13 +1,12 @@
 <% activities.each do |activity| %>
   <a class="list-group-item" href=<%= current_user ? user_profile_path(activity.owner_id) : new_user_session_path %> >
-    <small class="list-group-item-text pull-right"><%= activity.created_at.localtime.strftime("%a, %b %d, %l:%M %p")%></small>
     <% if activity.owner.avatar? %>
       <%= image_tag activity.owner.avatar.url(:medium), class: "img-responsive img-circle pull-left", alt: "icon-user-default.png" %>
     <% else %>
       <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
     <% end %>  
-    <h4 class="list-group-item-heading"><%= activity.owner.first_name + " " + activity.owner.last_name %> <small><%= activity.owner.email %></small> </h4>
-    <p class="list-group-item-text"><%= render_activity activity, locals: {activity: activity} %></p>
+    <div class="list-group-item-text"><%= render_activity activity, locals: {activity: activity} %></div>
+    <small class="list-group-item-text"><strong><%= activity.owner.email %></strong> <%= time_ago_in_words activity.created_at%> ago</small>
   </a>
 <% end %>
 
