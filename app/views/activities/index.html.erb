@@ -1,0 +1,17 @@
+<h1>All user feed</h1>
+
+<% @activities.each do |activity| %>
+<% if activity.owner %>
+  <a class="list-group-item no-border" href=<%= current_user ? user_profile_path(activity.owner_id) : new_user_session_path %> >
+    <% if activity.owner.avatar? %>
+      <%= image_tag activity.owner.avatar.url(:medium), class: "img-responsive img-circle pull-left", alt: "icon-user-default.png" %>
+    <% else %>
+      <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
+    <% end %>  
+    <h4 class="list-group-item-heading"><%= activity.owner.first_name + activity.owner.last_name %> <small><%= activity.owner.email %></small> </h4>
+    <p class="list-group-item-text"><%= render_activity activity, locals: {activity: activity} %></p>
+  </a>
+<% else %>
+  <%= activity.inspect %>
+<% end %>
+<% end %>
