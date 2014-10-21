@@ -23,7 +23,7 @@
   </div>
   <div class="col-sm-4">
     <% if @user.avatar? %>
-      <%= image_tag @user.avatar.url(:medium) %>
+      <%= image_tag @user.avatar.url(:medium), class: "img-responsive img-circle profile-photo centered" %>
     <% else %>
       <%= image_tag "icon-user-default.png", class: "img-responsive img-circle profile-photo centered"%>
     <% end %>
@@ -47,7 +47,11 @@
       <p class="list-group-item-text">Following</p>
       <% @user.followees(User).each do |followee| %>
         <a class="list-group-item no-border" href=<%= current_user ? user_profile_path(followee) : new_user_session_path %> >
-                  <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
+                  <% if followee.avatar? %>
+                      <%= image_tag followee.avatar.url(:medium), class: "img-responsive img-circle pull-left", alt: "icon-user-default.png" %>
+                    <% else %>
+                      <%= image_tag "icon-user-default.png", class: "img-circle pull-left"%>
+                    <% end %> 
                   <h4 class="list-group-item-heading"><%= followee.first_name %> <%= followee.last_name %></h4>
                   <p class="list-group-item-text"><%= followee.email %></p>
                 </a>
