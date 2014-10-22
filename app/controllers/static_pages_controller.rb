@@ -50,6 +50,12 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
+  def email
+    UserMailer.contact_email(params[:email]).deliver
+
+    redirect_to '/static_pages/contact', notice: "Message Sent"
+  end
+
   def load_more_results()
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
     @result = eventful.call 'events/search',

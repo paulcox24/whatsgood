@@ -1,10 +1,40 @@
-<h1>Send Email</h1>
-<%= start_form_tag :action => 'sendmail' %>
-<p><label for="email_subject">Subject</label>:
-<%= text_field 'email', 'subject' %></p>
-<p><label for="email_recipient">Recipient</label>:
-<%= text_field 'email', 'recipient' %></p>
-<p><label for="email_message">Message</label><br/>
-<%= text_area 'email', 'message' %></p>
-<%= submit_tag "Send" %>
-<%= end_form_tag %>
+
+
+<!-- Password: <input type="text" name="password" />
+
+<input type="submit" value="Send" /> -->
+<%= form_for :email, :url => { :action => "email" }  do |f|  %>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">Form Card Title</h3>
+    <div class="btn-group pull-right">
+      <button class="btn btn-danger">
+        <i class="fa fa-times"></i>
+        Cancel
+      </button>
+      <%= f.submit "Send", class: "btn btn-success" %>
+    </div>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="col-xs-3 control-label">Your Name</label>
+        <div class="col-xs-9">
+          <%= f.text_field  :name, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 control-label">Your Message</label>
+        <div class="col-xs-9">
+          <%= f.text_area  :message, class: "form-control" %>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="panel-footer">
+    <small>Built with Bootcards - Form Card</small>
+  </div>
+</div>
+ <%end%>
+
+
