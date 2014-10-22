@@ -6,7 +6,6 @@
 <div class='row'>
   <div class="events-list col-xs-12 col-md-7 col-lg-8">
     <%= render partial: 'events/events', :locals => {:events => @events} %>
-    <h2 id="loading-status" class="pager"></h2>
   </div>
   <div class='allmaps col-md-5 col-lg-4 visible-md-block visible-lg-block'>
     <div id="multi_marks"></div>
@@ -14,6 +13,11 @@
     <% if current_user %>
       <%= render 'filter' %>
     <% end %>
+    <div class="eventful-badge eventful-large">
+      <img src="http://api.eventful.com/images/powered/eventful_139x44.gif"
+        alt="Local Events, Concerts, Tickets">
+      <p><a href="http://eventful.com/">Events</a> by Eventful</p>
+    </div>
 
     <!-- <div class="stats"><h1>whatsgood</h1>
       <ul>

@@ -84,13 +84,14 @@ jQuery(function($) {
         if($bottom_screen.isOnScreen()) {
         if ($can_load_more.val() == "true" && parseInt($page_number.val())+1 <= parseInt($total_pages.val())){
         $can_load_more.val("false");
-        $loading_status.text("loading more...");
+        $loading_status.show();
         $.ajax({
             data: {'page_number': parseInt($page_number.val())+1, 'search_date': $('#search-date').val() },
             url: '/static_pages/load_more_results',
             type: 'GET',
             success: function (result) {
               $grid = $('#grid').imagesLoaded( function() {
+                $loading_status.hide();
                 $grid.isotope({
                   // options
                   itemSelector: '.event-item',

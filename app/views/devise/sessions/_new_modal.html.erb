@@ -6,6 +6,9 @@
   </div>  
   <div class="panel-body">
       <div class="container-fluid">  
+        <%= link_to user_omniauth_authorize_path(:facebook), class: "pull-right" do %>
+          <i class="fa fa-facebook-square"></i> Sign In With Facebook
+        <% end %>
         <div class="form-group form-group-lg">
           <div>
             <%= f.text_field :email, class: "form-control", required: false, autofocus: true, placeholder: 'Email'%>
@@ -15,7 +18,6 @@
         <div class="form-group form-group-lg">
           <div>
             <%= f.password_field :password, class: 'form-control', autocomplete: "off", required: false, placeholder: 'Password' %>
-            <%= link_to "Sign In With Facebook", user_omniauth_authorize_path(:facebook) %>
             <%= link_to "Forgot your password?", new_password_path(resource), class: "pull-right"%>
             </br></br>
           </div>
