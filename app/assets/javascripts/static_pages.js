@@ -55,27 +55,36 @@ $(document).ready(function() {
     bounds.bottom = bounds.top + this.outerHeight();  
     return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));  
   };
-//   var options = {
-//     enableHighAccuracy: true,
-//     maximumAge: 0
-//   };
 
-//   function success(pos) {
-//     var coord = pos.coords;
-//     console.log(coord.latitude);
-//     console.log(coord.longitude);
-//     $('.events-list').removeClass('hidden'); 
+  // Location button
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 20000,
+    maximumAge: 900000
+  };
 
-//   };
+  function success(pos) {
+    var coord = pos.coords;
+    console.log(coord.latitude);
+    console.log(coord.longitude);
+    $.ajax({
+      type: 'GET',
+      url: '/static_pages/get_current_location',
+      data: {latitude: coord.latitude, longitude: coord.longitude},
+      success: function () { location.reload(); }
+    });
+  };
 
-//   function error(err) {
-//     console.warn('ERROR(' + err.code + '): ' + err.message);
-//   };
+  function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  };
  
-//   $('#good_button').click(function(){
-//     navigator.geolocation.getCurrentPosition(success, error, options);
-//     console.log('this worked');
-//   });
+  $('#good-button').click(function(){
+    navigator.geolocation.getCurrentPosition(success, error, options);
+    console.log('this worked');
+    var btn = $(this);
+    btn.button('loading');
+  });
 
   
 jQuery(function($) {

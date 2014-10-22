@@ -5,31 +5,19 @@ class StaticPagesController < ApplicationController
   
   def home
     @date = 'Future'
-    if current_user
-      user_eventful(@date)
-    else
-      default_eventful(@date)
-    end 
-   make_map(@events)
+    get_eventful(@date)
+    make_map(@events)
   end
 
   def today
     @date = 'Today'
-    if current_user
-      user_eventful(@date)
-    else
-      default_eventful(@date)
-    end 
+    get_eventful(@date)
     make_map(@events)
   end
 
   def this_week
     @date = "This Week"
-    if current_user
-      user_eventful(@date)
-    else
-      default_eventful(@date)
-    end 
+    get_eventful(@date)
     make_map(@events)
   end  
 
@@ -66,13 +54,20 @@ class StaticPagesController < ApplicationController
       #@test = params[:name]
   end
 
+  def get_current_location
+    @hello ='Hellod'
+    @lat = params['latitude']
+    @long = params['longitude']
+    session[:current_location] = "#{@lat},#{@long}"
+  end
+
   private
-  def get_eventful(latlong, categories=nil, date=nil)
+  def get_eventful(date=nil)
     begin
       eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
       @result = eventful.call 'events/search',
-            :category => categories,
-            :location => latlong,
+            :category => get_categories,
+            :location => get_location,
             :within => 10,
             :date => date,
             :image_sizes => 'perspectivecrop290by250',
@@ -113,7 +108,11 @@ class StaticPagesController < ApplicationController
   end  
 
   def get_location
-    current_user ? "#{current_user.latitude},#{current_user.longitude}" : CITY
+    if session[:current_location]
+      session[:current_location]
+    else
+      current_user ? "#{current_user.latitude},#{current_user.longitude}" : CITY
+    end  
   end  
 
 end

@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
+      <button type="button" id="good-button" class="btn btn-danger navbar-btn" data-loading-text="Locating...">Update location</button>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -21,6 +22,7 @@
         </li>
         <li><%= link_to 'Today', static_pages_today_path %></li>
         <li><%= link_to 'This Week', static_pages_this_week_path %></li>
+
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<span class="caret"></span></a>
