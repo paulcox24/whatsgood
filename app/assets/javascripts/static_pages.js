@@ -55,6 +55,8 @@ $(document).ready(function() {
     bounds.bottom = bounds.top + this.outerHeight();  
     return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));  
   };
+
+  // Location button
   var options = {
     enableHighAccuracy: true,
     timeout: 20000,
