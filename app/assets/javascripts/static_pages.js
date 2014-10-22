@@ -57,7 +57,8 @@ $(document).ready(function() {
   };
   var options = {
     enableHighAccuracy: true,
-    maximumAge: 0
+    timeout: 20000,
+    maximumAge: 900000
   };
 
   function success(pos) {
