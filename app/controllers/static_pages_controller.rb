@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   CATEGORIES = 'music,comedy,sports'
-  CITY ='10009'
+  CITY ='Salt Lake City'
   
   def home
     @date = 'Future'
