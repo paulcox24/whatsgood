@@ -82,6 +82,15 @@ input{
   margin: 15px;
 }
 
+.feed {
+  overflow: auto;
+}
+
+.following{
+  max-height: 286px;
+  overflow: auto;
+}
+
 .login {
   max-width: 480px;
 }

@@ -45,7 +45,7 @@
             <div class="btn btn-default disabled"><%= category.name.titleize %></div>
           <% end %>
         </div>
-        <div class="list-group-item">
+        <div class="list-group-item following">
           <p class="list-group-item-text">Following</p>
           <% @user.followees(User).each do |followee| %>
             <a class="list-group-item no-border" href=<%= current_user ? user_profile_path(followee) : new_user_session_path %> >
@@ -69,12 +69,11 @@
       <div class="panel-heading clearfix">
         <h3 class="panel-title pull-left">News feed</h3>
       </div>  
-        <%= render partial: 'users/followee_feed', locals: {activities: @activities} %>
+        <div class="feed"><%= render partial: 'users/followee_feed', locals: {activities: @activities} %></div>
     </div>
   </div>
 </div>
 
-<div class="page-header">
   <h3>Favorited Events </h3>
   <div class="btn-group cat-boxes" id="cat-boxes" data-toggle="buttons">
     <label class="btn btn-primary active">
@@ -86,7 +85,6 @@
       </label>
     <% end %>
   </div>
-</div>
 
 
 <%= render partial: 'events/favorites', :locals => {:events => @user.events} %>
