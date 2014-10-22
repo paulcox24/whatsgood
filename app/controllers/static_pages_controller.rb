@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   CATEGORIES = 'music,comedy,sports'
-  CITY ='Salt Lake City'
+  CITY ='10009'
   
   def home
     @date = 'Future'
@@ -54,6 +54,14 @@ class StaticPagesController < ApplicationController
       #@test = params[:name]
   end
 
+  def get_current_location
+    @hello ='Hellod'
+    @lat = params['latitude']
+    @long = params['longitude']
+    session[:current_location] = "#{@lat},#{@long}"
+    redirect_to root_path
+  end
+
   private
   def get_eventful(date=nil)
     begin
@@ -101,7 +109,11 @@ class StaticPagesController < ApplicationController
   end  
 
   def get_location
-    current_user ? "#{current_user.latitude},#{current_user.longitude}" : CITY
+    if session[:current_location]
+      session[:current_location]
+    else
+      current_user ? "#{current_user.latitude},#{current_user.longitude}" : CITY
+    end  
   end  
 
 end
