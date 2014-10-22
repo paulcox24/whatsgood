@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'static_pages/load_more_results' => 'static_pages#load_more_results'
 
+  get 'static_pages/get_current_location'
+
   devise_for :users, :controllers => { registrations: 'registrations' , omniauth_callbacks: "omniauth_callbacks"}
   resources :users, :only => [:show, :index, :edit, :update, :destroy] do
     get '/profile', to: 'users#profile', as: :profile
