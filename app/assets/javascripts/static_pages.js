@@ -67,7 +67,8 @@ $(document).ready(function() {
     $.ajax({
       type: 'GET',
       url: '/static_pages/get_current_location',
-      data: {latitude: coord.latitude, longitude: coord.longitude}
+      data: {latitude: coord.latitude, longitude: coord.longitude},
+      success: function () { location.reload(); }
     });
   };
 
@@ -78,6 +79,8 @@ $(document).ready(function() {
   $('#good-button').click(function(){
     navigator.geolocation.getCurrentPosition(success, error, options);
     console.log('this worked');
+    var btn = $(this);
+    btn.button('loading');
   });
 
   

@@ -59,7 +59,6 @@ class StaticPagesController < ApplicationController
     @lat = params['latitude']
     @long = params['longitude']
     session[:current_location] = "#{@lat},#{@long}"
-    redirect_to root_path
   end
 
   private
