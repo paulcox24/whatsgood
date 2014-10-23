@@ -6,12 +6,8 @@
 <%= form_for :email, :url => { :action => "email" }  do |f|  %>
 <div class="panel panel-default">
   <div class="panel-heading clearfix">
-    <h3 class="panel-title pull-left">Form Card Title</h3>
+    <h3 class="panel-title pull-left">Contact Us</h3>
     <div class="btn-group pull-right">
-      <button class="btn btn-danger">
-        <i class="fa fa-times"></i>
-        Cancel
-      </button>
       <%= f.submit "Send", class: "btn btn-success" %>
     </div>
   </div>
@@ -24,6 +20,18 @@
         </div>
       </div>
       <div class="form-group">
+        <label class="col-xs-3 control-label">Your Email</label>
+        <div class="col-xs-9">
+          <%= f.text_field  :email, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-xs-3 control-label">Subject</label>
+        <div class="col-xs-9">
+          <%= f.text_field  :subject, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
         <label class="col-xs-3 control-label">Your Message</label>
         <div class="col-xs-9">
           <%= f.text_area  :message, class: "form-control" %>
@@ -32,7 +40,7 @@
     </form>
   </div>
   <div class="panel-footer">
-    <small>Built with Bootcards - Form Card</small>
+    <small>whatsgoodaroundme@gmail.com</small>
   </div>
 </div>
  <%end%>

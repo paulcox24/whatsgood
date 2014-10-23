@@ -51,9 +51,14 @@ class StaticPagesController < ApplicationController
   end
 
   def email
-    UserMailer.contact_email(params[:email]).deliver
-
-    redirect_to '/static_pages/contact', notice: "Message Sent"
+    email = params[:email]
+    if(email[:name] != nil && email[:subject] != nil && email[:email] != nil && email[:message] != nil)
+      UserMailer.contact_email(email).deliver
+      redirect_to '/static_pages/contact', notice: "Message Sent"
+    else
+      redirect_to '/static_pages/contact', notice: "All Fields Must Be Complete"
+    end
+    
   end
 
   def load_more_results()
