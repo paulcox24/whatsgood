@@ -52,7 +52,7 @@ class StaticPagesController < ApplicationController
 
   def email
     email = params[:email]
-    if(email[:name] != nil && email[:subject] != nil && email[:email] != nil && email[:message] != nil)
+    if((email[:name] != "") && (email[:subject] != "") && (email[:email] != "") && (email[:message] != ""))
       UserMailer.contact_email(email).deliver
       redirect_to '/static_pages/contact', notice: "Message Sent"
     else
