@@ -7,4 +7,9 @@ class UserMailer < ActionMailer::Base
   	@message = email[:message] 
   	mail(to: 'whatsgoodaroundme@gmail.com', subject: "WHATSGOOD:" + email[:subject])
   end
+
+  def contact_confirm(email)
+  	@name = email[:name]
+  	mail(to: email[:email], subject: "whatsgood.")
+  end
 end

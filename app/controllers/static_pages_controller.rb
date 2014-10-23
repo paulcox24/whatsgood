@@ -54,6 +54,7 @@ class StaticPagesController < ApplicationController
     email = params[:email]
     if((email[:name] != "") && (email[:subject] != "") && (email[:email] != "") && (email[:message] != ""))
       UserMailer.contact_email(email).deliver
+      UserMailer.contact_confirm(email).deliver
       redirect_to '/static_pages/contact', notice: "Message Sent"
     else
       redirect_to '/static_pages/contact', notice: "All Fields Must Be Complete"
