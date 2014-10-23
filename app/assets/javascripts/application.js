@@ -19,7 +19,9 @@
 //= require isotope.pkgd.min
 //= require imagesloaded.pkgd.min
 $(document).ready(function() {
-
+	setTimeout(function(){
+	   $('.alert').slideUp('slow');
+	 }, 5000);
  
 });
 
