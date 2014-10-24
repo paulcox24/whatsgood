@@ -73,4 +73,4 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "socialization"
 gem 'public_activity'
-gem 'kaminari'
+gem 'will_paginate'
