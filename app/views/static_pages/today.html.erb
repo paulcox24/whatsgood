@@ -4,6 +4,11 @@
 <input type="hidden" name="search-date" value="<%= @date %>" id="search-date">
 
 <div class='row'>
+  <div class="visible-sm-block visible-xs-block">
+    <% if current_user %>
+      <%= render 'filter' %>
+    <% end %>
+  </div>
   <div class="events-list col-xs-12 col-md-7 col-lg-8">
     <%= render partial: 'events/events', :locals => {:events => @events}  %>
   </div>
