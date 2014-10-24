@@ -1,18 +1,11 @@
 $(document).ready(function() {
+  var $feed_can_load_more = $("#feed-can-load-more");
+
 	jQuery(function($) {
   $(this).bind('scroll', function() {
-    if ($(".pagination").isOnScreen()) {
-
-      var $next=$('.pagination .next_page a')
-         $.getScript($next.attr('href'), function(){
-              /* script has loaded*/
-              $next.attr('href', function(i, currHref){
-                 return currHref.replace(/(?!page\=)(\d)/, function(match){
-                        return parseInt(match,10)+1;
-                   });
-              });
-         });
-      
+    if ($('.pagination').length && $feed_can_load_more.val() == "true" && $(".pagination").isOnScreen()) {
+      $feed_can_load_more.val("false");
+      $.getScript($('.pagination .next_page').attr('href'));
     };
 
   });

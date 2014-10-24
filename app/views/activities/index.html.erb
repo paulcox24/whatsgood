@@ -1,11 +1,10 @@
+<input type="hidden" value="true" id="feed-can-load-more">
 <div class="panel-default container" id="feed">
   <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left">News feed</h3>
   </div>  
   <div id="activities">
   <%= render @activities %>
-</div>
-  <div class="pagination">
-    <%= paginate @activities %>
   </div>
+    <%= will_paginate @activities %>
 </div>
