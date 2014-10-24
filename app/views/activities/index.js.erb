@@ -3,5 +3,6 @@ $("#activities").append("<%= j render(@activities) %>");
 $('.pagination').replaceWith('<%= j will_paginate(@activities) %>');
 <% else %>
 $('.pagination').remove();
+$('.spinner').remove();
 <% end %>
 $("#feed-can-load-more").val("true");
