@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:user_id])
-    @activities = PublicActivity::Activity.order('created_at desc').where(owner_id: @user.followees(User), owner_type: "User")
+    @activities = PublicActivity::Activity.order('created_at desc').where(owner_id: @user.followees(User), owner_type: "User").page(params[:page]).per_page(10)
   end
 
   def edit

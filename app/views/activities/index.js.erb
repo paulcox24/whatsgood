@@ -1,0 +1,8 @@
+$("#activities").append("<%= j render(@activities) %>");
+<% if @activities.next_page %>
+$('.pagination').replaceWith('<%= j will_paginate(@activities) %>');
+<% else %>
+$('.pagination').remove();
+$('.spinner').remove();
+<% end %>
+$("#feed-can-load-more").val("true");
