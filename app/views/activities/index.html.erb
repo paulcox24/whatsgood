@@ -1,4 +1,4 @@
-<div class="panel-default container">
+<div class="panel-default container" id="feed">
   <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left">News feed</h3>
   </div>  
@@ -13,4 +13,5 @@
       <small class="list-group-item-text"><strong><%= activity.owner.email %></strong> <%= time_ago_in_words activity.created_at%> ago</small>
     </a>
   <% end %>
+  <%= paginate @activities %>
 </div>

@@ -18,7 +18,6 @@
 //= require gmaps/google
 //= require isotope.pkgd.min
 //= require imagesloaded.pkgd.min
-//= require jquery.infinitescroll
 $(document).ready(function() {
 	setTimeout(function(){
 	   $('.alert').slideUp('slow');
