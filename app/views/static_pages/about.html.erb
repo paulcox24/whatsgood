@@ -1,23 +1,37 @@
 <div class='white'>
-  <h1>What's good about whatsgood</h1>
-
-  <h3><%= @lines_of_code %> lines of code in the app</h3>
-
-  <h3>Has Many Relationships</h3>
-  <ul>
-    <% @has_many_data.each do |stat| %>
-      <li> <%= stat %></li>
-    <% end %>
-  </ul>
-
-  <h3>Files sorted by lines of code</h3>
-  <div class='files-by-loc'>
-    <ul>
-      <% @files_by_lines_of_code.each do |file| %>
-        <li> <%= file %></li>
-      <% end %>
-    </ul>
+  <h1 class="pager">whatsgood</h1>
+<!-- All team members with descriptions and contact/social info. -->
+<!-- story behind the app -->
+<!-- Tech used in the App -->
+  <div class="row">
+    <div class="col-xs-4">
+      <h4>Gems</h4>
+      <ul class="list-inline">
+        <% @gems_used.each do |_gem| %>
+          <li> <%= _gem %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-4">
+      <h4>APIs</h4>
+        <ul class="list-inline">
+          <% @apis_used.each do |_api| %>
+            <li> <%= _api %></li>
+          <% end %>
+        </ul>
+    </div>
+    <div class="col-xs-4">
+      <h4>Javascript</h4>
+        <ul class="list-inline">
+          <% @js_used.each do |_js| %>
+            <li> <%= _js %></li>
+          <% end %>
+        </ul>
+    </div>
   </div>
 
-  <%= link_to 'Export to CSV', about_path(format: :csv), class: "btn btn-primary" %>
+  <!-- link to devpoint -->
+  <div class="dpl-link centered">
+    <%= link_to image_tag('DPL-navbar-purple.gif', alt: "DevPoint Labs", class: "img-responsive"), 'http://www.devpointlabs.com/'%>
+  </div>
 </div>
