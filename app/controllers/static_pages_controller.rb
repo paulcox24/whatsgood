@@ -22,9 +22,16 @@ class StaticPagesController < ApplicationController
   end  
 
   def about
+    @gems_used = ['Devise','Geocoder','Gmaps4rails','Paperclip','Bootstrap','App_stats (custom gem)','Eventfulapi','Omniauth',"Socialization",'Public_activity'].sort
+    @apis_used = ['Facebook','GoogleMaps','Eventful','HTML5 Geolocation']
+    @js_used = ['Bootcards','Isotope','jQuery','Underscore']
+  end
+
+  def stats
     @has_many_data = AppStats.get_has_many_relationships
     @lines_of_code = AppStats.get_lines_of_code
     @files_by_lines_of_code = AppStats.sort_by_lines_of_code
+    
 
     respond_to do |format|
       format.html
@@ -33,7 +40,7 @@ class StaticPagesController < ApplicationController
           headers['Content-Type'] ||= 'text/csv'
       end
     end
-  end
+  end  
 
   def contact
   end

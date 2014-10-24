@@ -1,23 +1,125 @@
-<div class='white'>
-  <h1>What's good about whatsgood</h1>
-
-  <h3><%= @lines_of_code %> lines of code in the app</h3>
-
-  <h3>Has Many Relationships</h3>
-  <ul>
-    <% @has_many_data.each do |stat| %>
-      <li> <%= stat %></li>
-    <% end %>
-  </ul>
-
-  <h3>Files sorted by lines of code</h3>
-  <div class='files-by-loc'>
-    <ul>
-      <% @files_by_lines_of_code.each do |file| %>
-        <li> <%= file %></li>
-      <% end %>
-    </ul>
+<div class='white container'>
+  <h1 class="pager">whatsgood</h1>
+  <!-- All team members with descriptions and contact/social info. -->
+  <hr>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="about-photo">
+        <%= image_tag 'paul.jpg', alt: 'oops should be Paul', class: "img-responsive img-circle" %>
+        <h3 style="text-align: center">Paul Cox</h3>
+        <p>
+          Financial Analyst turned coder. Rails guy. Gym addicted. New to development but eager to learn. Exctied about creating apps that are intuitive and aesthetically pleasing.
+        </p>
+        <ul class="list-unstyled about-list">
+          <li>
+            <%= mail_to 'paulcox24@gmail.com' do %>
+              <i class="fa fa-laptop">&nbsp; paulcox24@gmail.com</i> 
+              <% end %>
+          </li>
+          <li><i class="fa fa-phone"></i>&nbsp; 801.671.4065</li>
+          <li>
+            <%= link_to 'https://github.com/paulcox24' do %>
+              <i class="fa fa-github">&nbsp; github.com/paulcox24</i> 
+              <% end %>
+          </li>
+          <li>
+            <%= link_to 'https://twitter.com/paulcox24' do %>
+              <i class="fa fa-twitter">&nbsp; @paulcox24</i> 
+              <% end %>
+          </li>
+        </ul>  
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="about-photo">
+        <%= image_tag 'derek.jpg', alt: 'oops should be Derek', class: "img-responsive img-circle" %>
+        <h3 style="text-align: center">Derek Dapp</h3>
+        <p>Derek is awesome</p>
+        <ul class="list-unstyled about-list">
+          <li>
+            <%= mail_to 'derekdapp@gmail.com' do %>
+              <i class="fa fa-laptop">&nbsp; derekdapp@gmail.com</i> 
+              <% end %>
+          </li>
+          <li><i class="fa fa-phone"></i>&nbsp; 801.513.0710</li>
+          <li>
+            <%= link_to 'https://github.com/derekdapp' do %>
+              <i class="fa fa-github">&nbsp; github.com/derekdapp</i> 
+              <% end %>
+          </li>
+          <li>
+            <%= link_to 'https://twitter.com/derkydapp' do %>
+              <i class="fa fa-twitter">&nbsp; @derkydapp</i> 
+              <% end %>
+          </li>
+        </ul>  
+      </div>      
+    </div>
+    <div class="col-sm-4">
+      <div class="about-photo">
+        <%= image_tag 'mike.jpg', alt: 'oops should be Mike', class: "img-responsive img-circle" %>
+        <h3 style="text-align: center">Mike Russell</h3>
+        <p>Mike is awesome</p>
+        <ul class="list-unstyled about-list">
+          <li>
+            <%= mail_to 'mikedjrussell@gmail.com' do %>
+              <i class="fa fa-laptop">&nbsp; mikedjrussell@gmail.com</i> 
+              <% end %>
+          </li>
+          <li><i class="fa fa-phone"></i>&nbsp; 702.354.0725</li>
+          <li>
+            <%= link_to 'https://github.com/djmrr' do %>
+              <i class="fa fa-github">&nbsp; github.com/djmrr</i> 
+              <% end %>
+          </li>
+          <li>
+            <%= link_to 'https://twitter.com/_buddy' do %>
+              <i class="fa fa-twitter">&nbsp; @_buddy</i> 
+              <% end %>
+          </li>
+        </ul>  
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- story behind the app -->
+  <div class="centered about">
+    <div class="story">
+      <p><strong>whatsgood</strong> is the brainchild of students of the DevPoint Labs Fall 2014 cohort.<p> <p>The idea originated as an answer to the question <strong>"What do people do for fun around here?"</strong>. The goal of whatsgood is to give a quick look at events you're interested in. Login, set some categories you have interest in and the app will quickly tell you whats going on today, this week, and in the future.</p> <p>That band you like is having a concert tonight, an arts festival is soon, that play you heard about is this week, no longer will you miss out on whatsgood around you.</p>
+    </div>
+  </div>  
+  <hr>
+  <!-- Tech used in the App -->
+  <div class="row centered about">
+    <div class="col-xs-4">
+      <h4>Gems</h4>
+      <ul class="list-inline">
+        <% @gems_used.each do |_gem| %>
+          <li> <%= _gem %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-4">
+      <h4>APIs</h4>
+        <ul class="list-inline">
+          <% @apis_used.each do |_api| %>
+            <li> <%= _api %></li>
+          <% end %>
+        </ul>
+    </div>
+    <div class="col-xs-4">
+      <h4>Javascript</h4>
+        <ul class="list-inline">
+          <% @js_used.each do |_js| %>
+            <li> <%= _js %></li>
+          <% end %>
+        </ul>
+    </div>
   </div>
 
-  <%= link_to 'Export to CSV', about_path(format: :csv), class: "btn btn-primary" %>
+  <!-- link to devpoint -->
+  <div class="dpl-link centered">
+    <%= link_to image_tag('DPL-navbar-purple.gif', alt: "DevPoint Labs", class: "img-responsive"), 'http://www.devpointlabs.com/'%>
+  </div>
+  <br>
 </div>

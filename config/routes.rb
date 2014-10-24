@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   get 'static_pages/today'
 
+  get 'static_pages/stats', as: 'stats'
+
   get 'static_pages/load_more_results' => 'static_pages#load_more_results'
 
   get 'static_pages/get_current_location'
