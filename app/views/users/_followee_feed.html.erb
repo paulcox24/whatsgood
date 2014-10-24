@@ -1,4 +1,3 @@
-<% activities.each do |activity| %>
   <a class="list-group-item" href=<%= current_user ? user_profile_path(activity.owner_id) : new_user_session_path %> >
     <% if activity.owner.avatar? %>
       <%= image_tag activity.owner.avatar.url(:medium), class: "img-responsive img-circle pull-left", alt: "icon-user-default.png" %>
@@ -12,4 +11,3 @@
 
 <% if activities == [] %>
 <p class="list-group-item no-border">No activity</p>
-<% end %>

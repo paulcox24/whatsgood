@@ -69,7 +69,8 @@
       <div class="panel-heading clearfix">
         <h3 class="panel-title pull-left">News feed</h3>
       </div>  
-        <div class="feed"><%= render partial: 'users/followee_feed', locals: {activities: @activities} %></div>
+        <div class="feed"><%= render @activities %></div>
+        <%= will_paginate @activities %>
     </div>
   </div>
 </div>
