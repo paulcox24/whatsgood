@@ -38,6 +38,18 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
+  def email
+    email = params[:email]
+    if((email[:name] != "") && (email[:subject] != "") && (email[:email] != "") && (email[:message] != ""))
+      UserMailer.contact_email(email).deliver
+      UserMailer.contact_confirm(email).deliver
+      redirect_to '/static_pages/contact', notice: "Message Sent"
+    else
+      redirect_to '/static_pages/contact', notice: "All Fields Must Be Complete"
+    end
+    
+  end
+
   def load_more_results()
     eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
     @result = eventful.call 'events/search',

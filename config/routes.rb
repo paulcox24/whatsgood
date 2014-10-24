@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'static_pages/about', as: 'about'
 
   get 'static_pages/contact'
+  post 'static_pages/email' => 'static_pages#email'
 
   get 'static_pages/this_week'
 

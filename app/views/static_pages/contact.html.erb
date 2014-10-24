@@ -1,2 +1,41 @@
-<h1>StaticPages#contact</h1>
-<p>Find me in app/views/static_pages/contact.html.erb</p>
+<%= form_for :email, :url => { :action => "email" }  do |f|  %>
+<div class="panel panel-default centered">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">Contact Us  <small>Let's talk about whatsgood.</small></h3>
+    <div class="btn-group pull-right">
+      <%= f.submit "Send", class: "btn btn-success" %>
+    </div>
+  </div>
+  <div class="panel-body">
+  	<div class="container-fluid"> 
+        <div class="form-group form-group-lg">
+          <div>
+            <%= f.text_field :name, class: "form-control", required: true, autofocus: true, placeholder: 'Your Name'%>
+          </div>
+        </div>
+        <div class="form-group form-group-lg">
+          <div>
+            <%= f.text_field :email, class: "form-control", required: true, placeholder: 'Your Email'%>
+          </div>
+        </div>
+       	<div class="form-group form-group-lg">
+          <div>
+            <%= f.text_field :subject, class: "form-control", required: true, placeholder: 'Subject'%>
+          </div>
+        </div>
+        <div class="form-group form-group-lg">
+          <div>
+            <%= f.text_area :message, class: "form-control", style:"resize: vertical;", required: true, placeholder: 'Message'%>
+          </div>
+        </div>
+     </div>
+  </div>
+  <div class="panel-footer">
+    <small><%= mail_to "whatsgoodaroundme@gmail.com" %></small>
+  </div>
+</div>
+ <%end%>
+
+
+
+
