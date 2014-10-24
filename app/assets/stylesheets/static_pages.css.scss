@@ -30,3 +30,26 @@ body {
 .dpl-link {
   max-width: 250px; 
 }
+
+.about {
+  max-width: 768px;
+}
+
+.story {
+  font-size: 18px;
+}
+
+.about-photo {
+  max-width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  margin-top: 40px; 
+}
+
+.about-list {
+  font-size: 1.25em;
+  a {
+    color: white;
+  }
+}
