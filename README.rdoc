@@ -1,28 +1,40 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://limitless-cove-8357.herokuapp.com/
 
-Things you may want to cover:
+whatsgood is the brainchild of students of the DevPoint Labs Fall 2014 cohort.
 
-* Ruby version
+The idea originated as an answer to the question "What do people do for fun around here?". The goal of whatsgood is to give a quick look at events you're interested in. Login, set some categories you have interest in and the app will quickly tell you whats going on today, this week, and in the future.
 
-* System dependencies
+That band you like is having a concert tonight, an arts festival is soon, that play you heard about is this week, no longer will you miss out on whatsgood around you.
 
-* Configuration
+Ruby version 2.1.0
 
-* Database creation
+=== Gems used
 
-* Database initialization
+- App_stats (custom gem) 
+- Bootstrap 
+- Devise 
+- Eventfulapi 
+- Geocoder 
+- Gmaps4rails 
+- Omniauth 
+- Paperclip 
+- Public_activity 
+- Socialization
 
-* How to run the test suite
+=== Javascript
 
-* Services (job queues, cache servers, search engines, etc.)
+- Bootcards 
+- Isotope 
+- jQuery 
+- Underscore
 
-* Deployment instructions
+=== APIs
 
-* ...
+- Eventful 
+- Facebook 
+- GoogleMaps 
+- HTML5 Geolocation
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Postgres
