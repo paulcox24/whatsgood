@@ -1,28 +1,38 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+whatsgood is the brainchild of students of the DevPoint Labs Fall 2014 cohort.
 
-Things you may want to cover:
+The idea originated as an answer to the question "What do people do for fun around here?". The goal of whatsgood is to give a quick look at events you're interested in. Login, set some categories you have interest in and the app will quickly tell you whats going on today, this week, and in the future.
 
-* Ruby version
+That band you like is having a concert tonight, an arts festival is soon, that play you heard about is this week, no longer will you miss out on whatsgood around you.
 
-* System dependencies
+Ruby version 2.1.0
 
-* Configuration
+Gems used
 
-* Database creation
+App_stats (custom gem) 
+Bootstrap 
+Devise 
+Eventfulapi 
+Geocoder 
+Gmaps4rails 
+Omniauth 
+Paperclip 
+Public_activity 
+Socialization
 
-* Database initialization
+Javascript
 
-* How to run the test suite
+Bootcards 
+Isotope 
+jQuery 
+Underscore
 
-* Services (job queues, cache servers, search engines, etc.)
+APIs
 
-* Deployment instructions
+Eventful 
+Facebook 
+GoogleMaps 
+HTML5 Geolocation
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Postgres
