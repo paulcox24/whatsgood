@@ -8,7 +8,7 @@ That band you like is having a concert tonight, an arts festival is soon, that p
 
 Ruby version 2.1.0
 
-Gems used
+###Gems used
 
 App_stats (custom gem) 
 Bootstrap 
@@ -21,14 +21,14 @@ Paperclip
 Public_activity 
 Socialization
 
-Javascript
+###Javascript
 
 Bootcards 
 Isotope 
 jQuery 
 Underscore
 
-APIs
+###APIs
 
 Eventful 
 Facebook 
