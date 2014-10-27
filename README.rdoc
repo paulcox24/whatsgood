@@ -1,5 +1,7 @@
 == README
 
+ [Visit whatsgood!](http://limitless-cove-8357.herokuapp.com/)
+
 whatsgood is the brainchild of students of the DevPoint Labs Fall 2014 cohort.
 
 The idea originated as an answer to the question "What do people do for fun around here?". The goal of whatsgood is to give a quick look at events you're interested in. Login, set some categories you have interest in and the app will quickly tell you whats going on today, this week, and in the future.
@@ -10,29 +12,29 @@ Ruby version 2.1.0
 
 ###Gems used
 
-App_stats (custom gem) 
-Bootstrap 
-Devise 
-Eventfulapi 
-Geocoder 
-Gmaps4rails 
-Omniauth 
-Paperclip 
-Public_activity 
-Socialization
+-App_stats (custom gem) 
+-Bootstrap 
+-Devise 
+-Eventfulapi 
+-Geocoder 
+-Gmaps4rails 
+-Omniauth 
+-Paperclip 
+-Public_activity 
+-Socialization
 
 ###Javascript
 
-Bootcards 
-Isotope 
-jQuery 
-Underscore
+-Bootcards 
+-Isotope 
+-jQuery 
+-Underscore
 
 ###APIs
 
-Eventful 
-Facebook 
-GoogleMaps 
-HTML5 Geolocation
+-Eventful 
+-Facebook 
+-GoogleMaps 
+-HTML5 Geolocation
 
 Postgres
