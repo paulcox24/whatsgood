@@ -1,6 +1,6 @@
 == README
 
- [Visit whatsgood!](http://limitless-cove-8357.herokuapp.com/)
+https://limitless-cove-8357.herokuapp.com/
 
 whatsgood is the brainchild of students of the DevPoint Labs Fall 2014 cohort.
 
@@ -10,31 +10,31 @@ That band you like is having a concert tonight, an arts festival is soon, that p
 
 Ruby version 2.1.0
 
-###Gems used
+=== Gems used
 
--App_stats (custom gem) 
--Bootstrap 
--Devise 
--Eventfulapi 
--Geocoder 
--Gmaps4rails 
--Omniauth 
--Paperclip 
--Public_activity 
--Socialization
+- App_stats (custom gem) 
+- Bootstrap 
+- Devise 
+- Eventfulapi 
+- Geocoder 
+- Gmaps4rails 
+- Omniauth 
+- Paperclip 
+- Public_activity 
+- Socialization
 
-###Javascript
+=== Javascript
 
--Bootcards 
--Isotope 
--jQuery 
--Underscore
+- Bootcards 
+- Isotope 
+- jQuery 
+- Underscore
 
-###APIs
+### APIs
 
--Eventful 
--Facebook 
--GoogleMaps 
--HTML5 Geolocation
+- Eventful 
+- Facebook 
+- GoogleMaps 
+- HTML5 Geolocation
 
 Postgres
