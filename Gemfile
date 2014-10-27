@@ -61,6 +61,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'launchy'
   gem 'dotenv-rails'
 end
 
