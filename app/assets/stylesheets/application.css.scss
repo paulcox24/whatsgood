@@ -233,7 +233,7 @@ nav.navbar {
   line-height: 17px     !important;
   font-weight: bold     !important;
 }
-
+// tweakz are for tweakerz? //
 nav .navbar-nav :hover {
   -webkit-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
@@ -241,10 +241,22 @@ nav .navbar-nav :hover {
 }
 
 nav .navbar-nav :hover {
-  letter-spacing: .12em;
+  letter-spacing: .09em;
   transition-timing-function: linear; 
 }
 
 .dropdown-menu {
   letter-spacing: normal;
 }
+
+#good-button:hover {
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  transition: .4s .1s ease-in-out;
+}
+
+#good-button:hover {
+  color: #669966;
+  letter-spacing: .06em; 
+}
+
