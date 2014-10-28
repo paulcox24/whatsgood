@@ -74,10 +74,11 @@ class StaticPagesController < ApplicationController
   end
 
   def get_current_location
-    @hello ='Hellod'
     @lat = params['latitude']
     @long = params['longitude']
     session[:current_location] = "#{@lat},#{@long}"
+    session[:current_lat] = @lat
+    session[:current_long] = @long
   end
 
   private
