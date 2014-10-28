@@ -31,7 +31,7 @@
         <div class="col-sm-6">
           <div class="list-group no-margin">
             <div class="list-group-item no-border no-padding">
-              <span class="favorited-list"> Others who favorited this event</span>
+              <span class="favorited-list"> Who favorited this event</span>
               <% event_favoritors(event.eventful_id).each do |user| %>
                 <a class="list-group-item no-border" href=<%= current_user ? user_profile_path(user) : new_user_session_path %> >
                   <% if user.avatar? %>
