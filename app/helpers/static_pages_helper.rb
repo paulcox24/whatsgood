@@ -19,6 +19,6 @@ module StaticPagesHelper
 
   def event_favoritors_count(eventful)
     events = Event.where(eventful_id: eventful)
-    events.count
+    events.count > 0 ? events.count : ''
   end    
 end

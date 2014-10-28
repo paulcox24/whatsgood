@@ -62,7 +62,7 @@
                                                                   eventful_id: event['id'],
                                                                   description: (truncate(event['description'], length:800))}),
                                                             method: :post, remote: true, class: "btn btn-primary fav" do %>
-                  <i class="fa fa-star"></i> Favorite 
+                  <i class="fa fa-star"></i> Favorite <span class= "badge"><%= event_favoritors_count(event['id']) %></span>
                 <% end %>
               <% end %>  
             <% else %>
