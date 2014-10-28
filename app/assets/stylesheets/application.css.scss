@@ -234,3 +234,17 @@ nav.navbar {
   font-weight: bold     !important;
 }
 
+nav .navbar-nav :hover {
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  transition: .4s .1s ease-in-out;
+}
+
+nav .navbar-nav :hover {
+  letter-spacing: .12em;
+  transition-timing-function: linear; 
+}
+
+.dropdown-menu {
+  letter-spacing: normal;
+}
