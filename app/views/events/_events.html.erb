@@ -47,7 +47,7 @@
             <% if current_user %>
               <% if (current_user.events.collect { |event| event.eventful_id }).include? event['id'] %>
                 <%= link_to user_profile_path(current_user), class: "btn btn-success" do %>
-                    <i class="fa fa-star"></i> Favorited
+                    <i class="fa fa-star"></i> Favorited <spas class= "badge"><%= event_favoritors_count(event['id']) %></span>
                 <% end %>
               <% else %>
                 <%= link_to user_events_path(current_user, event: {name: event['title'],
@@ -62,7 +62,7 @@
                                                                   eventful_id: event['id'],
                                                                   description: (truncate(event['description'], length:800))}),
                                                             method: :post, remote: true, class: "btn btn-primary fav" do %>
-                  <i class="fa fa-star"></i> Favorite
+                  <i class="fa fa-star"></i> Favorite 
                 <% end %>
               <% end %>  
             <% else %>
