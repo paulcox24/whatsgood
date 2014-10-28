@@ -6,22 +6,19 @@ class StaticPagesController < ApplicationController
   def home
     @date = 'Future'
     get_eventful(@date)
-    get_eventful_for_map(@date)
-    make_map(@eventz)
+    make_map(@events)
   end
 
   def today
     @date = 'Today'
     get_eventful(@date)
-    get_eventful_for_map(@date)
-    make_map(@eventz)
+    make_map(@events)
   end
 
   def this_week
     @date = "This Week"
     get_eventful(@date)
-    get_eventful_for_map(@date)
-    make_map(@eventz)
+    make_map(@events)
   end  
 
   def about
