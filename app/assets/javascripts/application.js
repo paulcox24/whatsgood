@@ -36,5 +36,9 @@ $(document).ready(function() {
     bounds.bottom = bounds.top + this.outerHeight();  
     return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));  
   };
+
+  if ($(window).width() <= 768) {
+    $('#SignInLink').html('<a class="navbar-link" href="/users/sign_in">Sign in / Sign up</a>');
+  }  
 });
 
