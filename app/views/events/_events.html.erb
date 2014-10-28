@@ -47,7 +47,7 @@
             <% if current_user %>
               <% if (current_user.events.collect { |event| event.eventful_id }).include? event['id'] %>
                 <%= link_to user_profile_path(current_user), class: "btn btn-success" do %>
-                    <i class="fa fa-star"></i> Favorited <spas class= "badge"><%= event_favoritors_count(event['id']) %></span>
+                    <i class="fa fa-star"></i> Favorited <span class= "badge"><%= event_favoritors_count(event['id']) %></span>
                 <% end %>
               <% else %>
                 <%= link_to user_events_path(current_user, event: {name: event['title'],
@@ -62,7 +62,7 @@
                                                                   eventful_id: event['id'],
                                                                   description: (truncate(event['description'], length:800))}),
                                                             method: :post, remote: true, class: "btn btn-primary fav" do %>
-                  <i class="fa fa-star"></i> Favorite 
+                  <i class="fa fa-star"></i> Favorite <span class= "badge"><%= event_favoritors_count(event['id']) %></span>
                 <% end %>
               <% end %>  
             <% else %>
@@ -85,18 +85,18 @@
 <% end %>
 <% else %>
   <div class="panel panel-default no-results">
-  <div class="panel-heading clearfix">
-    <h3 class="panel-title pull-left">No Results Found</h3>
-  </div>
-  <div class="panel-body">
-    <p>No results could be found, update your interests to find more of whatsgood around you.</p>
-  </div>
-  <div class="panel-footer">
-    <%= link_to edit_user_registration_path, class: "btn btn-primary pull-right" do %>
-      <i class="fa fa-pencil"> Update Interests</i>
-    <% end %>
-  </div>
-</div><% end %>
+    <div class="panel-heading clearfix">
+      <h3 class="panel-title pull-left">No Results Found</h3>
+    </div>
+    <div class="panel-body">
+      <p>No results could be found, update your interests to find more of whatsgood around you.</p>
+    </div>
+    <div class="panel-footer">
+      <%= link_to edit_user_registration_path, class: "btn btn-primary pull-right" do %>
+        <i class="fa fa-pencil"> Update Interests</i>
+      <% end %>
+    </div>
+  </div><% end %>
 </div>
 <div id="cards-bottom">&nbsp;<br></div>
 
