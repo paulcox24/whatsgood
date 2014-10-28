@@ -150,7 +150,7 @@ class StaticPagesController < ApplicationController
     if session[:current_location]
       session[:current_location]
     else
-      current_user ? "#{current_user.latitude},#{current_user.longitude}" : CITY
+      current_user.latitude ? "#{current_user.latitude},#{current_user.longitude}" : CITY
     end  
   end  
 
