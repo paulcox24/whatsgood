@@ -53,3 +53,8 @@ body {
     color: white;
   }
 }
+
+.fav-card-list {
+  max-height: 355px;
+  overflow: auto;
+}
