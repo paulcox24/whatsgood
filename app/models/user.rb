@@ -16,13 +16,9 @@ class User < ActiveRecord::Base
   acts_as_follower
   acts_as_followable
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/icon-user-default.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100#" }, :default_url => "/images/:style/icon-user-default.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :avatar, :less_than => 5.megabytes
-
-  def can_edit_user?(user)
-    self == user || self.is_admin
-  end  
 
   def self.from_omniauth(auth)
     where("email = ? OR provider = ? AND uid = ? ", auth.info.email, auth.provider, auth.uid).first_or_create do |user|

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get 'static_pages/get_current_location'
 
   devise_for :users, :controllers => { registrations: 'registrations' , omniauth_callbacks: "omniauth_callbacks"}
-  resources :users, :only => [:show, :index, :edit, :update, :destroy] do
+  resources :users, :only => [:index, :edit, :update, :destroy] do
     get '/profile', to: 'users#profile', as: :profile
     put '/profile', to: 'users#update'
     resources :events

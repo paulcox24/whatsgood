@@ -36,6 +36,7 @@ gem 'devise'
 ##### Maps and Location #####
 gem 'geocoder'
 gem 'gmaps4rails' 
+gem 'underscore-rails'
 
 ###### Picturzzz ####
 gem 'paperclip'
