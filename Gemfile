@@ -41,7 +41,7 @@ gem 'underscore-rails'
 ###### Picturzzz ####
 gem 'paperclip'
 gem 'cocaine'
-gem 'rmagick'
+gem 'rmagick', :require => 'RMagick'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 
