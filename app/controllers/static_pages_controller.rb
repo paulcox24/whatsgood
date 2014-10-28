@@ -6,19 +6,22 @@ class StaticPagesController < ApplicationController
   def home
     @date = 'Future'
     get_eventful(@date)
-    make_map(@events)
+    get_eventful_for_map(@date)
+    make_map(@eventz)
   end
 
   def today
     @date = 'Today'
     get_eventful(@date)
-    make_map(@events)
+    get_eventful_for_map(@date)
+    make_map(@eventz)
   end
 
   def this_week
     @date = "This Week"
     get_eventful(@date)
-    make_map(@events)
+    get_eventful_for_map(@date)
+    make_map(@eventz)
   end  
 
   def about
@@ -99,9 +102,26 @@ class StaticPagesController < ApplicationController
       end
   end 
 
-  def make_map(events) 
-    if events != false
-    @hash = Gmaps4rails.build_markers(events) do |event, marker|
+   def get_eventful_for_map(date=nil)
+    begin
+      eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
+      @result = eventful.call 'events/search',
+            :category => get_categories,
+            :location => get_location,
+            :within => 10,
+            :date => date,
+            :sort_order => 'popularity',
+            :include => 'categories',
+            :page_size => 25
+      @eventz = @result['events']['event']
+    rescue
+      @eventz = false
+      end
+  end 
+
+  def make_map(eventz) 
+    if eventz != false
+    @hash = Gmaps4rails.build_markers(eventz) do |event, marker|
       marker.lat event['latitude']
       marker.lng event['longitude']
       marker.title event['title']
