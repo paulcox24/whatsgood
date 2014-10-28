@@ -36,8 +36,8 @@ $(document).ready(function() {
     $grid.isotope( 'remove', $(this).closest('.event-item') ).isotope('layout');
   });
 
-  $('#cat-boxes').change(function(){
-    $('#cat-boxes input:checked').each(function() {
+  $('.cat-boxes').change(function(){
+    $('.cat-boxes input:checked').each(function() {
       $grid.isotope({ filter: $(this).attr('value') });
     });
   });
