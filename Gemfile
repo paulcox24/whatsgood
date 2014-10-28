@@ -40,6 +40,7 @@ gem 'underscore-rails'
 
 ###### Picturzzz ####
 gem 'paperclip'
+gem 'aws-sdk'
 gem 'cocaine'
 gem 'rmagick', :require => 'RMagick'
 
