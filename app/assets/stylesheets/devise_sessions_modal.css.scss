@@ -22,6 +22,29 @@
     animation-delay: 0s;
 }
 
+#welcometwo {
+    text-align: center;
+    color: #36364A; 
+    font-weight: bolder; 
+    font-size: 3em; 
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: .04em;
+}
+
+#welcometwo {
+    position: absolute;
+    left: -10em;
+    // width: auto;
+    // height: auto;
+    padding: .25em; 
+    // margin: auto;
+    background: #d9edf7; 
+    border-radius: .2em; 
+    -webkit-animation: slide 1.5s linear;
+    -webkit-animation-delay: 0s;
+    animation: slide 1.5s linear;
+    animation-delay: 0s;
+}
 
 @-webkit-keyframes slide {
 	0% { left: -25em; }

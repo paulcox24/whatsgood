@@ -1,4 +1,6 @@
-<div class="panel panel-default login centered">
+<%= javascript_include_tag 'devise_sessions_modal' %>
+<%= stylesheet_link_tag 'devise_sessions_modal' %> 
+<div class="panel panel-default login centered" id="letsmakeithappen">
   <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left">Login</h3>
     <span class="pull-right">Don't have an account? &nbsp; <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary" %></span>
@@ -29,7 +31,7 @@
         </label>
       </div>
       <div class="btn-group col-xs-6">
-        <%= f.button :submit, "Sign in", class: 'btn btn-success btn-block' %>
+        <%= f.button :submit, "Sign in", class: 'btn btn-success btn-block', id: 'discobaby' %>
       </div> 
 
     <% end %>
