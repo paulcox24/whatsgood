@@ -21,7 +21,7 @@
 $(document).ready(function() {
 	setTimeout(function(){
 	   $('.alert').slideUp('slow');
-	 }, 5000);
+	 }, 3000);
 
     $.fn.isOnScreen = function(){
     var win = $(window);
