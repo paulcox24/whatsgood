@@ -47,6 +47,5 @@ feature "Full Story" do
     visit user_1_uri.to_s
     click_link "Follow"
     click_link "Unfollow"
-    save_and_open_page
   end
 end
