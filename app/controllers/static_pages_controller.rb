@@ -6,22 +6,19 @@ class StaticPagesController < ApplicationController
   def home
     @date = 'Future'
     get_eventful(@date)
-    get_eventful_for_map(@date)
-    make_map(@eventz)
+    make_map(@events)
   end
 
   def today
     @date = 'Today'
     get_eventful(@date)
-    get_eventful_for_map(@date)
-    make_map(@eventz)
+    make_map(@events)
   end
 
   def this_week
     @date = "This Week"
     get_eventful(@date)
-    get_eventful_for_map(@date)
-    make_map(@eventz)
+    make_map(@events)
   end  
 
   def about
@@ -77,10 +74,11 @@ class StaticPagesController < ApplicationController
   end
 
   def get_current_location
-    @hello ='Hellod'
     @lat = params['latitude']
     @long = params['longitude']
     session[:current_location] = "#{@lat},#{@long}"
+    session[:current_lat] = @lat
+    session[:current_long] = @long
   end
 
   private
