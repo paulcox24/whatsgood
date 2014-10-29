@@ -100,32 +100,19 @@ class StaticPagesController < ApplicationController
       end
   end 
 
-   def get_eventful_for_map(date=nil)
-    begin
-      eventful = Eventful::API.new ENV["EVENTFUL_API_KEY"]
-      @result = eventful.call 'events/search',
-            :category => get_categories,
-            :location => get_location,
-            :within => 10,
-            :date => date,
-            :sort_order => 'popularity',
-            :include => 'categories',
-            :page_size => 25
-      @eventz = @result['events']['event']
-    rescue
-      @eventz = false
-      end
-  end 
-
   def make_map(eventz) 
-    if eventz != false
-    @hash = Gmaps4rails.build_markers(eventz) do |event, marker|
-      marker.lat event['latitude']
-      marker.lng event['longitude']
-      marker.title event['title']
-      marker.infowindow "<h6><a style=padding: 1.25em; href=#{event['url']}>Event Link</a><br>Title: #{event['title']}<br>Venue: #{event['venue_name']}</h6>"
-    end 
-  end
+    begin
+      if eventz != false
+        @hash = Gmaps4rails.build_markers(eventz) do |event, marker|
+          marker.lat event['latitude']
+          marker.lng event['longitude']
+          marker.title event['title']
+          marker.infowindow "<h6><a style=padding: 1.25em; href=#{event['url']}>Event Link</a><br>Title: #{event['title']}<br>Venue: #{event['venue_name']}</h6>"
+        end 
+      end
+    rescue
+      @hash = nil
+    end   
   end
 
   def default_eventful(date)

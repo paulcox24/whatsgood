@@ -2,10 +2,10 @@
   <input type="hidden" name="current-user" value="<%= current_user.id %>" id="current-user">
 <% end %>  
 <div id="grid" class="row-fluid">
-  <% if events != false %>
+  <% if events != false && events.count < 11%>
 <% events.each do |event| %>
 
-  <div class="col-sm-6 col-lg-4 event-item <%= category_class(event) %>" id=<%event['id']%>> 
+  <div class="col-sm-6 col-lg-4 event-item <%= category_class(event) %>" id=<%event['id'].gsub('@','')%>> 
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
         <button type="button" class="close card-close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -96,7 +96,8 @@
         <i class="fa fa-pencil"> Update Interests</i>
       <% end %>
     </div>
-  </div><% end %>
+  </div>
+<% end %>
 </div>
 <div id="cards-bottom">&nbsp;<br></div>
 
