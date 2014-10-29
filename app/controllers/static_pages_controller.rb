@@ -22,7 +22,7 @@ class StaticPagesController < ApplicationController
   end  
 
   def about
-    @gems_used = ['Devise','Geocoder','Gmaps4rails','Paperclip','Bootstrap','App_stats (custom gem)','Eventfulapi','Omniauth',"Socialization",'Public_activity'].sort
+    @gems_used = ['Devise','Geocoder','Gmaps4rails','Paperclip','Bootstrap','App_stats (custom gem)','Eventfulapi','Omniauth',"Socialization",'Public_activity', 'Will_paginate'].sort
     @apis_used = ['Facebook','GoogleMaps','Eventful','HTML5 Geolocation']
     @js_used = ['Bootcards','Isotope','jQuery','Underscore']
   end
