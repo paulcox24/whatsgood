@@ -77,3 +77,4 @@ gem 'omniauth-facebook'
 gem "socialization"
 gem 'public_activity'
 gem 'will_paginate'
+gem 'unicorn'
