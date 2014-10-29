@@ -1,0 +1,34 @@
+#welcome {
+	text-align: center;
+	color: #36364A; 
+	font-weight: bolder; 
+	font-size: 3em; 
+	font-family: 'Josefin Sans', sans-serif;
+	letter-spacing: .04em;
+}
+
+#welcome {
+    position: absolute;
+    left: -10em;
+    // width: auto;
+    // height: auto;
+    padding: .25em; 
+    // margin: auto;
+    background: #d9edf7; 
+    border-radius: .5em; 
+    -webkit-animation: slide 3s linear;
+    -webkit-animation-delay: 0s;
+    animation: slide 3s linear;
+    animation-delay: 0s;
+}
+
+
+@-webkit-keyframes slide {
+	0% { left: -25em; }
+    100% { left: 25em; }
+}
+
+@keyframes slide {
+	0% { left: -25em; }
+    100% { left: 25em; }
+}

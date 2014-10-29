@@ -1,4 +1,6 @@
-<div class="panel panel-default login">
+<%= javascript_include_tag 'devise_sessions_modal' %>
+<%= stylesheet_link_tag 'devise_sessions_modal' %> 
+<div class="panel panel-default login" id="makeitso">
   <div class="panel-heading clearfix">
     <h3 class="panel-title pull-left">Login</h3>
     <%= simple_form_for(resource, url: session_path(resource), html: { role: 'form', class: 'form-horizontal'}) do |f| %>
@@ -29,7 +31,7 @@
         </label>
       </div>
       <div class="btn-group col-xs-6">
-        <%= f.button :submit, "Sign in", class: 'btn btn-success btn-block' %>
+        <%= f.button :submit, "Sign in", class: 'btn btn-success btn-block', id: 'tragdor' %>
       </div> 
 
     <% end %>
