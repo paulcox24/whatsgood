@@ -1,23 +1,30 @@
- <div class='white'>
-  <h2>Selected stats from App Stats gem</h2>
-
-  <h3><%= @lines_of_code %> lines of code in the app</h3>
-
-  <h3>Has Many Relationships</h3>
-  <ul>
-    <% @has_many_data.each do |stat| %>
-      <li> <%= stat %></li>
-    <% end %>
-  </ul>
-
-  <h3>Files sorted by lines of code</h3>
-  <div class='files-by-loc'>
-    <ul>
-      <% @files_by_lines_of_code.each do |file| %>
-        <li> <%= file %></li>
-      <% end %>
-    </ul>
+  <h3 class="pager"><span class="about-logo">whatsgood</span> stats</h3>
+ <div class='about centered'>
+  <div class="row">
+    <div class="col-sm-6">
+      <h4><%= @lines_of_code %> lines of code in the app</h4>
+      <h4>Unicorn web server</h4>
+      <h4>Postgres DB</h4>
+      <h4>Amazon S3</h4>
+      <br/>
+      <h4>Has Many Relationships</h4>
+      <ul class="list-unstyled">
+        <% @has_many_data.each do |stat| %>
+          <li> <%= stat %></li>
+        <% end %>
+      </ul>
+      <br/>
+    </div>
+    <div class="col-sm-6">  
+      <h4>Files sorted by lines of code</h4>
+      <div class='files-by-loc'>
+        <ul class="list-unstyled"> 
+          <% @files_by_lines_of_code.each do |file| %>
+            <li> <%= file %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>  
   </div>
-
-  <%= link_to 'Export to CSV', stats_path(format: :csv), class: "btn btn-primary" %>
+  <div class="pager"><%= link_to 'Export to CSV', stats_path(format: :csv), class: "btn btn-primary" %></div>
 </div>
